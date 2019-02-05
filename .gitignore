@@ -1,0 +1,5 @@
+.env
+node_modules
+plan.txt
+.vscode
+npm-debug.log
