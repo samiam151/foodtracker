@@ -20,6 +20,7 @@ app.use(session({
         maxAge: 2419200000
     }
 }));
+app.use(express.static(__dirname +'./../'));
 
 // Authentication
 const Auth = require("../conifg/authentication");

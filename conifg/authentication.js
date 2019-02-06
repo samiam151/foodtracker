@@ -41,7 +41,7 @@ Auth.init = (app) => {
                     if (!user) {
                         return done(null, false);
                     }
-                    Auth.verifyPassword(user, password).then(passwordsMatch => {
+                    UserService.verifyPassword(user, password).then(passwordsMatch => {
                         if (passwordsMatch) {
                             return done(null, user)
                         }
