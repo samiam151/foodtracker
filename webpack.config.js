@@ -6,7 +6,7 @@ var BUILD_DIR = path.resolve(__dirname, './build');
 var APP_DIR = path.resolve(__dirname, './client');
 
 const config = {
-
+    mode: "development",
     plugins: [
         new MiniCssExtractPlugin({
             filename: "[name].css",

@@ -11,8 +11,20 @@ router.get("/", (req, res) => {
     }
 });
 
-router.post("/", passport.authenticate('local', { failureRedirect: '/login/error' }), (req, res) => {
-    res.redirect('/login/success?username=' + req.user.name);
+// router.use((req, res, next) => {
+//     console.log(req.method);
+//     console.log(req.body);
+//     console.log(req.xhr);
+//     next();
+// });
+router.post("/", passport.authenticate('local', 
+    { 
+        failureRedirect: '/login/error'
+    }), (req, res) => {
+    res.json({
+        authenticated: true,
+        user: req.user.name
+    });
 });
 
 router.get('/success', (req, res) => {
@@ -20,7 +32,9 @@ router.get('/success', (req, res) => {
 });
 
 router.get('/error', (req, res) => {
-    res.send("error logging in");
+    res.json({
+        authenticated: false
+    });
 });
 
 module.exports = router;

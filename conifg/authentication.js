@@ -36,15 +36,25 @@ Auth.init = (app) => {
 
     passport.use(new LocalStrategy(
         function (username, password, done) {
-            UserService.getUser(username)
+            UserService.getUser(decodeURIComponent(username))
                 .then((user) => {
+                    if (!username) {
+                        console.log("No username given");
+                        return done(null, false);
+                    }
+                    if (!password) {
+                        console.log("No password given");
+                        return done(null, false);
+                    }
                     if (!user) {
+                        console.log("User not found");
                         return done(null, false);
                     }
                     UserService.verifyPassword(user, password).then(passwordsMatch => {
                         if (passwordsMatch) {
                             return done(null, user)
                         }
+                        console.log("Incorrect password");
                         return done(null, false);
                     });
                 })

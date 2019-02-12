@@ -4,12 +4,21 @@ const bodyParser = require('body-parser');
 const path = require("path");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
+const compression = require("compression");
 const PORT = process.env.PORT || 5105;
 dotenv.config();
 
 // Middleware
 const app = express();
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(compression());
+app.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', 'localhost');
+    res.header('Access-Control-Allow-Credentials', 'true');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
+  });
+// app.use(bodyParser());
+app.use(bodyParser.json());
 app.use(session({
     saveUninitialized: true,
     resave: false,

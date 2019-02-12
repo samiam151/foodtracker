@@ -3,6 +3,7 @@ const { URL } = require("url");
 const fetch = require("node-fetch").default;
 dotenv.config();
 let FoodAPIService = {};
+const Food = require("../models/food");
 
 // Configure base url with credientials
 let baseURL = new URL("https://api.edamam.com/api/food-database/parser");
@@ -18,8 +19,17 @@ FoodAPIService.findIngredient = (value) => {
     let url = new URL(baseURL.href);
     url.searchParams.set("ingr", encodeURIComponent(value));
     return fetch(url.href)
-        .then(data => data.json());
+        .then(data => {
+            let datum = data.json();
+            return datum;
+        });
 }
 
 
 module.exports = FoodAPIService;
+if (require.main === module) {
+    FoodAPIService.findIngredient("sweet potato").then(data => {
+        console.log(data.parsed[0]);
+        console.log(new Food(data.parsed[0]));
+    });
+}
