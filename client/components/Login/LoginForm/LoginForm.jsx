@@ -3,14 +3,8 @@ import { render } from "react-dom";
 import ClientUserService from "../../../services/ClientUserService";
 import { store } from "../../../store/index";
 import { connect } from "react-redux";
-
+import { setUser } from "../actions";
 class LoginForm extends Component {
-    constructor(props) {
-        super(props);
-
-        this.submitLoginForm = this.submitLoginForm.bind(this);
-        
-    }
 
     submitLoginForm(e) {
         e.preventDefault();
@@ -28,8 +22,7 @@ class LoginForm extends Component {
 
     render() {
         return (
-            <form onSubmit={this.submitLoginForm}>
-                <p>React</p>
+            <form onSubmit={(e) => this.submitLoginForm(e)}>
                 <label htmlFor="username">Username</label>
                 <input type="email" name="username" id="username" />
 
@@ -42,12 +35,10 @@ class LoginForm extends Component {
     }
 }
 
-let mapState = (state) => {
-    return {
-        user: state.user
-    }
-};
-let mapDispatch = dispatch => ({
-    setUser: (user) => dispatch({user: user, type: "USER__UPDATE"})
+let mapStateToProps = (state) => ({
+    user: state.user
 });
-export default connect(mapState, mapDispatch)(LoginForm)
+// let mapDispatchers = dispatch => ({
+//     setUser: setUser
+// });
+export default connect(mapStateToProps, { setUser })(LoginForm)

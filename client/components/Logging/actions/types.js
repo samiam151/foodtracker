@@ -1,0 +1,1 @@
+export const GET_INIT_LOGS = "GET_INIT_LOGS";

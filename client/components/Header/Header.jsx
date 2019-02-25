@@ -3,39 +3,35 @@ import ReactDOM from "react-dom";
 import { Link } from "react-router-dom";
 import ClientUserService from "../../services/ClientUserService";
 import { connect } from "react-redux";
+import { Layout } from "../Layout/Layout";
 
-// class Header extends Component {
-//     constructor(props) {
-//         super(props);
-//     }
+import { NavLink, NavSection } from "./Navigation/NavigationComponents";
 
-//     render({user}) {
-//         return (
-//             <header>
-//                 <Link to="/">Home</Link>
-//                     <Link to="/login">Login</Link>
-//                     <Link to="/signup">Sign Up</Link>
-//                     <Link to="/logout">Logout</Link>
-//                     <p>{ClientUserService.isAuthenticated() ? "authenticated" : "not authenticated"}</p>
-//                     <p>{user}</p>
-//             </header>
-//         )
-//     }
-// }
+class Header extends Component {
 
-const Header = ({user}) => (
-    <header>
-        <Link to="/">Home</Link>
-        <Link to="/login">Login</Link>
-        <Link to="/signup">Sign Up</Link>
-        <Link to="/logout">Logout</Link>
-        <p>{user}</p>
-    </header>
-);
+    render() {
+        return (
+            <header>
+                <Layout>
+                    <NavSection>
+                        <NavLink to="/" name="Home" />
+                        { this.props.user ? "" : <NavLink to="/login" name="Login" />} 
+                        {/* <NavLink to="/signup" name="Sign Up" />
+                        <NavLink to="/logout" name="Logout" /> */}
+                        <NavLink to="/log" name="Log" />
+                    </NavSection>
+                    
+                    <p>{this.props.user.name}</p>
+                </Layout>
+            </header>
+        )
+    }
+}
 
-let mapState = (state) => {
+
+let mapState = ({user}) => {
     return {
-        user: state.user
+        user: user.user
     }
 };
 export default connect(mapState)(Header);

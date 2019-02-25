@@ -1,4 +1,4 @@
-// Base URL: /signup
+// Base URL: /api/signup
 const router = require("express").Router();
 const path = require("path");
 const UserService = require("../services/userService");

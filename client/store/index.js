@@ -1,15 +1,20 @@
-import { createStore } from "redux";
+import { createStore, combineReducers, compose, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+import { userReducer } from "../components/Login/reducers";
+import { loggingReducers } from "../components/Logging/reducers"
 
-let defaultState = {
-    user: ""
-}
+let defaultState = {};
+let middleware = [thunk];
 
+const rootReducer = combineReducers({
+    user: userReducer,
+    logging: loggingReducers
+});
 export const store = createStore(
-    function reducer(state = defaultState, action) {
-        if (action.type === "USER__UPDATE") {
-            let newState = Object.assign({}, state, {user: action.user});
-            return newState;
-        }
-        return state;
-    }
+    rootReducer, 
+    defaultState,
+    compose(
+        applyMiddleware(...middleware),
+        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+      )
 );

@@ -10,6 +10,8 @@ class Food {
         this.protein = nutrients.PROCNT;
         this.fat = nutrients.FAT;
         this.calories = nutrients.ENERC_KCAL;
+
+        this.data = dataObj;
     }
 }
 

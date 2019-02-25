@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import LoginForm from "./LoginForm/LoginForm.jsx";
+import { Layout } from "../Layout/Layout";
 
 export default class LoginPage extends Component {
     constructor(props) {
@@ -8,7 +9,9 @@ export default class LoginPage extends Component {
 
     render() {
         return (
-            <LoginForm />
+            <Layout>
+                <LoginForm />
+            </Layout>
         );
     }
 }

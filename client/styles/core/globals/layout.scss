@@ -1,0 +1,19 @@
+@import "../helpers/breakpoints.scss";
+
+body {
+    background-color: #efefef;
+    color: #333;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+
+    @include breakpoint("md") {
+        max-width: 760px;
+    }
+
+    @include breakpoint('lg') {
+        max-width: 1080px;
+    }
+}

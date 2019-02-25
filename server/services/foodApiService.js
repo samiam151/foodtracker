@@ -26,6 +26,7 @@ FoodAPIService.findIngredient = (value) => {
 }
 
 
+
 module.exports = FoodAPIService;
 if (require.main === module) {
     FoodAPIService.findIngredient("sweet potato").then(data => {

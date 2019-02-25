@@ -1,4 +1,4 @@
-// Base URL: /login
+// Base URL: /api/login
 const router = require("express").Router();
 const passport = require("passport");
 const path = require("path");
@@ -11,19 +11,23 @@ router.get("/", (req, res) => {
     }
 });
 
-// router.use((req, res, next) => {
-//     console.log(req.method);
-//     console.log(req.body);
-//     console.log(req.xhr);
-//     next();
-// });
+router.use((req, res, next) => {
+    console.log(req.method);
+    console.log(req.body);
+    console.log(req.xhr);
+    next();
+});
 router.post("/", passport.authenticate('local', 
     { 
         failureRedirect: '/login/error'
     }), (req, res) => {
     res.json({
         authenticated: true,
-        user: req.user.name
+        user: {
+            name: req.user.name,
+            id: req.user.id,
+            sessionId: req.sessionID
+        }
     });
 });
 

@@ -13,7 +13,7 @@ const ClientUserService = (() => {
         authenticateUser: (username, password) => {
             return axios({
                 method: "post",
-                url: "/login",
+                url: "/api/login",
                 withCredentials: true,
                 headers: {
                     'Content-Type': 'application/json'
@@ -34,8 +34,8 @@ const ClientUserService = (() => {
         logoutUser: () => {
             localStorage.removeItem("food_tracker_user");
         },
-        saveUser: (username) => {
-            localStorage.setItem("food_tracker_user", username);
+        saveUser: (user) => {
+            localStorage.setItem("food_tracker_user", JSON.stringify(user));
         }
     }
 })();

@@ -38,10 +38,12 @@
     "bcrypt": "^2.0.0",
     "body-parser": "^1.18.3",
     "compression": "^1.7.3",
+    "connect-redis": "^3.4.0",
     "cookie-parser": "^1.4.3",
     "crypto": "^1.0.1",
     "express-session": "^1.15.6",
     "history": "^4.7.2",
+    "moment": "^2.24.0",
     "node-fetch": "^2.3.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
@@ -51,6 +53,9 @@
     "react-redux": "^6.0.0",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
-    "redux": "^4.0.1"
+    "react-thunk": "^1.0.0",
+    "redis": "^2.8.0",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
   }
 }
