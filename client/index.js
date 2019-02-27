@@ -9,7 +9,7 @@ import { history } from "./store/history";
 import RouteTable from "./Routes";
 
 // Redux
-import { Provider } from "react-redux";
+import { Provider, connect } from "react-redux";
 import { store } from "./store";
 
 // @ts-ignore
@@ -17,6 +17,7 @@ import styles from "./styles/style.scss";
 import Header from "./components/Header/Header.jsx";
 import { InitialAuthComponent } from "./components/Utilites/InitialAuthCompoment";
 import { Layout } from "./components/Layout/Layout";
+import Modal from "./components/Utilites/Modal";
 
 const Homepage = (props) => (
     <Layout>
@@ -31,7 +32,8 @@ render(
                 <Header />
                 <Route exact path="/" component={Homepage} />
                 <Route path="/login" component={RouteTable["Login Page"]} />
-                <PrivateRoute path="/log" component={RouteTable["Log"]} />
+                <Route path="/log" component={RouteTable["Log"]} />
+                <Modal />
             </InitialAuthComponent>
         </Provider>
     </Router>,

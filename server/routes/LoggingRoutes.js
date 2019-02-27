@@ -12,7 +12,7 @@ router.use((req, res, next) => {
 });
 
 router.post("/initFoods", (req, res) => {
-    FoodUserService.getLog(req.body.user_id)
+    FoodUserService.getLog(req.body.user_id, req.body.date)
         .then(data => res.json(data));
 });
 

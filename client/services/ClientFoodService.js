@@ -13,4 +13,9 @@ ClientFoodService.searchFood = (input) => {
     }).then(res => res.json());
 }
 
+ClientFoodService.getSearchFoodNutrients = (food_id, measure_uri) => {
+
+    return fetch("");
+}
+
 module.exports = ClientFoodService;

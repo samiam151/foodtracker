@@ -7,7 +7,7 @@ import { Layout } from "../Layout/Layout";
 import { getTodaysLogs } from "./actions/initLogsAction";
 import { connect } from "react-redux";
 import { store } from "../../store";
-
+import { SearchFoodComponent } from "./SearchFoodComponent";
 
 class LogginDayComponent extends Component {
     componentDidMount() {
@@ -51,7 +51,7 @@ class LogginDayComponent extends Component {
 const Meal = (props) => (
     <div className="meal">
         <h4>{props.name}</h4>
-        <AddFoodComponent />
+        <SearchFoodComponent />
         { 
             props.loggedFoods.map(food => <LoggedFood key={food.id} food={food} />)
         }
@@ -64,46 +64,6 @@ const LoggedFood = ({food}) => {
         {food.food_id} - {food.calories}
     </div>
 };
-
-class AddFoodComponent extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            searchInput: "",
-            searchResults: []
-        };
-    }
-
-    searchInputChange(e) {
-        let value = e.target.value;
-        if (value.length <= 3) {
-            return;
-        }
-
-        ClientFoodService.searchFood(value)
-        .then(results => {
-            console.log(results);
-            this.setState({
-                searchResults: results
-            });
-        });
-    }
-
-    render() {
-        return (
-            <div className="addFood">
-                <input type="text" name="foodInput" className="addFood__serachInput" onChange={(e) => this.searchInputChange(e)}/>
-                <ul className="addFood__searchResults">
-                    {
-                        this.state.searchResults.map((food, index) => (
-                            <li key={index} className="addFood__searchResult">{food.label}</li>
-                        ))
-                    }
-                </ul>
-            </div>
-        );
-    }
-}
 
 // REDUX
 const mapStateToProps = store => ({logs: store.logging});
