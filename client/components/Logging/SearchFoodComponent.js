@@ -34,7 +34,6 @@ class _SearchFoodComponent extends Component {
     }
 
     resultClick(result) {
-        
         this.props.setContent(AddFoodComponent);
         this.props.showModal();
     }

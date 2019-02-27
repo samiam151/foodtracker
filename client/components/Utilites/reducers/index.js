@@ -22,6 +22,7 @@ export const modalReducer = (state = defaultState, action) => {
     }
 
     if (action.type === SET_MODAL_CONTENT) {
+        console.log(action);
         return Object.assign({}, state, {
             content: action.payload
         });

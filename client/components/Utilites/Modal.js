@@ -16,20 +16,18 @@ const Modal = (props) => {
                         props.content ? <ContentCompoment /> : <noscript />
                     }
                 </div>
+                <span className="modal__closeButton" onClick={props.hideModal}>x</span>
             </div>
-            <span className="modal__closeButton" onClick={props.hideModal()}>&#10005</span>
         </div>
     )
 };
 
+
 Modal.propTypes = {
     show: propTypes.bool.isRequired
 }
-
 const mapStateToProps = (state) => ({
     show: state.modal.show,
     content: state.modal.content
 });
-export default connect(mapStateToProps, (dispatch) => ({
-    hideModal: hideModal
-}))(Modal);
+export default connect(mapStateToProps, { hideModal })(Modal);
