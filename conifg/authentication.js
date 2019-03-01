@@ -20,11 +20,16 @@ Auth.init = (app) => {
     });
 
     passport.serializeUser(function (user, done) {
-        done(null, user.name);
+        console.log(user, "line 23");
+        done(null, {
+            name: user.name,
+            id: user.id
+        });
     });
 
-    passport.deserializeUser(function (name, done) {
-        UserService.getUser(name)
+    passport.deserializeUser(function (_user, done) {
+        console.log(_user, "line 31" );
+        UserService.getUser(_user.name)
         .then(user => {
                 done(null, user)
             })

@@ -22,7 +22,7 @@ app.use(bodyParser());
 app.use(bodyParser.json());
 app.use(session({
     saveUninitialized: true,
-    resave: false,
+    resave: true,
     secret: process.env.SESSION_KEY,
     // secret: [req.user.name, req.user.password].join(),
     store: new RedisStore({
@@ -44,10 +44,9 @@ Auth.init(app);
     //     res.sendFile(path.join(__dirname + "../../index.html"));
     // });
 app.use((req, res, next) => {
-    if (req.isAuthenticated()) {
-        
+    if(req.session.passport) {
+        console.log(req.session.passport.user);
     }
-    console.log(req.session);
     next();
 })
 app.post("/api/initlogin", (req, res) => {

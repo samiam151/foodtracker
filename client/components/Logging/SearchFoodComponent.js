@@ -4,8 +4,9 @@ import ClientFoodService from "../../services/ClientFoodService";
 import ClientFoodUserService from "../../services/ClientFoodUserService";
 import { connect } from "react-redux";
 import { setContent, showModal, hideModal } from "../Utilites/actions";
+import { setFoodSearchItem } from "./actions";
 
-import { AddFoodComponent } from "./AddFoodComponent";
+import AddFoodComponent from "./AddFoodComponent";
 
 class _SearchFoodComponent extends Component {
     constructor(props) {
@@ -34,15 +35,16 @@ class _SearchFoodComponent extends Component {
     }
 
     resultClick(result) {
-        this.props.setContent(AddFoodComponent);
-        this.props.showModal();
+        
     }
 
     render() {
         return (
             <div className="addFood">
+                
                 <input type="text" name="foodInput" className="addFood__serachInput" onChange={(e) => this.searchInputChange(e)}/>
                 <ul className="addFood__searchResults">
+                    
                     {
                         this.state.searchResults.map((food, index) => (
                             <FoodSearchResult key={index} {...food} onClickCB={this.resultClick} />
@@ -54,14 +56,7 @@ class _SearchFoodComponent extends Component {
     }
 }
 
-
-// export const SearchFoodComponent = connect(null, (dispatch) => {
-//     return {
-//         showModal: showModal,
-//         setContent: setContent
-//     }
-// })(_SearchFoodComponent);
-export const SearchFoodComponent = connect(null, { showModal, setContent })(_SearchFoodComponent);
+export const SearchFoodComponent = connect(null, { showModal, setContent, setFoodSearchItem })(_SearchFoodComponent);
 
 const FoodSearchResult = (props) => (
     <li className="addFood__searchResult" onClick={(r) => props.onClickCB(props)}>

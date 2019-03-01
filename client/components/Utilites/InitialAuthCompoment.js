@@ -3,9 +3,15 @@ import ReactDOM from "react-dom";
 import { render } from "react-dom";
 import { store } from "../../store";
 import {  } from 'react-router'
+import { Loader } from "./Loader";
 
 export class InitialAuthComponent extends Component {
-    constructor(props) { super(props); }
+    constructor(props) { 
+        super(props); 
+        this.state = {
+            loaded: false
+        }
+    }
 
     componentDidMount() {
         let iuser = localStorage.getItem("food_tracker_user");
@@ -19,20 +25,32 @@ export class InitialAuthComponent extends Component {
             })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
-                let username = data;
                 store.dispatch({
-                    payload: {
-                        name: username
-                    }, 
-                    type: "USER__UPDATE"});
+                    payload: data, 
+                    type: "USER__UPDATE"
+                });
                 
+            })
+            .then(() => {
+                this.showContent();
             });
             
+        } else {
+            this.showContent();
         }
     }
 
+    showContent() {
+        setTimeout(() => {
+            this.setState({
+                loaded: true
+            })
+        }, 500);
+    }
+
     render() {
-        return( this.props.children );
+        return (
+            this.state.loaded ? this.props.children : <Loader />
+        )
     }
 };

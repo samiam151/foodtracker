@@ -1,0 +1,13 @@
+.modal.modal__addFood {
+    .modal__content {
+        overflow: hidden;
+        & > div {
+            width: 200%;
+        }
+
+
+        .addFood__step {
+            width: 50%;
+        }
+    }
+}

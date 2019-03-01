@@ -1,16 +1,35 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
+import { connect } from "react-redux";
+import { Stepper, Step, StepLabel } from "@material-ui/core"; 
 
-const baseURL = "https://api.edamam.com/api/food-database/nutrients?app_id=3d5352c6&app_key=3ce91d25ef73167630dd0834ba2710d6";
-const api_key = "3ce91d25ef73167630dd0834ba2710d6";
-const api_id = "3d5352c6";
+import { SearchFoodComponent } from "./SearchFoodComponent";
 
-export class AddFoodComponent extends Component {
+class AddFoodComponent extends Component {
     componentDidMount() {
         
     }
 
     render() {
-        return <div>I'm in the modal!!!</div>
+        return (
+            <Stepper>
+                <Step key={1} className="addFood__step">
+                    <StepLabel>Choose a Food</StepLabel>
+                    <p>Use the search input to look through foods.</p>
+                    
+                    <SearchFoodComponent />
+                </Step>
+                <Step key={2}>
+                    <StepLabel>Edit Quanties</StepLabel>
+                    Step 2
+                </Step>
+            </Stepper>
+        );
     }
 }
+
+
+
+export default connect((store) => ({
+    logging: store.logging
+}))(AddFoodComponent);

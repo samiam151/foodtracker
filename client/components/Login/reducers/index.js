@@ -2,10 +2,9 @@ let initialState = {
     user: ""
 }
 
-export const userReducer = (state = initialState, action) => {
+export const userReducer = (state = {}, action) => {
     if (action.type === "USER__UPDATE") {
-        console.log(action);
-        let newState = Object.assign({}, state, {user: action.payload});
+        let newState = Object.assign({}, state, action.payload);
         return newState;
     }
     return state;

@@ -4,6 +4,10 @@
 @import "./core/globals/layout.scss";
 @import "./core/helpers/breakpoints.scss";
 
+// Core Component Styles
+@import "./core/components/modal.scss";
+@import "./core/components/loader.scss";
+
 // Component Styles
 @import "./components/header.scss";
-@import "./components/modal.scss";
+@import "./components//logging/index.scss";

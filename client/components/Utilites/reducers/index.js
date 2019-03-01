@@ -6,12 +6,16 @@ const defaultState = {
 }
 
 export const modalReducer = (state = defaultState, action) => {
-    console.log(action);
     if (action.type === SHOW_MODAL) {
-        if (action.payload === true) {
-            return Object.assign({}, state, {
-                show: action.payload
-            });
+        if (action.payload.show === true) {
+            let modalObj = {
+                show: true
+            }
+            if (action.payload.name) {
+                modalObj['name'] = action.payload.name;
+            }
+
+            return Object.assign({}, state, modalObj);
         } 
         else {
             return Object.assign({}, state, {
@@ -22,7 +26,6 @@ export const modalReducer = (state = defaultState, action) => {
     }
 
     if (action.type === SET_MODAL_CONTENT) {
-        console.log(action);
         return Object.assign({}, state, {
             content: action.payload
         });

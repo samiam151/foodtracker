@@ -10,18 +10,19 @@ import { NavLink, NavSection } from "./Navigation/NavigationComponents";
 class Header extends Component {
 
     render() {
+        let isAuthenticated = Boolean(this.props.user.name);
         return (
             <header>
                 <Layout>
                     <NavSection>
                         <NavLink to="/" name="Home" />
-                        { this.props.user ? "" : <NavLink to="/login" name="Login" />} 
+                        { isAuthenticated ? "" : <NavLink to="/login" name="Login" />} 
                         {/* <NavLink to="/signup" name="Sign Up" />
                         <NavLink to="/logout" name="Logout" /> */}
                         <NavLink to="/log" name="Log" />
                     </NavSection>
                     
-                    <p>{this.props.user.name}</p>
+                    { isAuthenticated ? `Logged in as ${this.props.user.name}` : ""  }
                 </Layout>
             </header>
         )
@@ -31,7 +32,7 @@ class Header extends Component {
 
 let mapState = ({user}) => {
     return {
-        user: user.user
+        user: user
     }
 };
 export default connect(mapState)(Header);

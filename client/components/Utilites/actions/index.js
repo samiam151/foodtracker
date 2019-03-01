@@ -2,12 +2,21 @@
 export const SHOW_MODAL = "SHOW_MODAL";
 export const SET_MODAL_CONTENT = "SET_MODAL_CONTENT";
 
+const defaultModalState = {
+    show: false,
+    content: null,
+    name: ""
+};
+
 // Action Dispatchers
-export const showModal = () => (dispatch) => {
+export const showModal = (name = "") => (dispatch) => {
     console.log("hitt...");
     return dispatch({
         type: SHOW_MODAL,
-        payload: true
+        payload: {
+            show: true,
+            name: name
+        }
     });
 };
 
@@ -15,7 +24,7 @@ export const hideModal = () => (dispatch) => {
     console.log("hitt...");
     return dispatch({
         type: SHOW_MODAL,
-        payload: false
+        payload: defaultModalState
     });
 };
 

@@ -1,1 +1,2 @@
 export const GET_INIT_LOGS = "GET_INIT_LOGS";
+export const SET_FOOD_SEARCH_ITEM = "SET_FOOD_SEARCH_ITEM";
