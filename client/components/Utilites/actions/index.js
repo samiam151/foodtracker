@@ -1,8 +1,10 @@
+import { Component } from "react";
+
 // Action Types
 export const SHOW_MODAL = "SHOW_MODAL";
 export const SET_MODAL_CONTENT = "SET_MODAL_CONTENT";
 
-const defaultModalState = {
+export const defaultModalState = {
     show: false,
     content: null,
     name: ""

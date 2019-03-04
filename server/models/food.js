@@ -11,6 +11,7 @@ class Food {
         this.fat = nutrients.FAT;
         this.calories = nutrients.ENERC_KCAL;
 
+        this.measures = measuresData;
         this.data = dataObj;
     }
 }

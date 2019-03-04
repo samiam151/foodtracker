@@ -1,8 +1,4 @@
 const ClientFoodService = {};
-const baseURL = "https://api.edamam.com/api/food-database/nutrients?app_id=3d5352c6&app_key=3ce91d25ef73167630dd0834ba2710d6";
-const api_key = "3ce91d25ef73167630dd0834ba2710d6";
-const api_id = "3d5352c6";
-
 
 ClientFoodService.searchFood = (input) => {
     let searchData = {
@@ -18,8 +14,16 @@ ClientFoodService.searchFood = (input) => {
 }
 
 ClientFoodService.getSearchFoodNutrients = (food_id, measure_uri) => {
-
-    return fetch("");
+    return fetch("/api/food/nutrients", {
+        method: "POST",
+        headers: {
+            "content-type": "application/json"
+        },
+        body: JSON.stringify({
+            food_id: food_id,
+            measure_uri: measure_uri
+        })
+    }).then(res => res.json());
 }
 
 module.exports = ClientFoodService;

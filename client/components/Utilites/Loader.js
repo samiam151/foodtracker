@@ -1,10 +1,12 @@
 import React, { Component, Fragment } from "react";
 import ReactDOM from "react-dom";
 
-import CircularProgress from '@material-ui/core/CircularProgress';
+import { Spin, Icon } from 'antd';
+
+const antIcon = <Icon type="loading" style={{ fontSize: 60 }} spin />;
 
 export const Loader = () => (
     <div className="loaderContainer">
-        <CircularProgress className="loader" size={80} />
+        <Spin indicator={antIcon} size="small" className="loader" />
     </div>
 );

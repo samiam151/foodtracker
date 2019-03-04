@@ -4,8 +4,7 @@ import { connect } from "react-redux";
 import { setContent, showModal, hideModal } from "../Utilites/actions";
 
 import AddFoodComponent from "./AddFoodComponent";
-import { Button, Fab } from "@material-ui/core";
-import AddIcon from "@material-ui/icons/Add";
+import { Button, Icon } from "antd";
 
 class Meal extends Component {
     constructor(props) {
@@ -24,8 +23,8 @@ class Meal extends Component {
             <div className="meal">
                 <h4>{this.props.name}</h4>
         
-                <Button variant="contained" color="primary" onClick={this.addFoodEntry}>
-                    <AddIcon /> Add to {this.props.name}
+                <Button type="primary" onClick={this.addFoodEntry}>
+                    <Icon type="plus" /> Add to {this.props.name}
                 </Button>
                 
                 <div className="loggedFoods">{ 

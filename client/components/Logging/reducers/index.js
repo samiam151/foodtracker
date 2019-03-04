@@ -1,6 +1,8 @@
 import { GET_INIT_LOGS, SET_FOOD_SEARCH_ITEM } from "../actions/types"
 
-const initLogsState = {};
+const initLogsState = {
+    
+};
 
 export function loggingReducers(store = initLogsState, action) {
     if (action.type === GET_INIT_LOGS) {

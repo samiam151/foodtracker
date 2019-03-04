@@ -1,4 +1,4 @@
-import { SET_MODAL_CONTENT, SHOW_MODAL } from "../actions";
+import { SET_MODAL_CONTENT, SHOW_MODAL, defaultModalState } from "../actions";
 
 const defaultState = {
     show: false,
@@ -18,10 +18,7 @@ export const modalReducer = (state = defaultState, action) => {
             return Object.assign({}, state, modalObj);
         } 
         else {
-            return Object.assign({}, state, {
-                show: action.payload,
-                content: null
-            });
+            return Object.assign({}, state, defaultModalState);
         }
     }
 

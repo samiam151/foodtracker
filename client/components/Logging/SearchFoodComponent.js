@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { setContent, showModal, hideModal } from "../Utilites/actions";
 import { setFoodSearchItem } from "./actions";
 
+import { Input } from "antd";
 import AddFoodComponent from "./AddFoodComponent";
 
 class _SearchFoodComponent extends Component {
@@ -35,14 +36,15 @@ class _SearchFoodComponent extends Component {
     }
 
     resultClick(result) {
-        
+        console.log(result);
+        this.props.setFoodSearchItem(result);
     }
 
     render() {
         return (
             <div className="addFood">
                 
-                <input type="text" name="foodInput" className="addFood__serachInput" onChange={(e) => this.searchInputChange(e)}/>
+                <Input type="Input.Text" name="foodInput" className="addFood__serachInput" onChange={(e) => this.searchInputChange(e)}/>
                 <ul className="addFood__searchResults">
                     
                     {
