@@ -7,7 +7,10 @@ const cookieParser = require("cookie-parser");
 const compression = require("compression");
 const PORT = process.env.PORT || 5105;
 const RedisStore = require("connect-redis")(session);
-dotenv.config();
+
+if(process.env.ENVIRONMENT === "development") {
+    dotenv.config();
+}
 
 // Middleware
 const app = express();
