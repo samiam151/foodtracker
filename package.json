@@ -9,7 +9,7 @@
     "client": "./node_modules/.bin/webpack -w",
     "all": "./node_modules/.bin/concurrently \"nodemon server/app.js\" \"npm run client\"",
     "build": "npm run server",
-    "start": "npm run server"
+    "start": "node server/app/js"
   },
   "author": "",
   "license": "ISC",
