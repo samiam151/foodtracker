@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon server/app.js",
     "client": "./node_modules/.bin/webpack -w",
-    "all": "./node_modules/.bin/concurrently \"nodemon server/app.js\" \"npm run client\""
+    "all": "./node_modules/.bin/concurrently \"nodemon server/app.js\" \"npm run client\"",
+    "build": "npm run server",
+    "start": "npm run server"
   },
   "author": "",
   "license": "ISC",
