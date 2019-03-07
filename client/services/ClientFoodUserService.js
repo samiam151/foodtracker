@@ -23,4 +23,22 @@ ClientFoodUserService.getUsersMeals = (user_id, date) => {
     });
 }
 
+ClientFoodUserService.submitFoodEntry = (foodEntryInfo) => {
+    console.log(foodEntryInfo);
+    // foodEntryInfo["quantity"] = +foodEntryInfo.quantity;
+    // if (foodEntryInfo.quantity_fraction) {
+    //     foodEntryInfo["quantity"] = foodEntryInfo.quantity + (+foodEntryInfo.quantity_fraction);
+    // }
+    // foodEntryInfo["calories"] = Number.parseInt(foodEntryInfo.calories);
+
+    return fetch("/api/food/addFoodEntry", {
+        method: "POST",
+        headers: {
+            "content-type": "application/json"
+        },
+        body: JSON.stringify(foodEntryInfo)
+    })
+    .then(res => res.json())
+}
+
 module.exports = ClientFoodUserService;

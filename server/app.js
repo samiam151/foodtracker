@@ -26,7 +26,7 @@ app.use(session({
     secret: process.env.SESSION_KEY,
     // secret: [req.user.name, req.user.password].join(),
     store: new RedisStore({
-        url: "redis://h:p53dd2d91831f7b24ba59dc59ac73a290e0418b29fe8a680f16257d164fdae379@ec2-3-208-33-137.compute-1.amazonaws.com:14139"
+        url: process.env.REDIS_URL
     }),
     cookie: {
         httpOnly: false,
@@ -40,17 +40,25 @@ const Auth = require("../conifg/authentication");
 Auth.init(app);
 
 // Routes
-// app.get("/api/", (req, res) => {
-    //     res.sendFile(path.join(__dirname + "../../index.html"));
-    // });
+
 app.use((req, res, next) => {
-    if(req.session.passport) {
-        console.log(req.session.passport.user);
+    if(req.session.passport != undefined) {
+        console.log("passprt user", req.session.passport.user);
+    } else {
+        console.log("Not logged in...")
     }
     next();
 })
 app.post("/api/initlogin", (req, res) => {
-    res.json(req.session.passport.user);
+    let user = null;
+    console.log("isAuth", req.isAuthenticated());
+    if (req.isAuthenticated()) {
+        console.log("inUser");
+        user= req.session.passport.user;
+    }
+    console.log("user", user);
+    res.json(user);
+    // res.json(req.session.passport.user || {});
 });
 app.use("/api/login", require("./routes/LoginRoutes"));
 app.get("/api/logout", (req, res) => {

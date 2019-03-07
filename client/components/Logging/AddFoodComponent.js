@@ -1,27 +1,16 @@
 import React, { Component, Fragment } from "react";
 import { render } from "react-dom";
 import { connect } from "react-redux";
-import { Steps, Button, Divider } from 'antd';
+import { Steps, Button, Divider, message } from 'antd';
 import { store } from "../../store";
 import { SearchFoodComponent } from "./SearchFoodComponent";
 import { EditQuantityComponent } from "./EditQuantityComponent";
-import { get } from "http";
+import ClientFoodUserService from "../../services/ClientFoodUserService";
+import { hideModal } from "../Utilites/actions";
+import { clearFoodEntry, addToMeals } from "./actions";
 
 const Step = Steps.Step;
-// const StepOne = () => (
-//     <Fragment>
-//         <StepLabel>Choose a Food</StepLabel>
-//         <p>Use the search input to look through foods.</p>
-//         <SearchFoodComponent />
-//     </Fragment>
-// );
 
-// const StepTwo = () => (
-//     <Fragment>
-//         <StepLabel>Edit Quanties</StepLabel>
-//         <p>Step 2</p>
-//     </Fragment>
-// );
 
 class AddFoodComponent extends Component {
     constructor(props) {
@@ -66,6 +55,22 @@ class AddFoodComponent extends Component {
         this.unsubscribeFromStore();
     }
 
+    submitEntry() {
+        let entry = this.props.logging.working_food_entry;
+        entry["user_id"] = this.props.user.id;
+        entry["calories"] = this.props.logging.working_food.calories * (entry.quantity + entry.quantity_fraction);
+        entry["measure"] = this.props.logging.working_food_entry.measure;
+        ClientFoodUserService.submitFoodEntry(entry)
+            .then(insertedRow => {
+                this.props.addToMeals(insertedRow);
+            })
+            .then(data => {
+                this.props.clearFoodEntry();
+                this.props.hideModal();
+                message.success(`${entry.food_name} has been successdullt added to ${entry.meal_name}`);
+            });
+    }
+
     revertActiveStep() {
         this.setState({
             activeStep: 0
@@ -102,6 +107,14 @@ class AddFoodComponent extends Component {
                         this.steps[this.state.activeStep].content()
                     }
                 </div>
+
+                <Divider />
+                {
+                    !this.props.logging.working_food_entry ? <noscript /> :
+                    <div className="addFoodComponent__submitButtons">
+                        <Button type="primary" onClick={() => this.submitEntry()}>Add Entry</Button>
+                    </div>
+                }
             </div>
 
             
@@ -112,5 +125,6 @@ class AddFoodComponent extends Component {
 
 
 export default connect((store) => ({
+    user: store.user,
     logging: store.logging
-}))(AddFoodComponent);
+}), { hideModal, clearFoodEntry, addToMeals })(AddFoodComponent);

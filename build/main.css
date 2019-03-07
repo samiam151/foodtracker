@@ -22229,6 +22229,13 @@ body {
     .container {
       max-width: 1080px; } }
 
+.pill {
+  padding: 1em;
+  border-radius: 3px;
+  background-color: #fefefe;
+  margin: 1em 0;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15); }
+
 .modal {
   outline: none; }
   .modal .modal__inner {
@@ -22257,10 +22264,23 @@ body {
   align-items: center;
   justify-content: center; }
 
-header .nav__container {
-  display: flex;
-  align-items: center;
-  flex-flow: row nowrap; }
+header {
+  background-color: #fefefe;
+  padding: 0.75em;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15); }
+  header .nav__container {
+    display: flex;
+    align-items: center;
+    flex-flow: row nowrap;
+    margin: 0 0.5em; }
+    header .nav__container .nav__link {
+      margin: 0 0.5em;
+      font-weight: 500;
+      text-transform: uppercase;
+      font-size: 18px; }
+  header .userSection {
+    text-align: right;
+    margin: 0 1em; }
 
 .addFood__searchResults {
   max-height: 14em;
@@ -22280,4 +22300,23 @@ header .nav__container {
 .modal.modal__addFood .addFoodComponent__step--1 {
   transition: transform 0.5s ease-in-out;
   transform: translateX(-50%); }
+
+.meal {
+  margin: 1em 0; }
+  .meal .meal__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+
+.loggedFoods {
+  font-size: 0.85em; }
+  .loggedFoods .loggedFood {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 6px 0; }
+    .loggedFoods .loggedFood:not(:last-of-type) {
+      border-bottom: 1px solid #ddd; }
+    .loggedFoods .loggedFood > * {
+      flex: 1; }
 

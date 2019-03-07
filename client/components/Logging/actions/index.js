@@ -1,5 +1,12 @@
 import ClientFoodUserService from "../../../services/ClientFoodUserService";
-import { GET_INIT_LOGS, SET_FOOD_SEARCH_ITEM } from "./types";
+import { 
+    GET_INIT_LOGS, 
+    SET_FOOD_SEARCH_ITEM, 
+    SET_FOOD_ENTRY_DATA, 
+    SET_FOOD_ENTRY,
+    CLEAR_FOOD_ENTRY_DATA,
+    ADD_TO_MEALS
+} from "./types";
 
 export function getTodaysLogs(id) {
     return function(dispatch) {
@@ -30,3 +37,33 @@ export const setFoodSearchItem = (food) => (dispatch) => {
         payload: food
     });
 };
+
+export const setFoodEntry = (workingFood) => (dispatch) => {
+    dispatch({
+        type: SET_FOOD_ENTRY,
+        payload: workingFood
+    });
+}
+
+export const setUpdateFoodEntry = (column, columnValue) => (dispatch) => {
+    dispatch({
+        type: SET_FOOD_ENTRY_DATA,
+        payload: {
+            column: column,
+            columnValue: columnValue
+        }
+    });
+}
+
+export const clearFoodEntry = () => (dispatch) => {
+    dispatch({
+        type: CLEAR_FOOD_ENTRY_DATA
+    });
+}
+
+export const addToMeals = (meal) => (dispatch) => {
+    dispatch({
+        type: ADD_TO_MEALS,
+        payload: meal
+    });
+}

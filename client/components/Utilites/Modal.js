@@ -23,7 +23,7 @@ const Modal = (props) => {
             </div>
         </div>  */
 
-        <AntModal visible={props.show} onCancel={props.hideModal} onOk={props.hideModal}>
+        <AntModal visible={props.show} onCancel={props.hideModal} onOk={props.hideModal} footer={null}>
             <div className="modal__inner">
                 <div className="modal__content">
                     {

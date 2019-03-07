@@ -1,10 +1,12 @@
 import React, { Component, Fragment } from "react";
 import { render } from "react-dom";
 import { connect } from "react-redux";
-
+import { Loader } from "../Utilites/Loader";
 import ClientFoodService from "../../services/ClientFoodService";
+import { setUpdateFoodEntry, setFoodEntry } from "./actions";
 
 import { Input, Select } from "antd";
+import { isNullOrUndefined } from "util";
 const Option = Select.Option;
 
 const FoodNutritionInfo = ({info, quantity}) => {
@@ -45,7 +47,8 @@ class _EditQuantityComponent extends Component {
 
     componentDidMount() {
         // food_id, measure_uri
-        this.getSetNutrients(this.props.searchItem.id, this.state.measure.uri)
+        this.getSetNutrients(this.props.searchItem.id, this.state.measure.uri);
+        this.initializeStoreValues();
     }
 
     handleMeasureChange(e) {
@@ -53,6 +56,15 @@ class _EditQuantityComponent extends Component {
         let newMeasureUri = this.props.searchItem.measures.find(m => m.label === newMeasure).uri;
 
         this.getSetNutrients(this.props.searchItem.id, newMeasure);
+        this.props.setUpdateFoodEntry("measure", newMeasure);
+    }
+
+    initializeStoreValues() {
+        this.props.setUpdateFoodEntry("measure", this.props.searchItem.measures[0].label)
+        this.props.setUpdateFoodEntry("quantity", 1);
+        this.props.setUpdateFoodEntry("quantity_fraction", 0);
+        this.props.setUpdateFoodEntry("food_id", this.props.searchItem.id);
+        this.props.setUpdateFoodEntry("food_name", this.props.searchItem.label);
     }
 
     getSetNutrients(food_id, measure_uri) {
@@ -62,19 +74,31 @@ class _EditQuantityComponent extends Component {
             this.setState(Object.assign({}, this.state, {
                 activeNutrientInfo: res
             }));
+
+            this.props.setFoodEntry(res);
+            
         })
     }
 
-    handleChange(e) {
+    handleChange(e, _value = null) {
         let target = e.target,
-            newState = {};
-        newState[target.name] = target.name === "measures" ? target.dataset.uri : target.value;
+            value = _value || target.value;
 
-        this.setState(Object.assign({}, this.state, newState));
+        let newState = Object.assign({}, this.state);
+        newState[target.name] = target.name === "measures" ? target.dataset.uri : value;
+
+        this.setState(newState);
+
+        this.props.setUpdateFoodEntry(target.name, value);
+        // let newCalories = +this.state.activeNutrientInfo.nutrients.calories.quantity * (+this.state.quantity + +this.state.quantity_fraction);
+        // debugger;
+        // this.props.setUpdateFoodEntry("calories", newCalories);
     }
 
     render() {
         return (
+            !this.state.activeNutrientInfo ? <Loader /> : 
+
             <div className="addFood__editQuantity">
                 <h3>{ this.props.searchItem.label }</h3>
 
@@ -85,17 +109,17 @@ class _EditQuantityComponent extends Component {
                         id="quantity-whole" 
                         defaultValue="1" 
                         min={0}
-                        onChange={(e) => this.handleChange(e)} />
+                        onChange={(e) => this.handleChange(e, Number.parseInt(e.target.value))} />
 
-                    <select name="quantity_fraction" id="quantity-fraction" onChange={(e) => this.handleChange(e)}>
-                        <option value="0"></option>
-                        <option value="0.125">1/8</option>
-                        <option value="0.25">1/4</option>
-                        <option value="0.375">3/8</option>
-                        <option value="0.5">1/2</option>
-                        <option value="0.625">5/8</option>
-                        <option value="0.75">3/4</option>
-                        <option value="0.875">7/8</option>
+                    <select name="quantity_fraction" id="quantity-fraction" onChange={(e) => this.handleChange(e, +e.target.value)}>
+                        <option value={0}></option>
+                        <option value={0.125}>1/8</option>
+                        <option value={0.25}>1/4</option>
+                        <option value={0.375}>3/8</option>
+                        <option value={0.5}>1/2</option>
+                        <option value={0.625}>5/8</option>
+                        <option value={0.75}>3/4</option>
+                        <option value={0.875}>7/8</option>
                     </select>
                 </div>
 
@@ -121,5 +145,6 @@ class _EditQuantityComponent extends Component {
 }
 
 export const EditQuantityComponent = connect((store) => ({
-    searchItem: store.logging.search_food
-}))(_EditQuantityComponent);
+    searchItem: store.logging.search_food,
+    workingFoodEntry: store.logging.working_food_entry
+}), { setUpdateFoodEntry, setFoodEntry })(_EditQuantityComponent);

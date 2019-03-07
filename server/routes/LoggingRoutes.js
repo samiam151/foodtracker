@@ -12,6 +12,11 @@ router.use((req, res, next) => {
     next();
 });
 
+router.post("/addFoodEntry", (req, res) => {
+    FoodUserService.addEntry(req.body)
+        .then(data => res.json(data));
+});
+
 router.post("/initFoods", (req, res) => {
     FoodUserService.getLog(req.body.user_id, req.body.date)
         .then(data => res.json(data));

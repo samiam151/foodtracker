@@ -14,30 +14,39 @@ export class InitialAuthComponent extends Component {
     }
 
     componentDidMount() {
-        let iuser = localStorage.getItem("food_tracker_user");
-        if (iuser) {
+        // let iuser = localStorage.getItem("food_tracker_user");
+        // if (iuser) {
             fetch("/api/initlogin", {
                 method: "POST",
+                "credentials": "include",
                 headers: {
                     "content-type": "application/json",
-                },
-                "body": iuser
+                }
             })
-            .then(res => res.json())
+            .then(res => {
+                return res.json();
+            })
             .then(data => {
+                console.log(data);
                 store.dispatch({
-                    payload: data, 
+                    payload: {
+                        ...data,
+                        "isAuthenticated": true
+                    }, 
                     type: "USER__UPDATE"
                 });
                 
             })
             .then(() => {
                 this.showContent();
-            });
+            })
+            .catch(err => {
+                console.log(err);
+            })
             
-        } else {
-            this.showContent();
-        }
+        // } else {
+        //     this.showContent();
+        // }
     }
 
     showContent() {

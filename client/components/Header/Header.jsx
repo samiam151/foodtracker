@@ -6,6 +6,8 @@ import { connect } from "react-redux";
 import { Layout } from "../Layout/Layout";
 
 import { NavLink, NavSection } from "./Navigation/NavigationComponents";
+import { Row, Col } from "antd";
+import UserSection from "./UserSection";
 
 class Header extends Component {
 
@@ -14,15 +16,22 @@ class Header extends Component {
         return (
             <header>
                 <Layout>
-                    <NavSection>
-                        <NavLink to="/" name="Home" />
-                        { isAuthenticated ? "" : <NavLink to="/login" name="Login" />} 
-                        {/* <NavLink to="/signup" name="Sign Up" />
-                        <NavLink to="/logout" name="Logout" /> */}
-                        <NavLink to="/log" name="Log" />
-                    </NavSection>
+                    <Row type="flex" justify="space-between">
+                        <Col xs={6}>
+                            <NavSection>
+                                <NavLink to="/" name="Home" />
+                                { isAuthenticated ? "" : <NavLink to="/login" name="Login" />} 
+                                {/* <NavLink to="/signup" name="Sign Up" />
+                                <NavLink to="/logout" name="Logout" /> */}
+                                <NavLink to="/log" name="Log" />
+                            </NavSection>
+                        </Col>
+                        
+                        <Col xs={6}>
+                            { isAuthenticated ? <UserSection /> : ""  }
+                        </Col>
+                    </Row>
                     
-                    { isAuthenticated ? `Logged in as ${this.props.user.name}` : ""  }
                 </Layout>
             </header>
         )

@@ -22,7 +22,7 @@ class _SearchFoodComponent extends Component {
 
     searchInputChange(e) {
         let value = e.target.value;
-        if (value.length <= 3) {
+        if (value.length <= 2) {
             return;
         }
 

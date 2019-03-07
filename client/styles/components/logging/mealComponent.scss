@@ -1,0 +1,28 @@
+.meal {
+    margin: 1em 0;
+    
+    .meal__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.loggedFoods {
+    font-size: 0.85em;
+
+    .loggedFood {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 6px 0;
+
+        &:not(:last-of-type) {
+            border-bottom: 1px solid #ddd;
+        }
+
+        & > * {
+            flex: 1;
+        }
+    }
+}
