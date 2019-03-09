@@ -4,6 +4,7 @@ import { render } from "react-dom";
 import { store } from "../../store";
 import {  } from 'react-router'
 import { Loader } from "./Loader";
+import axios from "axios";
 
 export class InitialAuthComponent extends Component {
     constructor(props) { 
@@ -14,39 +15,25 @@ export class InitialAuthComponent extends Component {
     }
 
     componentDidMount() {
-        // let iuser = localStorage.getItem("food_tracker_user");
-        // if (iuser) {
-            fetch("/api/initlogin", {
-                method: "POST",
-                "credentials": "include",
-                headers: {
-                    "content-type": "application/json",
-                }
-            })
-            .then(res => {
-                return res.json();
-            })
-            .then(data => {
-                console.log(data);
+        axios.post("/api/initlogin")
+        .then(res => {
+            let data = res.data;
+            if (data) {
                 store.dispatch({
                     payload: {
                         ...data,
                         "isAuthenticated": true
                     }, 
-                    type: "USER__UPDATE"
+                    type: "SET_USER"
                 });
-                
-            })
-            .then(() => {
-                this.showContent();
-            })
-            .catch(err => {
-                console.log(err);
-            })
-            
-        // } else {
-        //     this.showContent();
-        // }
+            }
+        })
+        .then(() => {
+            this.showContent();
+        })
+        .catch(err => {
+            console.log(err);
+        })
     }
 
     showContent() {

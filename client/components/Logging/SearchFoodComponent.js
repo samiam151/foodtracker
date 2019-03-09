@@ -5,7 +5,7 @@ import ClientFoodUserService from "../../services/ClientFoodUserService";
 import { connect } from "react-redux";
 import { setContent, showModal, hideModal } from "../Utilites/actions";
 import { setFoodSearchItem } from "./actions";
-
+import { FoodSearchResult } from "./FoodSearchResult";
 import { Input } from "antd";
 import AddFoodComponent from "./AddFoodComponent";
 
@@ -59,14 +59,3 @@ class _SearchFoodComponent extends Component {
 }
 
 export const SearchFoodComponent = connect(null, { showModal, setContent, setFoodSearchItem })(_SearchFoodComponent);
-
-const FoodSearchResult = (props) => (
-    <li className="addFood__searchResult" onClick={(r) => props.onClickCB(props)}>
-        <span className="searchResult--label">
-            {props.label}
-        </span>
-        <span className="searchResult--calories">
-            {props.calories} Kcal
-        </span>
-    </li>
-);

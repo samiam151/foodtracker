@@ -8,9 +8,8 @@ const compression = require("compression");
 const PORT = process.env.PORT || 5105;
 const RedisStore = require("connect-redis")(session);
 
-if(process.env.ENVIRONMENT === "development") {
-    dotenv.config();
-}
+    // dotenv.config();
+
 
 // Middleware
 const app = express();
@@ -43,15 +42,6 @@ const Auth = require("../conifg/authentication");
 Auth.init(app);
 
 // Routes
-
-app.use((req, res, next) => {
-    if(req.session.passport != undefined) {
-        console.log("passprt user", req.session.passport.user);
-    } else {
-        console.log("Not logged in...")
-    }
-    next();
-})
 app.post("/api/initlogin", (req, res) => {
     let user = null;
     console.log("isAuth", req.isAuthenticated());
@@ -64,7 +54,7 @@ app.post("/api/initlogin", (req, res) => {
     // res.json(req.session.passport.user || {});
 });
 app.use("/api/login", require("./routes/LoginRoutes"));
-app.get("/api/logout", (req, res) => {
+app.post("/api/logout", (req, res) => {
     req.logout();
     res.redirect("/");
 });

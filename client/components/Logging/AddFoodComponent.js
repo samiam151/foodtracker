@@ -11,7 +11,6 @@ import { clearFoodEntry, addToMeals } from "./actions";
 
 const Step = Steps.Step;
 
-
 class AddFoodComponent extends Component {
     constructor(props) {
         super(props);

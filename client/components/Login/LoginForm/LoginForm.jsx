@@ -1,12 +1,16 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { render } from "react-dom";
 import ClientUserService from "../../../services/ClientUserService";
 import { store } from "../../../store/index";
 import { connect } from "react-redux";
 import { setUser } from "../actions";
-class LoginForm extends Component {
+import { Redirect } from "react-router-dom";
 
-    submitLoginForm(e) {
+const LoginForm = ({user, setUser, ...props}) => {
+    const [redirectToReferrer, setRedirectToReferrer] = useState(false);
+
+    const { from } = { from: { pathname: "/" } };
+    const submitLoginForm = (e) => {
         e.preventDefault();
         let target = e.target;
 
@@ -15,30 +19,61 @@ class LoginForm extends Component {
         
         ClientUserService.authenticateUser(u, p).then(response => {
             if (response.authenticated) {
-                this.props.setUser(response.user);
+                setUser(response.user);
+                setRedirectToReferrer(true);
             }
         })
     }
 
-    render() {
-        return (
-            <form onSubmit={(e) => this.submitLoginForm(e)}>
-                <label htmlFor="username">Username</label>
-                <input type="email" name="username" id="username" />
+    if (redirectToReferrer) return <Redirect to={from} />;
 
-                <label htmlFor="password">Password</label>
-                <input type="password" name="password" id="password" />
+    return (
+        <form onSubmit={(e) => submitLoginForm(e)}>
+            <label htmlFor="username">Username</label>
+            <input type="email" name="username" id="username" />
 
-                <input type="submit" value="Submit" />
-            </form>
-        )
-    }
+            <label htmlFor="password">Password</label>
+            <input type="password" name="password" id="password" />
+
+            <input type="submit" value="Submit" />
+        </form>
+    );
 }
 
 let mapStateToProps = (state) => ({
     user: state.user
 });
-// let mapDispatchers = dispatch => ({
-//     setUser: setUser
-// });
 export default connect(mapStateToProps, { setUser })(LoginForm)
+
+
+// class LoginForm extends Component {
+//     state = { redirectToReferrer: false };
+
+//     submitLoginForm(e) {
+//         e.preventDefault();
+//         let target = e.target;
+
+//         let u = target.querySelector("[name='username']").value,
+//             p = target.querySelector("[name='password']").value;
+        
+//         ClientUserService.authenticateUser(u, p).then(response => {
+//             if (response.authenticated) {
+//                 this.props.setUser(response.user);
+//             }
+//         })
+//     }
+
+//     render() {
+//         return (
+//             <form onSubmit={(e) => this.submitLoginForm(e)}>
+//                 <label htmlFor="username">Username</label>
+//                 <input type="email" name="username" id="username" />
+
+//                 <label htmlFor="password">Password</label>
+//                 <input type="password" name="password" id="password" />
+
+//                 <input type="submit" value="Submit" />
+//             </form>
+//         )
+//     }
+// }

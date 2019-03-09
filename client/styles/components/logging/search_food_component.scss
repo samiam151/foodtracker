@@ -3,4 +3,15 @@
     max-height: 14em;
     overflow: auto;
     // background-color: white;
+
+    .addFood__searchResult {
+        padding: 6px;
+        text-transform: capitalize;
+
+        .searchResult--calories {
+            font-weight: 700;
+            text-align: right;
+            display: block;
+        }
+    }
 }

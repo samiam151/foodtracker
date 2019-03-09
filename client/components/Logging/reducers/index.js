@@ -8,7 +8,7 @@ import {
 } from "../actions/types"
 
 const initLogsState = {
-    // working_food_entry: null
+    meals: []
 };
 
 export function loggingReducers(store = initLogsState, action) {
@@ -19,14 +19,21 @@ export function loggingReducers(store = initLogsState, action) {
     }
 
     if (action.type === ADD_TO_MEALS) {
-        let newState = Object.assign({}, store),
-            newMeal = action.payload;
+        // let newState = Object.assign({}, store),
+        //     newMeal = action.payload;
 
-        if (!newState['meals'][newMeal.meal_name]) {
-            newState['meals'][newMeal.meal_name] = [];
+        // if (!newState['meals'][newMeal.meal_name]) {
+        //     newState['meals'][newMeal.meal_name] = [];
+        // }
+
+        // newState['meals'][newMeal.meal_name].push(newMeal);
+        let newState = {
+            ...store,
+            meals: [
+                ...store.meals,
+                action.payload
+            ]
         }
-
-        newState['meals'][newMeal.meal_name].push(newMeal);
 
         return newState;
     }

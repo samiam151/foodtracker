@@ -67,3 +67,16 @@ export const addToMeals = (meal) => (dispatch) => {
         payload: meal
     });
 }
+
+export function fetchLogs(user_id) {
+    return function(dispatch) {
+        ClientFoodUserService.getUsersMeals(user_id)
+        .then(meals => {
+            // Response is object of food entries, grouped by meal name
+            dispatch({
+                type: "GET_INIT_LOGS",
+                payload: meals
+            });
+        });
+    }
+}

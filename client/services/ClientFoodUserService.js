@@ -12,25 +12,12 @@ ClientFoodUserService.getUsersMeals = (user_id, date) => {
         })
     })
     .then(res => res.json())
-    .then(res => {
-        return res.reduce((obj, foodEntry) => {
-            if (!obj[foodEntry["meal_name"]]) {
-                obj[foodEntry["meal_name"]] = [];
-            }
-            obj[foodEntry["meal_name"]].push(foodEntry);
-            return obj;
-        }, {});
+    .then(entries => {
+        return entries;
     });
 }
 
 ClientFoodUserService.submitFoodEntry = (foodEntryInfo) => {
-    console.log(foodEntryInfo);
-    // foodEntryInfo["quantity"] = +foodEntryInfo.quantity;
-    // if (foodEntryInfo.quantity_fraction) {
-    //     foodEntryInfo["quantity"] = foodEntryInfo.quantity + (+foodEntryInfo.quantity_fraction);
-    // }
-    // foodEntryInfo["calories"] = Number.parseInt(foodEntryInfo.calories);
-
     return fetch("/api/food/addFoodEntry", {
         method: "POST",
         headers: {

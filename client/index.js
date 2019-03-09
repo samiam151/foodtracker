@@ -4,7 +4,7 @@ import { render } from "react-dom";
 
 // Router
 import { Route, Router, Redirect } from "react-router-dom";
-import { PrivateRoute } from "./components/Utilites/PrivateRoute.js";
+import {PrivateRoute} from "./components/Utilites/PrivateRoute.js";
 import { history } from "./store/history";
 import RouteTable from "./Routes";
 
@@ -19,6 +19,8 @@ import { InitialAuthComponent } from "./components/Utilites/InitialAuthCompoment
 import { Layout } from "./components/Layout/Layout";
 import Modal from "./components/Utilites/Modal";
 
+import LogginDayComponent from "./components/Logging/LogginDayComponent";
+
 const Homepage = (props) => (
     <Layout>
         <div>Homepage</div>
@@ -32,7 +34,7 @@ render(
                 <Header />
                 <Route exact path="/" component={Homepage} />
                 <Route path="/login" component={RouteTable["Login Page"]} />
-                <Route path="/log" component={RouteTable["Log"]} />
+                <PrivateRoute path="/log" component={LogginDayComponent} />
                 <Modal />
             </InitialAuthComponent>
         </Provider>

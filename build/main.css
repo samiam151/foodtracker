@@ -22285,6 +22285,13 @@ header {
 .addFood__searchResults {
   max-height: 14em;
   overflow: auto; }
+  .addFood__searchResults .addFood__searchResult {
+    padding: 6px;
+    text-transform: capitalize; }
+    .addFood__searchResults .addFood__searchResult .searchResult--calories {
+      font-weight: 700;
+      text-align: right;
+      display: block; }
 
 .modal.modal__addFood .modal__content {
   overflow: hidden; }

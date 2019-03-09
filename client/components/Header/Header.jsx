@@ -12,7 +12,6 @@ import UserSection from "./UserSection";
 class Header extends Component {
 
     render() {
-        let isAuthenticated = Boolean(this.props.user.name);
         return (
             <header>
                 <Layout>
@@ -20,7 +19,7 @@ class Header extends Component {
                         <Col xs={6}>
                             <NavSection>
                                 <NavLink to="/" name="Home" />
-                                { isAuthenticated ? "" : <NavLink to="/login" name="Login" />} 
+                                { this.props.user.isAuthenticated ? "" : <NavLink to="/login" name="Login" />} 
                                 {/* <NavLink to="/signup" name="Sign Up" />
                                 <NavLink to="/logout" name="Logout" /> */}
                                 <NavLink to="/log" name="Log" />
@@ -28,7 +27,7 @@ class Header extends Component {
                         </Col>
                         
                         <Col xs={6}>
-                            { isAuthenticated ? <UserSection /> : ""  }
+                            { this.props.user.isAuthenticated ? <UserSection /> : ""  }
                         </Col>
                     </Row>
                     
@@ -39,9 +38,9 @@ class Header extends Component {
 }
 
 
-let mapState = ({user}) => {
+let mapState = (store) => {
     return {
-        user: user
+        user: store.user
     }
 };
 export default connect(mapState)(Header);
