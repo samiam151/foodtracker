@@ -22,17 +22,18 @@ const Modal = (props) => {
                 <span className="modal__closeButton" onClick={props.hideModal}>x</span>
             </div>
         </div>  */
-
-        <AntModal visible={props.show} onCancel={props.hideModal} onOk={props.hideModal} footer={null}>
-            <div className="modal__inner">
-                <div className="modal__content">
-                    {
-                        props.content ? <ContentCompoment /> : <noscript />
-                    }
+        <div className="modal">
+            <AntModal visible={props.show} onCancel={props.hideModal} onOk={props.hideModal} footer={null}>
+                <div className="modal__inner">
+                    <div className="modal__content">
+                        {
+                            props.content ? <ContentCompoment /> : <noscript />
+                        }
+                    </div>
+                    
                 </div>
-                
-            </div>
-        </AntModal>
+            </AntModal>
+        </div>
     )
 };
 

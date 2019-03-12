@@ -8,6 +8,7 @@ import Meal from "./MealComponent";
 import { LoggingProgress } from "./LoggingProgress";
 import { MEAL_NAMES } from "../../models/meals";
 import { Redirect } from "react-router-dom";
+import { splitMeals } from "../../utils";
 
 const MealContainer = ({meals}) => {
     return <div>
@@ -20,23 +21,10 @@ const MealContainer = ({meals}) => {
 }
 
 const LogginDayComponent = ({logs, user, fetchLogs}) => {
-
+    
     useEffect(() => {
-        let _d = new Date().toLocaleDateString().split("/");
-        let today = `${_d[2]}-${_d[0].padStart(2, '0')}-${_d[1].padStart(2, '0')}`;
-
         fetchLogs(user.id);
     }, []);
-
-    const splitMeals = (meals = []) => {
-        return meals.reduce((obj, foodEntry) => {
-            if (!obj[foodEntry["meal_name"]]) {
-                obj[foodEntry["meal_name"]] = [];
-            }
-            obj[foodEntry["meal_name"]].push(foodEntry);
-            return obj;
-        }, {});
-    }
 
     return (
         !user.isAuthenticated ? <Redirect to={{

@@ -12,7 +12,7 @@ export const FoodSearchResult = (props) => (
             
             <Col xs={12} md={6}>
                 <span className="searchResult--calories">
-                    {props.calories.toFixed(1)} Kcal
+                    {props.calories} Kcal
                 </span>
             </Col>
         </Row>

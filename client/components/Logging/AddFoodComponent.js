@@ -114,9 +114,7 @@ class AddFoodComponent extends Component {
                         <Button type="primary" onClick={() => this.submitEntry()}>Add Entry</Button>
                     </div>
                 }
-            </div>
-
-            
+            </div>            
         );
     }
 }

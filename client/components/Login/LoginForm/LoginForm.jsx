@@ -25,9 +25,10 @@ const LoginForm = ({user, setUser, ...props}) => {
         })
     }
 
-    if (redirectToReferrer) return <Redirect to={from} />;
-
     return (
+
+        redirectToReferrer ? <Redirect to="log" /> : 
+
         <form onSubmit={(e) => submitLoginForm(e)}>
             <label htmlFor="username">Username</label>
             <input type="email" name="username" id="username" />

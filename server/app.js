@@ -8,9 +8,9 @@ const compression = require("compression");
 const PORT = process.env.PORT || 5105;
 const RedisStore = require("connect-redis")(session);
 
-    // dotenv.config();
+    dotenv.config();
 
-
+    
 // Middleware
 const app = express();
 app.use(compression());

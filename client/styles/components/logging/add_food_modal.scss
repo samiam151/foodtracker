@@ -21,3 +21,33 @@
         transform: translateX(-50%);
     }
 }
+
+.addFood__editQuantity {
+    margin-bottom: 12px;
+
+    .addFood__editQuantity--value {
+        display: flex;
+        flex-flow: row wrap;
+
+        & > * {
+            flex: 1;
+        }
+    }
+
+    .nutrition--infoContainer {
+        display: flex;
+        flex-flow: row wrap;
+
+        & > div {
+            width: 50%;
+            display: flex;
+            justify-content: space-between;
+            padding-right: 1em;
+        }
+    }
+    
+
+    [name="quantity_fraction"] {
+        width: 35%;
+    }
+}

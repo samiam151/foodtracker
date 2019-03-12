@@ -22236,6 +22236,37 @@ body {
   margin: 1em 0;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15); }
 
+input,
+select {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-variant: tabular-nums;
+  list-style: none;
+  -webkit-font-feature-settings: 'tnum';
+  font-feature-settings: 'tnum';
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 32px;
+  padding: 4px 11px;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 14px;
+  line-height: 1.5;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s; }
+
+label {
+  font-weight: 700; }
+
+.ant-modal {
+  top: 50px; }
+
 .modal {
   outline: none; }
   .modal .modal__inner {
@@ -22282,9 +22313,14 @@ header {
     text-align: right;
     margin: 0 1em; }
 
+.addFoodComponent__submitButtons {
+  text-align: center; }
+
 .addFood__searchResults {
   max-height: 14em;
   overflow: auto; }
+  .addFood__searchResults label {
+    display: block; }
   .addFood__searchResults .addFood__searchResult {
     padding: 6px;
     text-transform: capitalize; }
@@ -22292,6 +22328,9 @@ header {
       font-weight: 700;
       text-align: right;
       display: block; }
+    .addFood__searchResults .addFood__searchResult:hover {
+      cursor: pointer;
+      color: #1890ff; }
 
 .modal.modal__addFood .modal__content {
   overflow: hidden; }
@@ -22307,6 +22346,24 @@ header {
 .modal.modal__addFood .addFoodComponent__step--1 {
   transition: transform 0.5s ease-in-out;
   transform: translateX(-50%); }
+
+.addFood__editQuantity {
+  margin-bottom: 12px; }
+  .addFood__editQuantity .addFood__editQuantity--value {
+    display: flex;
+    flex-flow: row wrap; }
+    .addFood__editQuantity .addFood__editQuantity--value > * {
+      flex: 1; }
+  .addFood__editQuantity .nutrition--infoContainer {
+    display: flex;
+    flex-flow: row wrap; }
+    .addFood__editQuantity .nutrition--infoContainer > div {
+      width: 50%;
+      display: flex;
+      justify-content: space-between;
+      padding-right: 1em; }
+  .addFood__editQuantity [name="quantity_fraction"] {
+    width: 35%; }
 
 .meal {
   margin: 1em 0; }

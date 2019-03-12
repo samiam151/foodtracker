@@ -1,11 +1,13 @@
 // Core Styles
 @import "./core/globals/reset.scss";
+@import "./core/globals/variables.scss";
 @import "./core/globals/fonts.scss";
 @import "./core/globals/layout.scss";
 @import "./core/helpers/breakpoints.scss";
 
 // Core Component Styles
 @import '../../node_modules/antd//dist/antd.css';
+@import "./core/globals/ant_overrides.scss";
 @import "./core/components/modal.scss";
 @import "./core/components/loader.scss";
 

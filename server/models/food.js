@@ -9,7 +9,7 @@ class Food {
         this.carbohydrate = nutrients.CHOCDF;
         this.protein = nutrients.PROCNT;
         this.fat = nutrients.FAT;
-        this.calories = nutrients.ENERC_KCAL;
+        this.calories = nutrients.ENERC_KCAL.toFixed(1);
 
         this.measures = measuresData;
         this.data = dataObj;
