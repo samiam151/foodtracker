@@ -3,7 +3,7 @@ import { Property } from "../Utilites/Property";
 
 export const LoggingProgress = ({meals}) => {
     const numCalories = meals.reduce((sum, b) => {
-        return sum + b.calories;
+        return sum + Number.parseFloat(b.calories);
     }, 0);
 
     return (

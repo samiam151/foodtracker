@@ -28,4 +28,17 @@ ClientFoodUserService.submitFoodEntry = (foodEntryInfo) => {
     .then(res => res.json())
 }
 
+ClientFoodUserService.removeFoodEntry = (entryID) => {
+    return fetch("/api/food/removeFoodEntry", {
+        method: "POST",
+        headers: {
+            "content-type": "application/json"
+        },
+        body: JSON.stringify({
+            entryID: entryID
+        })
+    })
+    .then(res => res.json())
+}
+
 module.exports = ClientFoodUserService;

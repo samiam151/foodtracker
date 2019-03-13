@@ -16,7 +16,6 @@ FoodUserService.getLog = (user_id, date = null) => {
 
             let query = `select * from get_food_entries(${queryParameters})`;
 
-            console.log(query);
             client.query(query)
                 .then(data => {
                     client.release();
@@ -45,7 +44,6 @@ FoodUserService.addEntry = (initObj) => {
             client.query(query, foodEntry.toArray())
                 .then(data => {
                     client.release();
-                    console.log(data);
                     resolve(foodEntry);
                 })
                 .catch(err => {
@@ -54,6 +52,29 @@ FoodUserService.addEntry = (initObj) => {
                     reject(err);
                 })
         });
+    });
+}
+
+FoodUserService.removeEntry = (entryID) => {
+    return new Promise((resolve, reject) => {
+        database.connect((err, client) => {
+            if(err) {
+                client.release();
+                reject(err)
+            };
+
+            let query = `delete from public.food_entries where id = $1`;
+            client.query(query, [entryID])
+                .then(data => {
+                    client.release();
+                    resolve(data);
+                })
+                .catch(err => {
+                    client.release();
+                    console.log(err);
+                    reject(err);
+                })
+        })
     });
 }
 

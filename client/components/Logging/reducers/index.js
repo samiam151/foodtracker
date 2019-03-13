@@ -4,7 +4,8 @@ import {
     SET_FOOD_ENTRY_DATA, 
     SET_FOOD_ENTRY,
     CLEAR_FOOD_ENTRY_DATA,
-    ADD_TO_MEALS
+    ADD_TO_MEALS,
+    REMOVE_FROM_MEALS
 } from "../actions/types"
 
 const initLogsState = {
@@ -16,6 +17,19 @@ export function loggingReducers(store = initLogsState, action) {
         return Object.assign({}, store, {
             meals: action.payload
         });
+    }
+
+    if (action.type === REMOVE_FROM_MEALS) {
+        let entryID = action.payload.entryID;
+        let newState = {
+            ...store,
+            meals: [
+                ...store.meals
+            ]
+        }
+
+        newState['meals'] = newState['meals'].filter(meal => meal.id !== entryID);
+        return newState;
     }
 
     if (action.type === ADD_TO_MEALS) {

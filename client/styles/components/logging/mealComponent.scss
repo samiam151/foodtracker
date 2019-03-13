@@ -24,5 +24,17 @@
         & > * {
             flex: 1;
         }
+
+        .loggedFood--remove {
+            color: red;
+            font-size: 1.35em;
+            flex: 0 8%;
+            text-align: center;
+
+            &:hover {
+                color: darkred;
+                cursor: pointer;
+            }
+        }
     }
 }

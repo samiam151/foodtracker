@@ -5,7 +5,8 @@ import {
     SET_FOOD_ENTRY_DATA, 
     SET_FOOD_ENTRY,
     CLEAR_FOOD_ENTRY_DATA,
-    ADD_TO_MEALS
+    ADD_TO_MEALS,
+    REMOVE_FROM_MEALS
 } from "./types";
 
 export function getTodaysLogs(id) {
@@ -30,6 +31,16 @@ export function getTodaysLogs(id) {
         });
     }
 }
+
+export const removeFoodEntry = (entryID) => (dispatch) => {
+    console.log("removeFoodEntry hiit...")
+    dispatch({
+        type: REMOVE_FROM_MEALS,
+        payload: {
+            entryID: entryID
+        }
+    });
+};
 
 export const setFoodSearchItem = (food) => (dispatch) => {
     dispatch({

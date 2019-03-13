@@ -22383,4 +22383,12 @@ header {
       border-bottom: 1px solid #ddd; }
     .loggedFoods .loggedFood > * {
       flex: 1; }
+    .loggedFoods .loggedFood .loggedFood--remove {
+      color: red;
+      font-size: 1.35em;
+      flex: 0 8%;
+      text-align: center; }
+      .loggedFoods .loggedFood .loggedFood--remove:hover {
+        color: darkred;
+        cursor: pointer; }
 
