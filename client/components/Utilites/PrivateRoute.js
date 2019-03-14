@@ -5,7 +5,7 @@ import { Route, Router, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import {store} from "../../store";
 
-export const PrivateRoute = ({ component: Component, user, ...rest }) => {
+export const PrivateRoute = ({ component: Component, ...rest }) => {
     return (
         <Route {...rest} render={props => (
             store.getState().user.isAuthenticated === true

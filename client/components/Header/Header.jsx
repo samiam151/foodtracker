@@ -19,9 +19,8 @@ class Header extends Component {
                         <Col xs={6}>
                             <NavSection>
                                 <NavLink to="/" name="Home" />
-                                { this.props.user.isAuthenticated ? "" : <NavLink to="/login" name="Login" />} 
-                                {/* <NavLink to="/signup" name="Sign Up" />
-                                <NavLink to="/logout" name="Logout" /> */}
+                                { this.props.user.isAuthenticated ? "" : <NavLink to="/login" name="Login" />}
+                                { this.props.user.isAuthenticated ? "" : <NavLink to="/signup" name="Sign Up" />} 
                                 <NavLink to="/log" name="Log" />
                             </NavSection>
                         </Col>

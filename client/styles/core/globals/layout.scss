@@ -18,11 +18,15 @@ body {
     }
 }
 
+.contentContainer {
+    padding: 2em 0;
+}
+
 .pill {
     padding: 1em;
     border-radius: 3px;
     background-color: #fefefe;
-    margin: 1em 0;
+    // margin: 1em 0;
     box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.15);
 }
 

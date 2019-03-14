@@ -32,9 +32,14 @@ render(
         <Provider store={store}>
             <InitialAuthComponent>
                 <Header />
-                <Route exact path="/" component={Homepage} />
-                <Route path="/login" component={RouteTable["Login Page"]} />
-                <PrivateRoute path="/log" component={LogginDayComponent} />
+
+                <div className="contentContainer">
+                    <Route exact path="/" component={Homepage} />
+                    <Route path="/login" component={RouteTable["Login Page"]} />
+                    <Route path="/signup" component={RouteTable["Signup Page"]} />
+                    <PrivateRoute path="/log" component={RouteTable["Log"]} />
+                </div>
+                
                 <Modal />
             </InitialAuthComponent>
         </Provider>
