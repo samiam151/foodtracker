@@ -53,14 +53,15 @@ UserService.getUser = (username) => {
  * @param {string} username
  * @param {string} password
  */
-UserService.createUser = (username, password) => {
+UserService.createUser = (username, password, birthday) => {
+    console.log("birthday from service server", birthday);
     return new Promise((resolve, reject) => {
         UserService.encryptPassword(password)
             .then(encryptedPassword => {
                 db.connect()
                     .then(client => {
-                        let query = 'INSERT INTO public.users (name, password) VALUES($1, $2) RETURNING *';
-                        return client.query(query, [username, encryptedPassword])
+                        let query = 'INSERT INTO public.users (name, password, birthday) VALUES($1, $2, $3) RETURNING *';
+                        return client.query(query, [username, encryptedPassword, birthday])
                             .then(res => {
                                 client.release();
                                 resolve(res.rows[0]);
@@ -72,7 +73,7 @@ UserService.createUser = (username, password) => {
                     })
                     .catch(err => console.log(err));
             })
-            .catch(err => console.log(err));
+            .catch(err => reject(err));
     });
 };
 

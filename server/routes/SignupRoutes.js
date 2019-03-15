@@ -3,17 +3,14 @@ const router = require("express").Router();
 const path = require("path");
 const UserService = require("../services/userService");
 
-router.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname + "../../../views/signup/signup.html"));
-});
-
 router.post("/", (req, res) => {
     let username = req.body.username,
-        password = req.body.password;
+        password = req.body.password,
+        birthday = req.body.birthday;
 
-    UserService.createUser(username, password).then(newUser => {
+    UserService.createUser(username, password, birthday).then(newUser => {
         req.logIn(newUser, (err) => {
-            res.redirect("/");
+            res.json(newUser);
         });
     }).catch(err => console.log(err));
 });

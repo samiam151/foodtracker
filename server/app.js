@@ -57,15 +57,16 @@ app.post("/api/initlogin", (req, res) => {
     }
     res.json(user);
 });
+app.use("/api/signup", require("./routes/SignupRoutes"))
+app.use("/api/food", require("./routes/LoggingRoutes"))
 app.use("/api/login", require("./routes/LoginRoutes"));
+app.use("/api/weight", require("./routes/WeightRoutes"));
 app.post("/api/logout", (req, res) => {
     req.session.destroy(() => {
         req.logout();
         res.redirect("/");
     });
 });
-app.use("/api/signup", require("./routes/SignupRoutes"))
-app.use("/api/food", require("./routes/LoggingRoutes"))
 
 app.get('*', (req,res) => res.sendFile(path.join(__dirname + "../../index.html")))
 

@@ -22393,3 +22393,39 @@ header {
         color: darkred;
         cursor: pointer; }
 
+.loggingProgress {
+  display: flex;
+  justify-content: space-between; }
+  .loggingProgress .loggingProgress__addButtons button {
+    margin-left: 0.5em; }
+
+.signup .signup__errors > div {
+  margin-bottom: 0.5em; }
+
+.signup .signup__accountInfo .signup__inputContainer {
+  margin: 1em 0;
+  width: 100%; }
+  @media (min-width: 50em) {
+    .signup .signup__accountInfo .signup__inputContainer {
+      width: 50%; } }
+  .signup .signup__accountInfo .signup__inputContainer.signup__inputContainer--birthday > span {
+    display: block; }
+
+.signup .ReactPasswordStrength .ReactPasswordStrength-input {
+  width: 100%;
+  font-size: 14px; }
+
+.signup .ReactPasswordStrength .ReactPasswordStrength-strength-desc {
+  color: transparent;
+  font-style: italic;
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-align: right;
+  transition: color 250ms ease-in-out;
+  width: 15%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+

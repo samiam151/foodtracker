@@ -1,0 +1,10 @@
+.loggingProgress {
+    display: flex;
+    justify-content: space-between;
+
+    .loggingProgress__addButtons {
+        button {
+            margin-left: 0.5em;
+        }
+    }
+}

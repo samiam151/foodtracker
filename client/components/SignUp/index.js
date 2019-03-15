@@ -5,7 +5,9 @@ import { CreateAccountStepper } from "./CreateAccountStepper";
 export const SignupPageComponent = (props) => {
     return (
         <Layout>
-            <CreateAccountStepper />
+            <div className="signup">
+                <CreateAccountStepper />
+            </div>
         </Layout>
     );
 }
