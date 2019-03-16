@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Alert, DatePicker, Button, message } from "antd";
 import ReCAPTCHA from "react-google-recaptcha";
 import uuid from "uuid/v4";
@@ -11,6 +11,15 @@ export const AccountInfoComponent = (props) => {
     const [birthday, setBirthday] = useState(null);
     const [recaptchaVerified, setRecaptchaVerified] = useState(false);
     const [errorMessages, setErrorMessages] = useState([]);
+    const [takenNames, setTakenNames] = useState([]);
+
+    useEffect(() => {
+        ClientUserService.getUsernames()
+            .then(names => {
+                console.log(names);
+                setTakenNames(names);
+            });
+    }, []);
 
     const verifyRecaptcha = () => {
         setRecaptchaVerified(true);
@@ -42,6 +51,10 @@ export const AccountInfoComponent = (props) => {
         setErrorMessages([]);
         let errors = [];
 
+        if (takenNames.includes(inputFields['email'])) {
+            errors.push(createError("Email address already in use. Try another one."));
+        }
+
         if (password !== inputFields['verifyPassword']) {
             errors.push(createError("Passwords do not match."));
         }
@@ -51,6 +64,7 @@ export const AccountInfoComponent = (props) => {
         if (birthday === null) {
             errors.push(createError("Please enter your birthday."));
         }
+
 
         if (errors.length) {
             setErrorMessages(errors);

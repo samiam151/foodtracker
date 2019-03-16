@@ -37,6 +37,16 @@ const ClientUserService = (() => {
             }).then(response => {
                 return response.data;
             }).catch(err => console.log(err));
+        },
+
+        getUsernames: () => {
+            return axios.get("/api/signup/names")
+                .catch(err => {
+                    console.log(err);
+                    return err;
+                })
+                .then(res => res.data.names);
+
         }
     }
 })();

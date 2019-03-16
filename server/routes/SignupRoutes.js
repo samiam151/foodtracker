@@ -10,9 +10,24 @@ router.post("/", (req, res) => {
 
     UserService.createUser(username, password, birthday).then(newUser => {
         req.logIn(newUser, (err) => {
+            if (err) {
+                console.log(err);
+                res.json(err);
+            }
             res.json(newUser);
         });
-    }).catch(err => console.log(err));
+    }).catch(err => {
+        console.log(err);
+        res.json(err);
+    });
 });
+
+
+router.get("/names", (req, res) => {
+    UserService.getUserNames()
+        .catch(err => res.json(err))
+        .then(data => res.json(data));
+});
+
 
 module.exports = router;

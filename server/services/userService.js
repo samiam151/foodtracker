@@ -48,6 +48,27 @@ UserService.getUser = (username) => {
     });
 };
 
+UserService.getUserNames = () => {
+    return new Promise((resolve, reject) => {     
+        db.connect()
+            .then(client => {
+                let query = 'SELECT array_agg(name) as names FROM public.users';
+                return client.query(query)
+                    .then(res => {
+                        client.release();
+                        console.log(res);
+                        resolve(res.rows[0]);
+                    })
+                    .catch(err => {
+                        client.release();
+                        console.log(err);
+                        reject(err);
+                    });
+            })
+            .catch(err => console.log(err));  
+    });
+}
+
 /**
  * Creates a user, given a username and password
  * @param {string} username
@@ -68,7 +89,8 @@ UserService.createUser = (username, password, birthday) => {
                             })
                             .catch(err => {
                                 client.release();
-                                reject(err.stack);
+                                console.log(err);
+                                reject(err);
                             });
                     })
                     .catch(err => console.log(err));
