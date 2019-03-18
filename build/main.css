@@ -22402,14 +22402,22 @@ header {
 .signup .signup__errors > div {
   margin-bottom: 0.5em; }
 
-.signup .signup__accountInfo .signup__inputContainer {
+.signup .signup__inputContainer {
   margin: 1em 0;
   width: 100%; }
   @media (min-width: 50em) {
-    .signup .signup__accountInfo .signup__inputContainer {
-      width: 50%; } }
-  .signup .signup__accountInfo .signup__inputContainer.signup__inputContainer--birthday > span {
+    .signup .signup__inputContainer {
+      padding-right: 1em; } }
+  .signup .signup__inputContainer.signup__inputContainer--birthday > span {
     display: block; }
+  .signup .signup__inputContainer.signup__inputContainer.signup__inputContainer--height {
+    display: flex;
+    flex-flow: row wrap; }
+    .signup .signup__inputContainer.signup__inputContainer.signup__inputContainer--height label {
+      width: 100%; }
+    .signup .signup__inputContainer.signup__inputContainer.signup__inputContainer--height input {
+      width: 50%;
+      padding-left: 1em; }
 
 .signup .ReactPasswordStrength .ReactPasswordStrength-input {
   width: 100%;

@@ -33,14 +33,6 @@ export function loggingReducers(store = initLogsState, action) {
     }
 
     if (action.type === ADD_TO_MEALS) {
-        // let newState = Object.assign({}, store),
-        //     newMeal = action.payload;
-
-        // if (!newState['meals'][newMeal.meal_name]) {
-        //     newState['meals'][newMeal.meal_name] = [];
-        // }
-
-        // newState['meals'][newMeal.meal_name].push(newMeal);
         let newState = {
             ...store,
             meals: [

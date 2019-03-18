@@ -52,7 +52,13 @@ UserService.getUserNames = () => {
     return new Promise((resolve, reject) => {     
         db.connect()
             .then(client => {
-                let query = 'SELECT array_agg(name) as names FROM public.users';
+
+                let query = `
+                    SELECT array_agg(name) 
+                    as names 
+                    FROM public.users
+                `;
+
                 return client.query(query)
                     .then(res => {
                         client.release();

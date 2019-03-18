@@ -3,9 +3,9 @@ import ReactPasswordStrength from 'react-password-strength';
 
 
 export const PasswordInput = ({handleInputChange, ...props}) => {
-    const handleChange = ({score, isValid, password}) => {
+    const handleChange = ({isValid, password}) => {
         if (isValid) {
-            handleInputChange(password);
+            handleInputChange('password', password);
         }
     }
 
