@@ -1,5 +1,6 @@
 import { 
-    SET_SIGNUP_PROPERTY
+    SET_SIGNUP_PROPERTY,
+    CLEAR_SIGNUP_PROPERTIES
  } from "../actions";
 
 
@@ -13,6 +14,10 @@ export const signupReducer  = (store = defaultState, action) => {
             ...store,
             [action.payload.property]: action.payload.value
         }
+    }
+
+    if (type === CLEAR_SIGNUP_PROPERTIES) {
+        return defaultState;
     }
 
     return store;

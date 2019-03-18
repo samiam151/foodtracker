@@ -20,8 +20,7 @@ class Header extends Component {
                             <NavSection>
                                 <NavLink to="/" name="Home" />
                                 { this.props.user.isAuthenticated ? "" : <NavLink to="/login" name="Login" />}
-                                {/* { this.props.user.isAuthenticated ? "" : <NavLink to="/signup" name="Sign Up" />}  */}
-                                <NavLink to="/log" name="Log" />
+                                { this.props.user.isAuthenticated ? <NavLink to="/log" name="Log" /> : ""}
                             </NavSection>
                         </Col>
                         

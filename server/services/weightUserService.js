@@ -11,8 +11,8 @@ WeightUserService.addWeightEntry = (userID, newWeight) => {
             }
     
             let query = `
-                INSERT INTO public.weight_entries (user_id, weight)
-                VALUES ($1, $2) RETURNING *`;
+                select public.pr_create_weight_entry($1, $2)
+            `;
             client.query(query, [userID, newWeight])
                 .then(data => {
                     client.release();
