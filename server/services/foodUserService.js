@@ -14,7 +14,7 @@ FoodUserService.getLog = (user_id, date = null) => {
             let queryParameters = `${user_id}`;
             if (date) queryParameters += `, '${date}'`;
 
-            let query = `select * from get_food_entries(${queryParameters})`;
+            let query = `select * from fn_get_food_entries(${queryParameters})`;
 
             client.query(query)
                 .then(data => {

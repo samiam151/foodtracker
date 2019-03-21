@@ -80,15 +80,17 @@ UserService.getUserNames = () => {
  * @param {string} username
  * @param {string} password
  */
-UserService.createUser = (username, password, birthday) => {
+UserService.createUser = (username, password, birthday, weight, height, activityLevel, gender) => {
     console.log("birthday from service server", birthday);
+
+    let isFemale = gender.toUpperCase() === "M" ? false : true;
     return new Promise((resolve, reject) => {
         UserService.encryptPassword(password)
             .then(encryptedPassword => {
                 db.connect()
                     .then(client => {
-                        let query = 'INSERT INTO public.users (name, password, birthday) VALUES($1, $2, $3) RETURNING *';
-                        return client.query(query, [username, encryptedPassword, birthday])
+                        let query = 'select * from pr_create_new_user($1, $2, $3, $4, $5, $6, $7)';
+                        return client.query(query, [username, encryptedPassword, birthday, weight, height, activityLevel, isFemale])
                             .then(res => {
                                 client.release();
                                 resolve(res.rows[0]);

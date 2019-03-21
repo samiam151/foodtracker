@@ -20,7 +20,7 @@ const ClientUserService = (() => {
             });
         },
 
-        createUser: (username, password, birthday) => {
+        createUser: (username, password, birthday, weight, height, activityLevel, gender) => {
             console.log("birthday from client service", birthday)
             return axios({
                 method: "post",
@@ -32,7 +32,11 @@ const ClientUserService = (() => {
                 data: {
                     username: username,
                     password: password,
-                    birthday: birthday
+                    birthday: birthday,
+                    weight: weight, 
+                    height: height, 
+                    activityLevel: activityLevel, 
+                    gender: gender
                 }
             }).then(response => {
                 return response.data;

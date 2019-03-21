@@ -6,9 +6,13 @@ const UserService = require("../services/userService");
 router.post("/", (req, res) => {
     let username = req.body.username,
         password = req.body.password,
-        birthday = req.body.birthday;
+        birthday = req.body.birthday,
+        weight = req.body.weight,
+        height = req.body.height,
+        activityLevel = req.body.activityLevel,
+        gender = req.body.gender;
 
-    UserService.createUser(username, password, birthday).then(newUser => {
+    UserService.createUser(username, password, birthday, weight, height, activityLevel, gender).then(newUser => {
         req.logIn(newUser, (err) => {
             if (err) {
                 console.log(err);

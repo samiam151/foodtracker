@@ -21,6 +21,10 @@ const SignupFormComponent = ({setSignupProperty, clearSignupProperty, signup, ..
         ClientUserService.getUsernames()
             .then(names => setSignupProperty('takenNames', names))
             .then(() => setIsLoading(false))
+            .then(() => {
+                setSignupProperty("gender", "M");
+                setSignupProperty("activityLevel", "1.2");
+            });
     }, []);
 
     const createError = (message) => {
@@ -54,8 +58,16 @@ const SignupFormComponent = ({setSignupProperty, clearSignupProperty, signup, ..
             return;
         }
 
+        let height = (signup.feet * 12) + signup.inches;
         setIsLoading(true);
-        ClientUserService.createUser(signup.email, signup.password, signup.birthday)
+        ClientUserService.createUser(
+                signup.email, 
+                signup.password, 
+                signup.birthday, 
+                signup.pounds, 
+                height, 
+                signup.activityLevel,
+                signup.gender)
             .catch(err => {
                 console.log(err);
             })
