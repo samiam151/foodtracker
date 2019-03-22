@@ -8,7 +8,7 @@ export const userReducer = (state = initialState, action) => {
         return newState;
     }
     if (action.type === "UNSET_USER") {
-        let newState = Object.assign({}, state, initialState);
+        let newState = Object.assign({}, {}, initialState);
         return newState;
     }
     return state;

@@ -16,21 +16,24 @@ Auth.init = (app) => {
         } else {
             console.log("Not logged in...");
         }
+        console.log("---------------------------");
         next();
     });
 
     passport.serializeUser(function (user, done) {
         console.log(user, "line 23");
-        done(null, {
-            name: user.name,
-            id: user.id
-        });
+        // done(null, {
+        //     name: user.name,
+        //     id: user.id
+        // });
+        done(null, user);
     });
 
     passport.deserializeUser(function (_user, done) {
-        console.log(_user, "line 31" );
-        UserService.getUser(_user.name)
-        .then(user => {
+        // console.log(_user, "line 31" );
+        UserService.getUserandGoals(_user.name)
+            .then(user => {
+                console.log(user);
                 done(null, user)
             })
             .catch(err => {
@@ -41,7 +44,7 @@ Auth.init = (app) => {
 
     passport.use(new LocalStrategy(
         function (username, password, done) {
-            UserService.getUser(decodeURIComponent(username))
+            UserService.getUserandGoals(decodeURIComponent(username))
                 .then((user) => {
                     if (!username) {
                         console.log("No username given");

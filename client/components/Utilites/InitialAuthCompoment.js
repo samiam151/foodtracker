@@ -18,6 +18,7 @@ export class InitialAuthComponent extends Component {
         axios.post("/api/initlogin")
         .then(res => {
             let data = res.data;
+            console.log(data);
             if (data) {
                 store.dispatch({
                     payload: {
@@ -41,7 +42,7 @@ export class InitialAuthComponent extends Component {
             this.setState({
                 loaded: true
             })
-        }, 500);
+        }, 250);
     }
 
     render() {

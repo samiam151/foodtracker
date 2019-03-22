@@ -53,7 +53,8 @@ Auth.init(app);
 app.post("/api/initlogin", (req, res) => {
     let user = null;
     if (req.isAuthenticated()) {
-        user= req.session.passport.user;
+        user = req.session.passport.user;
+        delete user.password;
     }
     res.json(user);
 });

@@ -12,23 +12,26 @@ router.get("/", (req, res) => {
 });
 
 router.use((req, res, next) => {
-    console.log(req.method);
-    console.log(req.body);
-    console.log(req.xhr);
+    // console.log(req.method);
+    // console.log(req.body);
+    // console.log(req.xhr);
     next();
 });
 router.post("/", passport.authenticate('local', 
     { 
         failureRedirect: '/login/error'
     }), (req, res) => {
-    res.json({
-        authenticated: true,
+    let user = Object.assign({}, req.user);
+    delete user.password;
+    let userObj = {
         user: {
-            name: req.user.name,
-            id: req.user.id,
-            sessionId: req.sessionID
-        }
-    });
+            ...user
+        },
+        authenticated: true
+    }
+
+    console.log("loginroute", userObj);
+    res.json(userObj);
 });
 
 router.get('/success', (req, res) => {

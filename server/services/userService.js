@@ -33,10 +33,35 @@ UserService.getUser = (username) => {
         }
         let query = "SELECT * FROM public.users WHERE name = $1";
 
+        db.connect()
+            .then(client => {
+                return client.query(query, [username])
+                    .then(res => {
+                        client.release()
+                        let result = res.rows[0];
+                        resolve(result);
+                    })
+                    .catch(err => {
+                        client.release()
+                        reject(err.stack);
+                    })
+            .catch(err => console.log(err));
+        });
+    });
+};
+
+UserService.getUserandGoals = (username) => {
+    return new Promise((resolve, reject) => {
+        if (!username) {
+            throw new Error("no username given...");
+        }
+        let query = "SELECT * FROM public.user_goals WHERE name = $1";
+
         db.connect().then(client => {
             return client.query(query, [username])
                 .then(res => {
                     client.release()
+                    console.log("getuserandgoals", res.rows)
                     let result = res.rows[0];
                     resolve(result);
                 })
@@ -62,7 +87,7 @@ UserService.getUserNames = () => {
                 return client.query(query)
                     .then(res => {
                         client.release();
-                        console.log(res);
+                        // console.log(res);
                         resolve(res.rows[0]);
                     })
                     .catch(err => {

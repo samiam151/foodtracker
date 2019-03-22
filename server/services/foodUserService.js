@@ -20,7 +20,8 @@ FoodUserService.getLog = (user_id, date = null) => {
                 .then(data => {
                     client.release();
                     resolve(data.rows); 
-                });
+                })
+                .catch(err => reject(err));
         });
     });
 }
