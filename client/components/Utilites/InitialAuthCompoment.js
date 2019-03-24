@@ -19,7 +19,7 @@ export class InitialAuthComponent extends Component {
         .then(res => {
             let data = res.data;
             console.log(data);
-            if (data) {
+            if (data.id && data.id !== undefined) {
                 store.dispatch({
                     payload: {
                         ...data,

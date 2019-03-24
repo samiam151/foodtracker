@@ -37,6 +37,7 @@ render(
                     <Route exact path="/" component={Homepage} />
                     <Route path="/login" component={RouteTable["Login Page"]} />
                     <Route path="/signup" component={RouteTable["Signup Page"]} />
+                    <PrivateRoute path="/user" component={RouteTable["AddEditGoalsPage"]} />
                     <PrivateRoute path="/log" component={RouteTable["Log"]} />
                 </div>
                 

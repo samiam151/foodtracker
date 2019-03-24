@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { Menu, Dropdown, Icon } from "antd";
 import { unsetUser } from "../Login/actions";
@@ -7,6 +8,9 @@ import { unsetUser } from "../Login/actions";
 export const UserMenu = (props) => {
     return (
         <Menu>
+        <Menu.Item>
+                <Link to="/user">Account</Link>
+            </Menu.Item>
             <Menu.Item>
                 <SignOut />
             </Menu.Item>
@@ -29,9 +33,9 @@ const _SignOut = ({unsetUser}) => {
     };
 
     return (
-        <p className="ant-dropdown-link" onClick={() => signOutHandler()}>
+        <span className="ant-dropdown-link" onClick={() => signOutHandler()}>
             Sign Out
-        </p>
+        </span>
     );
 };
 const SignOut = connect(null, { unsetUser })(_SignOut);

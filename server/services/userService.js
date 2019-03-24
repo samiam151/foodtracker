@@ -1,7 +1,5 @@
 const UserService = {};
 const db = require("../../conifg/db").database;
-const Auth = require("../../conifg/authentication");
-const FoodService = require("../services/foodApiService");
 const bcrypt = require("bcrypt");
 const numSalts = 10;
 
@@ -61,7 +59,7 @@ UserService.getUserandGoals = (username) => {
             return client.query(query, [username])
                 .then(res => {
                     client.release()
-                    console.log("getuserandgoals", res.rows)
+                    // console.log("getuserandgoals", res.rows)
                     let result = res.rows[0];
                     resolve(result);
                 })

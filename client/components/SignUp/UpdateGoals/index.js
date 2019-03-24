@@ -1,6 +1,6 @@
 import React from "react";
 
-export const UpdateWeightGoalsComponent = ({setSignupProperty, ...props}) => {
+export const UpdateBodyInformation = ({setSignupProperty, ...props}) => {
 
     const handleChange = (e) => {
         let target = e.target;

@@ -9,6 +9,8 @@ const PORT = process.env.PORT || 5105;
 const RedisStore = require("connect-redis")(session);
 const enforce = require("express-sslify");
 
+const UserService = require("./services/userService");
+
 const isProduction = process.env.environment === "production";
 
 if (!isProduction) {
@@ -51,17 +53,51 @@ Auth.init(app);
 
 // Routes
 app.post("/api/initlogin", (req, res) => {
-    let user = null;
-    if (req.isAuthenticated()) {
-        user = req.session.passport.user;
-        delete user.password;
+    // let user = null;
+    // if (req.isAuthenticated()) {
+    //     user = req.session.passport.user;
+    //     delete user.password;
+    // }
+    // res.json(user);
+    // res.json.bind(() => {
+    //     console.log("isauthenticated", req.isAuthenticated())
+    //     if (!req.isAuthenticated()) {
+    //         return {};
+    //     }
+    //     UserService.getUserandGoals(req.session.passport.user.name)
+    //     .then(res => {
+    //         return res.rows[0];
+    //     })
+    //     .catch(err => {
+    //         console.log(err);
+    //         return err;
+    //     });
+        
+    // })
+
+    let unauthRes = res.json,
+        authRes = res.json;
+
+    if (!req.isAuthenticated()) {
+        res.json({});
+        return;
     }
-    res.json(user);
+    UserService.getUserandGoals(req.session.passport.user.name)
+    .then(data => {
+        console.log(data);
+        res.json(data);
+    })
+    .catch(err => {
+        console.log(err);
+        return err;
+    });
+
 });
 app.use("/api/signup", require("./routes/SignupRoutes"))
 app.use("/api/food", require("./routes/LoggingRoutes"))
 app.use("/api/login", require("./routes/LoginRoutes"));
 app.use("/api/weight", require("./routes/WeightRoutes"));
+app.use("/api/userinfo", require("./routes/UserInfoRoutes"));
 app.post("/api/logout", (req, res) => {
     req.session.destroy(() => {
         req.logout();
@@ -69,7 +105,7 @@ app.post("/api/logout", (req, res) => {
     });
 });
 
-app.get('*', (req,res) => res.sendFile(path.join(__dirname + "../../index.html")))
+app.get('*/**', (req,res) => res.sendFile(path.join(__dirname + "../../index.html")))
 
 // Initialize application
 app.listen(PORT, () => console.log(`App started on port ${PORT}`));

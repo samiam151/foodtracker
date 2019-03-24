@@ -51,6 +51,24 @@ const ClientUserService = (() => {
                 })
                 .then(res => res.data.names);
 
+        },
+
+        updateGoals: (user_id, target_weight, target_weekly_loss) => {
+            return axios({
+                method: "post",
+                url: "/api/userinfo/goals/update",
+                withCredentials: true,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                data: {
+                    user_id: user_id,
+                    target_weight: target_weight,
+                    target_weekly_loss: target_weekly_loss
+                }
+            }).then(response => {
+                return response.data;
+            }).catch(err => console.log(err));
         }
     }
 })();

@@ -8,7 +8,7 @@ const Step = Steps.Step;
 import { connect } from "react-redux";
 
 import { AccountInfoComponent } from "../GetAccountInfo";
-import { UpdateWeightGoalsComponent } from "../UpdateGoals";
+import { UpdateBodyInformation } from "../UpdateGoals";
 import { BMRCalculator } from "../BMRCalulator";
 import { setSignupProperty, clearSignupProperty } from "../actions";
 import ClientUserService from "../../../services/ClientUserService";
@@ -95,7 +95,7 @@ const SignupFormComponent = ({setSignupProperty, clearSignupProperty, signup, ..
                             <AccountInfoComponent setSignupProperty={setSignupProperty} />
                         </Col>
                         <Col xs={24} md={12}>
-                            <UpdateWeightGoalsComponent setSignupProperty={setSignupProperty} />
+                            <UpdateBodyInformation setSignupProperty={setSignupProperty} />
                         </Col>
 
                         <Col xs={24}>

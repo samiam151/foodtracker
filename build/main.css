@@ -22266,6 +22266,31 @@ select {
 label {
   font-weight: 700; }
 
+.input-container {
+  margin: 1em 0;
+  width: 100%; }
+  @media (min-width: 50em) {
+    .input-container {
+      padding-right: 1em; } }
+  @media (min-width: 50em) {
+    .input-container.input-container--half {
+      width: 50%; } }
+  .input-container.signup__inputContainer--birthday > span {
+    display: block; }
+  .input-container.signup__inputContainer.signup__inputContainer--height {
+    display: flex;
+    flex-flow: row wrap; }
+    .input-container.signup__inputContainer.signup__inputContainer--height label {
+      width: 100%; }
+    .input-container.signup__inputContainer.signup__inputContainer--height input {
+      width: 50%;
+      padding-left: 1em; }
+  .input-container .input-container--info {
+    display: block;
+    font-size: 0.75em;
+    font-style: italic;
+    margin: 6px 0 12px; }
+
 .ant-modal {
   top: 50px; }
 
