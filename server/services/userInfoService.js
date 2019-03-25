@@ -17,15 +17,14 @@ UserInfoService.getWeightData = (user_id) => {
             `;
             client.query(query, [user_id])
                 .then(res => {
+                    client.release();
                     resolve(res.rows);
                 })
                 .catch(err => {
+                    client.release();
                     console.log(err);
                     reject(err);
                 })
-                .finally(() => {
-                    client.release();
-                });
         })
     });
 };

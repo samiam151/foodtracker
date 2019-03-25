@@ -13,6 +13,7 @@ Auth.init = (app) => {
         console.log(`Route: ${req.path}`);
         if (req.isAuthenticated()) {
             console.log(`Logged in as ${req.user.name}...`);
+            console.log("Passport User: ", req.session.passport.user);
         } else {
             console.log("Not logged in...");
         }
@@ -21,20 +22,19 @@ Auth.init = (app) => {
     });
 
     passport.serializeUser(function (user, done) {
-        console.log(user, "line 23");
-        // done(null, {
-        //     name: user.name,
-        //     id: user.id
-        // });
-        done(null, user);
+        done(null, {
+            name: user.name,
+            id: user.id
+        });
     });
 
     passport.deserializeUser(function (_user, done) {
-        // console.log(_user, "line 31" );
         UserService.getUserandGoals(_user.name)
             .then(user => {
-                console.log(user);
-                done(null, user)
+                done(null, {
+                    name: user.name,
+                    id: user.id
+                });
             })
             .catch(err => {
                 console.log(err);
@@ -60,7 +60,7 @@ Auth.init = (app) => {
                     }
                     UserService.verifyPassword(user, password).then(passwordsMatch => {
                         if (passwordsMatch) {
-                            return done(null, user)
+                            return done(null, user);
                         }
                         console.log("Incorrect password");
                         return done(null, false);

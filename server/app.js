@@ -53,38 +53,12 @@ Auth.init(app);
 
 // Routes
 app.post("/api/initlogin", (req, res) => {
-    // let user = null;
-    // if (req.isAuthenticated()) {
-    //     user = req.session.passport.user;
-    //     delete user.password;
-    // }
-    // res.json(user);
-    // res.json.bind(() => {
-    //     console.log("isauthenticated", req.isAuthenticated())
-    //     if (!req.isAuthenticated()) {
-    //         return {};
-    //     }
-    //     UserService.getUserandGoals(req.session.passport.user.name)
-    //     .then(res => {
-    //         return res.rows[0];
-    //     })
-    //     .catch(err => {
-    //         console.log(err);
-    //         return err;
-    //     });
-        
-    // })
-
-    let unauthRes = res.json,
-        authRes = res.json;
-
     if (!req.isAuthenticated()) {
         res.json({});
         return;
     }
     UserService.getUserandGoals(req.session.passport.user.name)
     .then(data => {
-        console.log(data);
         res.json(data);
     })
     .catch(err => {

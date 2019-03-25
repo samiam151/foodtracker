@@ -104,7 +104,6 @@ UserService.getUserNames = () => {
  * @param {string} password
  */
 UserService.createUser = (username, password, birthday, weight, height, activityLevel, gender) => {
-    console.log("birthday from service server", birthday);
 
     let isFemale = gender.toUpperCase() === "M" ? false : true;
     return new Promise((resolve, reject) => {

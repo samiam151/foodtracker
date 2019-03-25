@@ -9,7 +9,6 @@ import { connect } from "react-redux";
 
 import { AccountInfoComponent } from "../GetAccountInfo";
 import { UpdateBodyInformation } from "../UpdateGoals";
-import { BMRCalculator } from "../BMRCalulator";
 import { setSignupProperty, clearSignupProperty } from "../actions";
 import ClientUserService from "../../../services/ClientUserService";
 
@@ -58,7 +57,8 @@ const SignupFormComponent = ({setSignupProperty, clearSignupProperty, signup, ..
             return;
         }
 
-        let height = (signup.feet * 12) + signup.inches;
+        let height = (Number.parseInt(signup.feet) * 12) + Number.parseInt(signup.inches);
+
         setIsLoading(true);
         ClientUserService.createUser(
                 signup.email, 

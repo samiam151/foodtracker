@@ -11,8 +11,8 @@ const AddEditGoals = ({user, ...props}) => {
 
     useEffect(() => {
         setNewGoals({
-            "target_weight": Number.parseFloat(user.target_weight),
-            "target_weekly_loss": Number.parseFloat(user.target_weekly_loss)
+            "target_weight": Number.parseFloat(user.target_weight || user.current_weight),
+            "target_weekly_loss": Number.parseFloat(user.target_weekly_loss || 0)
         })
     }, [user])
 
@@ -28,8 +28,8 @@ const AddEditGoals = ({user, ...props}) => {
         e.preventDefault();
         ClientUserService.updateGoals(
             user.id,
-            newGoals.target_weight,
-            newGoals.target_weekly_loss
+            newGoals['target_weight'],
+            newGoals['target_weekly_loss']
         )
             .then(data => {
                 console.log(data);
@@ -39,7 +39,7 @@ const AddEditGoals = ({user, ...props}) => {
                 console.log(err);
             })
     }
-
+    console.log(newGoals);
     return (
         <div className="addEditGoals">
             <h3>Add and Edit Goals</h3>
@@ -47,14 +47,13 @@ const AddEditGoals = ({user, ...props}) => {
                 <div className="input-container input-container--half">
                     <label htmlFor="">Target Weight</label>
                     <p className="input-container--info">Indicate the weight you plan to obtain.</p>
-                    <input type="number" name="target_weight" defaultValue={user.target_weight || ""} onChange={handleChange} />
-
+                    <input type="number" name="target_weight" defaultValue={user.target_weight || user.current_weight} onChange={handleChange} />
                 </div>
 
                 <div className="input-container input-container--half">
                     <label htmlFor="">Target Weekly Loss</label>
                     <p className="input-container--info">Weight fluctuation of more than 2 pounds a week are unadvised. Positive numbers indicate a weight loss, neagtive numbers indicated weight gain.</p>
-                    <input min="-2" max="2" step="0.25" type="number" name="target_weekly_loss" defaultValue={user.target_weekly_loss || ""} onChange={handleChange} />
+                    <input min="-2" max="2" step="0.25" type="number" name="target_weekly_loss" defaultValue={user.target_weekly_loss || 0} onChange={handleChange} />
                 </div>
 
                 <div className="input-container input-container--half">
@@ -67,6 +66,6 @@ const AddEditGoals = ({user, ...props}) => {
     );
 }
 
-export const AddEditGoalsComponent = withRouter(connect((store) => ({
+export const AddEditGoalsComponent = connect((store) => ({
     user: store.user
-}), { setUser })(AddEditGoals));
+}), { setUser })(AddEditGoals);

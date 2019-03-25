@@ -11,7 +11,6 @@ router.post("/weight", (req, res) => {
 });
 
 router.post("/goals/update", (req, res) => {
-    console.log(req.body);
     UserInfoService.updateGoals(
         req.body.user_id,
         req.body.target_weight,

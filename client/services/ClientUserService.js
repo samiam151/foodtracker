@@ -21,7 +21,6 @@ const ClientUserService = (() => {
         },
 
         createUser: (username, password, birthday, weight, height, activityLevel, gender) => {
-            console.log("birthday from client service", birthday)
             return axios({
                 method: "post",
                 url: "/api/signup",
@@ -65,6 +64,22 @@ const ClientUserService = (() => {
                     user_id: user_id,
                     target_weight: target_weight,
                     target_weekly_loss: target_weekly_loss
+                }
+            }).then(response => {
+                return response.data;
+            }).catch(err => console.log(err));
+        },
+        
+        getWeightData: (user_id) => {
+            return axios({
+                method: "post",
+                url: "/api/userinfo/weight",
+                withCredentials: true,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                data: {
+                    user_id: user_id
                 }
             }).then(response => {
                 return response.data;
