@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {Fragment, useState, useEffect} from "react";
 import {
     LineChart,
     Line,
@@ -7,33 +7,43 @@ import {
     YAxis,
     Tooltip,
     ResponsiveContainer,
-    Legend
+    Legend,
+    Brush
 } from "recharts";
+import { Loader } from "../../Utilites/Loader";
 import ClientUserService from "../../../services/ClientUserService";
 
 
 
-export const WeightChart = (props) => {
-    const [weightData, setWeightData] = useState([]);
-    useEffect(() => {
-        ClientUserService.getWeightData(props.user.id)
-            .then(res => {
-                setWeightData(res);
-            })
-    }, [])
+export const WeightChart = ({data, ...props}) => {
 
     const formatXAxis = (t) => new Date(t).toLocaleDateString();
-
+    
     return (
-        <ResponsiveContainer width="95%" height={200}>
-            <LineChart data={weightData}>
-                <Line connectNulls type="monotone" dataKey="weight" stroke="#8884d8" fill="#8884d8" />
-                <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
-                <XAxis dataKey="date" interval="preserveStartEnd" tickFormatter={formatXAxis}/>
-                <YAxis domain={["dataMin - 50", "dataMax + 50"]} />
-                <Tooltip />
-                <Legend />
-            </LineChart>
-        </ResponsiveContainer>
+        <article>
+            <h4>Weights</h4>
+            <ResponsiveContainer width="95%" height={250}>
+                <LineChart data={data}>
+                    <Line connectNulls type="monotone" dataKey="weight" stroke="#1890ff" fill="#1890ff" />
+                    <CartesianGrid stroke="#eee" strokeDasharray="3 3" />
+                    <XAxis dataKey="date" interval="preserveStartEnd" tickFormatter={formatXAxis}/>
+                    <YAxis domain={[50, "dataMax + 50"]} />
+                    <Tooltip />
+                    <Legend />
+
+                    <Brush 
+                        dataKey='weight' 
+                        height={40} 
+                        stroke="#000000"
+                        startIndex={data.length - 20}>
+
+                        <LineChart>
+                            <Line type="monotone" dataKey="weight" />
+                        </LineChart>
+
+                    </Brush>
+                </LineChart>
+            </ResponsiveContainer>
+        </article>
     );
 }

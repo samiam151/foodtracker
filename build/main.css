@@ -22462,3 +22462,13 @@ header {
   align-items: center;
   justify-content: center; }
 
+.userInfoPage__container tspan {
+  font-size: 12px; }
+
+.userInfoPage__container .userInfo__nav {
+  display: flex; }
+  .userInfoPage__container .userInfo__nav li {
+    margin-right: 1em; }
+    .userInfoPage__container .userInfo__nav li a.active {
+      text-decoration: underline; }
+

@@ -5,24 +5,25 @@ import { Layout } from "../../Layout/Layout";
 
 import { AddEditGoalsComponent } from "../AddEditGoals";
 import { ProgressComponent } from "../Progress";
+import { NavLink } from "react-router-dom";
 
 const UserInfoPageFunction = ({user, match, ...props}) => {
     
     return (
         <Layout>
-            <div>
-                <ul>
+            <div className="userInfoPage__container">
+                <ul className="userInfo__nav">
                     <li>
-                        <Link to={match.url}>User</Link>
+                        <NavLink exact activeClassName="active" to={match.url}>User</NavLink>
                     </li>
                     <li>
-                        <Link to={`${match.url}/progress`}>Progress</Link>
+                        <NavLink activeClassName="active" to={`${match.url}/progress`}>Progress</NavLink>
                     </li>
                     <li>
-                        <Link to={`${match.url}/goals`}>Goals</Link>
+                        <NavLink activeClassName="active" to={`${match.url}/goals`}>Goals</NavLink>
                     </li>
                     <li>
-                        <Link to={`${match.url}/account`}>Account</Link>
+                        <NavLink activeClassName="active" to={`${match.url}/account`}>Account</NavLink>
                     </li>
                 </ul>
             

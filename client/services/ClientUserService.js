@@ -84,6 +84,22 @@ const ClientUserService = (() => {
             }).then(response => {
                 return response.data;
             }).catch(err => console.log(err));
+        },
+
+        getChartData: (user_id) => {
+            return axios({
+                method: "post",
+                url: "/api/userinfo/chart",
+                withCredentials: true,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                data: {
+                    user_id: user_id
+                }
+            }).then(response => {
+                return response.data;
+            }).catch(err => console.log(err));
         }
     }
 })();

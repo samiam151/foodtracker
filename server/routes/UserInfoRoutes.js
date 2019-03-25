@@ -10,6 +10,14 @@ router.post("/weight", (req, res) => {
         .catch(err => res.json(err));
 });
 
+router.post("/chart", (req, res) => {
+    UserInfoService.getMainChartData(req.body.user_id)
+        .then(data => {
+            res.json(data);
+        })
+        .catch(err => res.json(err));
+})
+
 router.post("/goals/update", (req, res) => {
     UserInfoService.updateGoals(
         req.body.user_id,

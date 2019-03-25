@@ -1,0 +1,16 @@
+.userInfoPage__container {
+    tspan {
+        font-size: 12px;
+    }
+    .userInfo__nav {
+        display: flex;
+
+        li {
+            margin-right: 1em;
+
+            a.active {
+                text-decoration: underline;
+            }
+        }
+    }
+}

@@ -19,8 +19,6 @@ import { InitialAuthComponent } from "./components/Utilites/InitialAuthCompoment
 import { Layout } from "./components/Layout/Layout";
 import Modal from "./components/Utilites/Modal";
 
-import LogginDayComponent from "./components/Logging/LogginDayComponent";
-
 const Homepage = (props) => (
     <Layout>
         <div>Homepage</div>
