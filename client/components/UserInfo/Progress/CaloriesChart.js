@@ -23,7 +23,7 @@ export const CaloriesChart = ({data, ...props}) => {
                     <Line connectNulls type="monotone" dataKey="calories" stroke="#1890ff" fill="#1890ff" />
                     <CartesianGrid stroke="#eee" strokeDasharray="3 3" />
                     <XAxis dataKey="date" interval="preserveStartEnd" tickFormatter={formatXAxis}/>
-                    <YAxis domain={["dataMin - 50", "dataMax + 50"]} />
+                    <YAxis domain={[0, "dataMax + 50"]} />
                     <Tooltip />
                     <Legend />
 

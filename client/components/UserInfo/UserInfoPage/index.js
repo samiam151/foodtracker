@@ -13,11 +13,11 @@ const UserInfoPageFunction = ({user, match, ...props}) => {
         <Layout>
             <div className="userInfoPage__container">
                 <ul className="userInfo__nav">
-                    <li>
+                    {/* <li>
                         <NavLink exact activeClassName="active" to={match.url}>User</NavLink>
-                    </li>
+                    </li> */}
                     <li>
-                        <NavLink activeClassName="active" to={`${match.url}/progress`}>Progress</NavLink>
+                        <NavLink exact activeClassName="active" to={`${match.url}`}>Progress</NavLink>
                     </li>
                     <li>
                         <NavLink activeClassName="active" to={`${match.url}/goals`}>Goals</NavLink>
@@ -29,7 +29,7 @@ const UserInfoPageFunction = ({user, match, ...props}) => {
             
                 <Route path={`${match.path}/goals`} component={AddEditGoalsComponent} />
                 <Route path={`${match.path}/account`} render={() => <h3>Account Page</h3>} />
-                <Route path={`${match.path}/progress`} render={() => {
+                <Route exact path={`${match.path}`} render={() => {
                     return (
                         <>
                             <h3>Progress Page</h3>
@@ -37,7 +37,7 @@ const UserInfoPageFunction = ({user, match, ...props}) => {
                         </>
                     )
                 }} />
-                <Route exact path={match.path} render={() => <h3>User Page</h3>} />
+                {/* <Route exact path={match.path} render={() => <h3>User Page</h3>} /> */}
             </div>
         </Layout>
       );

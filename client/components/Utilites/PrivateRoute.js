@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 import {store} from "../../store";
 
 const PrivateRoute = ({ component: Component, user, ...rest }) => {
-    console.log(rest);
     return (
         <Route {...rest} render={props => (
             user.isAuthenticated === true

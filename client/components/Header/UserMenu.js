@@ -8,8 +8,14 @@ import { unsetUser } from "../Login/actions";
 export const UserMenu = (props) => {
     return (
         <Menu>
-        <Menu.Item>
-                <Link to="/user">Account</Link>
+            <Menu.Item>
+                <Link to="/user">Progress</Link>
+            </Menu.Item>
+            <Menu.Item>
+                <Link to="/user/goals">Goals</Link>
+            </Menu.Item>
+            <Menu.Item>
+                <Link to="/user/account">Account</Link>
             </Menu.Item>
             <Menu.Item>
                 <SignOut />
