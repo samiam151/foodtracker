@@ -4,7 +4,6 @@ export const CLEAR_SIGNUP_PROPERTIES = "CLEAR_SIGNUP_PROPERTIES";
 
 // Dispatchers
 export const setSignupProperty = (property, value) => (dispatch) => {
-    console.log("ssprop", property, value)
     dispatch({
         type: SET_SIGNUP_PROPERTY,
         payload: {

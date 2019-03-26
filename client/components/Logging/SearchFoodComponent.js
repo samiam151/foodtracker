@@ -23,9 +23,12 @@ const _SearchFoodComponent = (props) => {
         }
         updateSearchInput(value);
         ClientFoodService.searchFood(value)
-            .then(results => updateSearchResults(results));
+            .then(results => {
+                updateSearchResults(Array.isArray(results) ? results : []);
+            });
     }, 300);
 
+    console.log(searchResults);
     return (
         <div className="addFood">
             <Input type="Input.Text" 
@@ -62,50 +65,3 @@ function debounce(func, wait, immediate = false) {
 }
 
 export const SearchFoodComponent = connect(null, { showModal, setContent, setFoodSearchItem })(_SearchFoodComponent);
-
-// class _SearchFoodComponent extends Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//             searchInput: "",
-//             searchResults: []
-//         };
-
-//         this.resultClick = this.resultClick.bind(this);
-//     }
-
-//     searchInputChange(e) {
-//         let value = e.target.value;
-//         if (value.length <= 2) {
-//             return;
-//         }
-
-//         ClientFoodService.searchFood(value)
-//         .then(results => {
-//             this.setState({
-//                 searchResults: results
-//             });
-//         });
-//     }
-
-//     resultClick(result) {
-//         console.log(result);
-//         this.props.setFoodSearchItem(result);
-//     }
-
-//     render() {
-//         return (
-//             <div className="addFood">
-                
-//                 <Input type="Input.Text" name="foodInput" className="addFood__serachInput" onChange={(e) => this.searchInputChange(e)}/>
-//                 <ul className="addFood__searchResults">
-//                     {
-//                         this.state.searchResults.map((food, index) => (
-//                             <FoodSearchResult key={index} {...food} onClickCB={this.resultClick} />
-//                         ))
-//                     }
-//                 </ul>
-//             </div>
-//         );
-//     }
-// }

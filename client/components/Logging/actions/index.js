@@ -33,7 +33,6 @@ export function getTodaysLogs(id) {
 }
 
 export const removeFoodEntry = (entryID) => (dispatch) => {
-    console.log("removeFoodEntry hiit...")
     dispatch({
         type: REMOVE_FROM_MEALS,
         payload: {

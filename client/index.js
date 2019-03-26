@@ -4,7 +4,7 @@ import { render } from "react-dom";
 
 // Router
 import { Route, Router, Redirect } from "react-router-dom";
-import {PrivateRoute} from "./components/Utilites/PrivateRoute.js";
+import PrivateRoute from "./components/Utilites/PrivateRoute.js";
 import { history } from "./store/history";
 import RouteTable from "./Routes";
 

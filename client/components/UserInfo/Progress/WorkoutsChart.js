@@ -11,8 +11,6 @@ import {
     Bar, BarChart,
     Brush
 } from "recharts";
-import { Loader } from "../../Utilites/Loader";
-import ClientUserService from "../../../services/ClientUserService";
 
 
 
@@ -25,8 +23,8 @@ export const WorkoutsChart = ({data, ...props}) => {
             <h4>Workouts</h4>
 
             <ResponsiveContainer width="95%" height={250}>
-                <LineChart data={data}>
-                    <Line connectNulls type="monotone" dataKey="calories_burned" stroke="#1890ff" fill="#1890ff" />
+                <BarChart data={data}>
+                    <Bar dataKey="calories_burned" stroke="#1890ff" fill="#1890ff" />
                     <CartesianGrid stroke="#eee" strokeDasharray="3 3" />
                     <XAxis dataKey="date" interval="preserveStartEnd" tickFormatter={formatXAxis}/>
                     <YAxis domain={[0, "dataMax + 50"]} />
@@ -35,16 +33,16 @@ export const WorkoutsChart = ({data, ...props}) => {
 
                     <Brush 
                         dataKey='calories_burned' 
-                        height={40} 
+                        height={30} 
                         stroke="#000000"
                         startIndex={data.length - 20}>
 
-                        <LineChart>
-                            <Line type="monotone" dataKey="calories_burned" />
-                        </LineChart>
+                        <BarChart>
+                            <Bar legendType="circle" dataKey="calories_burned" stroke="#1890ff" fill="#1890ff" />
+                        </BarChart>
 
                     </Brush>
-                </LineChart>
+                </BarChart>
             </ResponsiveContainer>
         </article>
     );

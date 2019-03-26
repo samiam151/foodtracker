@@ -18,7 +18,6 @@ export class InitialAuthComponent extends Component {
         axios.post("/api/initlogin")
         .then(res => {
             let data = res.data;
-            console.log(data);
             if (data.id && data.id !== undefined) {
                 store.dispatch({
                     payload: {

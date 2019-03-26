@@ -10,10 +10,6 @@ import {
     Legend,
     Brush
 } from "recharts";
-import { Loader } from "../../Utilites/Loader";
-import ClientUserService from "../../../services/ClientUserService";
-
-
 
 export const WeightChart = ({data, ...props}) => {
 

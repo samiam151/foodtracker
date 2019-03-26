@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import { Route, Router, Redirect } from "react-router-dom";
+import { Route, Router, Redirect, withRouter } from "react-router-dom";
 
 import { connect } from "react-redux";
 import {store} from "../../store";
 
-export const PrivateRoute = ({ component: Component, ...rest }) => {
+const PrivateRoute = ({ component: Component, user, ...rest }) => {
+    console.log(rest);
     return (
         <Route {...rest} render={props => (
-            store.getState().user.isAuthenticated === true
+            user.isAuthenticated === true
             ? <Component {...props} />
             : <Redirect to={{
                     pathname: "/login",
@@ -19,6 +20,6 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
 };
 
 
-// export default connect((store) => ({
-//     user: store.user
-// }))(PrivateRoute);
+export default withRouter(connect((store) => ({
+    user: store.user
+}))(PrivateRoute));

@@ -65,7 +65,6 @@ export function loggingReducers(store = initLogsState, action) {
         }
 
         newState["working_food_entry"][column] = columnValue;
-        console.log(column, columnValue);
         return Object.assign({}, store, newState);
     }
 

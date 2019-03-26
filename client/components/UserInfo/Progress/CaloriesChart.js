@@ -11,10 +11,6 @@ import {
     Bar, BarChart,
     Brush
 } from "recharts";
-import { Loader } from "../../Utilites/Loader";
-import ClientUserService from "../../../services/ClientUserService";
-
-
 
 export const CaloriesChart = ({data, ...props}) => {
     const formatXAxis = (t) => new Date(t).toLocaleDateString();

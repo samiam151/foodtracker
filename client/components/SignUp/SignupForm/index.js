@@ -72,7 +72,6 @@ const SignupFormComponent = ({setSignupProperty, clearSignupProperty, signup, ..
                 console.log(err);
             })
             .then(data => {
-                console.log(data);
                 message.success("Your account has been created!");
                 clearSignupProperty();
             })

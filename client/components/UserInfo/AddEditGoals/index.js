@@ -32,14 +32,12 @@ const AddEditGoals = ({user, ...props}) => {
             newGoals['target_weekly_loss']
         )
             .then(data => {
-                console.log(data);
                 props.setUser(data);
             })
             .catch(err => {
                 console.log(err);
             })
     }
-    console.log(newGoals);
     return (
         <div className="addEditGoals">
             <h3>Add and Edit Goals</h3>

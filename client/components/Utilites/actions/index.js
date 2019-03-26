@@ -12,7 +12,6 @@ export const defaultModalState = {
 
 // Action Dispatchers
 export const showModal = (name = "") => (dispatch) => {
-    console.log("hitt...");
     return dispatch({
         type: SHOW_MODAL,
         payload: {
@@ -23,7 +22,6 @@ export const showModal = (name = "") => (dispatch) => {
 };
 
 export const hideModal = () => (dispatch) => {
-    console.log("hitt...");
     return dispatch({
         type: SHOW_MODAL,
         payload: defaultModalState
@@ -31,7 +29,6 @@ export const hideModal = () => (dispatch) => {
 };
 
 export const setContent = (component) => (dispatch) => {
-    console.log("hitt...");
     return dispatch({
         type: SET_MODAL_CONTENT,
         payload: component
