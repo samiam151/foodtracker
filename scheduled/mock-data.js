@@ -6,7 +6,7 @@ database.connect((err, client) => {
         return;
     }
 
-    let query ='select public.pr_add_mock_data_for_all_users()';
+    let query ='select public.pr_add_mock_food_data_for_all_users()';
     client.query(query)
     .then(() => {
         client.release();
