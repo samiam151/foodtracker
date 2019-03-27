@@ -1,4 +1,4 @@
-import { database } from "../conifg/db";
+const { database } = require("../conifg/db");
 
 database.connect((err, client) => {
     if (err) {
@@ -6,7 +6,7 @@ database.connect((err, client) => {
         return;
     }
 
-    let query ='perform public.pr_add_mock_data_for_all_users()';
+    let query ='select public.pr_add_mock_data_for_all_users()';
     client.query(query)
     .then(() => {
         client.release();
