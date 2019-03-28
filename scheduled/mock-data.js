@@ -6,15 +6,15 @@ database.connect((err, client) => {
         return;
     }
 
-    let query ='select public.pr_add_mock_food_data_for_all_users()';
+    let query ='select public.pr_add_mock_data_for_all_users()';
     client.query(query)
     .then(() => {
         client.release();
-        console.log("Successfully added mock food data for all users.")
+        console.log("Successfully added mock data for all users.")
     })
     .catch(err => {
         client.release();
-        console.log("Error adding mock food data.")
+        console.log("Error adding mock all data.")
         console.log(err);
     })
 })
