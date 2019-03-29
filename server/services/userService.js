@@ -59,8 +59,8 @@ UserService.getUserandGoals = (username) => {
             return client.query(query, [username])
                 .then(res => {
                     client.release()
-                    // console.log("getuserandgoals", res.rows)
                     let result = res.rows[0];
+                    // delete result.password;
                     resolve(result);
                 })
                 .catch(err => {
@@ -104,7 +104,6 @@ UserService.getUserNames = () => {
  * @param {string} password
  */
 UserService.createUser = (username, password, birthday, weight, height, activityLevel, gender) => {
-
     let isFemale = gender.toUpperCase() === "M" ? false : true;
     return new Promise((resolve, reject) => {
         UserService.encryptPassword(password)

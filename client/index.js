@@ -13,17 +13,14 @@ import { Provider, connect } from "react-redux";
 import { store } from "./store";
 
 // @ts-ignore
+import antStyles from '../node_modules/antd/dist/antd.less';
 import styles from "./styles/style.scss";
+// import styles from "./styles/styles.less";
 import Header from "./components/Header/Header.jsx";
 import { InitialAuthComponent } from "./components/Utilites/InitialAuthCompoment";
 import { Layout } from "./components/Layout/Layout";
 import Modal from "./components/Utilites/Modal";
-
-const Homepage = (props) => (
-    <Layout>
-        <div>Homepage</div>
-    </Layout>
-);
+import { Homepage } from "./components/Homepage";
 
 render(
     <Router history={history}>

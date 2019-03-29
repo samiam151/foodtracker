@@ -6,7 +6,7 @@
 @import "./core/helpers/breakpoints.scss";
 
 // Core Component Styles
-@import '../../node_modules/antd//dist/antd.css';
+// @import '../../node_modules/antd/dist/antd.less';
 @import "./core/globals/ant_overrides.scss";
 @import "./core/components/modal.scss";
 @import "./core/components/loader.scss";

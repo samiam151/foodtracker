@@ -1,8 +1,9 @@
 @import "../helpers/breakpoints.scss";
+@import "../globals/variables.scss";
 
 body {
-    background-color: #efefef;
-    color: #333;
+    background-color: $light_blue;
+    color: $dark_blue;
 }
 
 .container {
@@ -27,6 +28,7 @@ body {
     border-radius: 3px;
     background-color: #fefefe;
     // margin: 1em 0;
+    // background-color: $medium_blue;
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
 }
 

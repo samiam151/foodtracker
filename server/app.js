@@ -59,6 +59,8 @@ app.post("/api/initlogin", (req, res) => {
     }
     UserService.getUserandGoals(req.session.passport.user.name)
     .then(data => {
+        let returnData = data;
+        delete returnData.password;
         res.json(data);
     })
     .catch(err => {
