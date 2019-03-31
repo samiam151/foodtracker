@@ -9,12 +9,12 @@ li {
 
 body {
   font-family: 'Open Sans', sans-serif;
-  font-size: 18px; }
+  font-size: 16px; }
   body a {
     color: #272E48; }
 
 body {
-  background-color: #E6F0F0;
+  background-color: #fefefe;
   color: #272E48; }
 
 .container {
@@ -52,7 +52,7 @@ select {
   height: 32px;
   padding: 4px 11px;
   color: rgba(0, 0, 0, 0.65);
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1.5;
   background-color: #fff;
   background-image: none;
@@ -141,7 +141,8 @@ header {
     text-align: right;
     margin: 0 1em; }
     header .userSection > a {
-      color: white; }
+      color: white;
+      padding: 1em; }
 
 .addFoodComponent__submitButtons {
   text-align: center; }
@@ -275,4 +276,21 @@ header {
     margin-right: 1em; }
     .userInfoPage__container .userInfo__nav li a.active {
       text-decoration: underline; }
+
+.userInfoPage__container .chart {
+  text-align: center;
+  border: 1px solid #ccc;
+  padding: 0.5em;
+  border-radius: 3px;
+  box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.25);
+  max-width: 960px;
+  margin: 0 auto 2em; }
+
+.userInfoPage__container .custom-tooltip {
+  background-color: #a1f442;
+  border: 1px solid greenyellow;
+  color: #222;
+  padding: 1em;
+  border-radius: 3px;
+  text-align: left; }
 

@@ -7,10 +7,16 @@ import ClientUserService from "../../../services/ClientUserService";
 
 export const ProgressComponent = (props) => {
     const [chartData, setChartData] = useState([]);
+    const chartHeight = 300;
 
     useEffect(() => {
         ClientUserService.getChartData(props.user.id)
+            .then(data => data.map(d => {
+                d.date = d.date.split("T")[0];
+                return d;
+            }))
             .then(res => {
+                console.log(res);
                 setChartData(res);
             })
     }, [])
@@ -18,16 +24,16 @@ export const ProgressComponent = (props) => {
     return (
         <div className="progressContainer">
             <div className="pill">
-                <WeightChart user={props.user} data={chartData} />
+                <WeightChart user={props.user} data={chartData} height={chartHeight} />
             </div>
             <br />
             <div className="pill">
-                <CaloriesChart user={props.user} data={chartData} />
+                <CaloriesChart user={props.user} data={chartData} height={chartHeight} />
             </div>
             <br />
-            <div className="pill">
-                <WorkoutsChart user={props.user} data={chartData} />
-            </div>
+            {/* <div className="pill">
+                <WorkoutsChart user={props.user} data={chartData} height={chartHeight} />
+            </div> */}
         </div>
     );
 }

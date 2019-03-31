@@ -22,8 +22,8 @@ export const WorkoutsChart = ({data, ...props}) => {
         <article>
             <h4>Workouts</h4>
 
-            <ResponsiveContainer width="95%" height={250}>
-                <BarChart data={data}>
+            <ResponsiveContainer width="95%" height={props.height}>
+                <BarChart data={data} syncId="777">
                     <Bar dataKey="calories_burned" stroke="#1890ff" fill="#1890ff" />
                     <CartesianGrid stroke="#eee" strokeDasharray="3 3" />
                     <XAxis dataKey="date" interval="preserveStartEnd" tickFormatter={formatXAxis}/>
