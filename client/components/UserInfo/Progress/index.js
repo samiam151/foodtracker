@@ -4,10 +4,11 @@ import { WeightChart } from "./WeightChart";
 import { CaloriesChart } from "./CaloriesChart";
 import { WorkoutsChart } from "./WorkoutsChart";
 import ClientUserService from "../../../services/ClientUserService";
+import { Loader } from "../../Utilites/Loader";
 
 export const ProgressComponent = (props) => {
     const [chartData, setChartData] = useState([]);
-    const chartHeight = 300;
+    const chartHeight = 250;
 
     useEffect(() => {
         ClientUserService.getChartData(props.user.id)
@@ -22,6 +23,7 @@ export const ProgressComponent = (props) => {
     }, [])
 
     return (
+        chartData.length === 0 ? <Loader /> : 
         <div className="progressContainer">
             <div className="pill">
                 <WeightChart user={props.user} data={chartData} height={chartHeight} />

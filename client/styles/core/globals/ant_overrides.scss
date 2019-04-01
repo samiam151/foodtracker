@@ -1,8 +1,14 @@
-.ant-modal {
-    top: 50px;
+html body {
+    .ant-modal {
+        top: 50px;
+    }
+    
+    // .ant-btn-primary {
+    //     background-color: $dark_blue;
+    //     border-color: darken($dark_blue, 5%);
+    // }
+    
+    .ant-btn {
+        font-size: 12px;
+    }
 }
-
-// .ant-btn-primary {
-//     background-color: $dark_blue;
-//     border-color: darken($dark_blue, 5%);
-// }

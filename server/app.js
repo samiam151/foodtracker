@@ -10,7 +10,7 @@ const RedisStore = require("connect-redis")(session);
 const enforce = require("express-sslify");
 
 const UserService = require("./services/userService");
-
+const RssFeedService = require("./services/rssFeedService");
 const isProduction = process.env.environment === "production";
 
 if (!isProduction) {
@@ -74,6 +74,11 @@ app.use("/api/food", require("./routes/LoggingRoutes"))
 app.use("/api/login", require("./routes/LoginRoutes"));
 app.use("/api/weight", require("./routes/WeightRoutes"));
 app.use("/api/userinfo", require("./routes/UserInfoRoutes"));
+app.post('/api/rss', (req, res) => {
+    RssFeedService.getFromUrl(req.body.url)
+        .then(data => res.json(data))
+        .catch(err => res.json([]))
+});
 app.post("/api/logout", (req, res) => {
     req.session.destroy(() => {
         req.logout();

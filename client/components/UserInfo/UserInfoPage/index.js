@@ -13,9 +13,6 @@ const UserInfoPageFunction = ({user, match, ...props}) => {
         <Layout>
             <div className="userInfoPage__container">
                 <ul className="userInfo__nav">
-                    {/* <li>
-                        <NavLink exact activeClassName="active" to={match.url}>User</NavLink>
-                    </li> */}
                     <li>
                         <NavLink exact activeClassName="active" to={`${match.url}`}>Progress</NavLink>
                     </li>

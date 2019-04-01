@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { Button } from "antd";
+import { Button, message } from "antd";
 import { setUser } from "../../Login/actions";
 import ClientUserService from "../../../services/ClientUserService";
 
@@ -33,6 +33,7 @@ const AddEditGoals = ({user, ...props}) => {
         )
             .then(data => {
                 props.setUser(data);
+                message.success("Your goals have been updated!");
             })
             .catch(err => {
                 console.log(err);
@@ -45,13 +46,13 @@ const AddEditGoals = ({user, ...props}) => {
                 <div className="input-container input-container--half">
                     <label htmlFor="">Target Weight</label>
                     <p className="input-container--info">Indicate the weight you plan to obtain.</p>
-                    <input type="number" name="target_weight" defaultValue={user.target_weight || user.current_weight} onChange={handleChange} />
+                    <input type="number" step="0.25" name="target_weight" defaultValue={user.target_weight || user.current_weight} onChange={handleChange} />
                 </div>
 
                 <div className="input-container input-container--half">
                     <label htmlFor="">Target Weekly Loss</label>
                     <p className="input-container--info">Weight fluctuation of more than 2 pounds a week are unadvised. Positive numbers indicate a weight loss, neagtive numbers indicated weight gain.</p>
-                    <input min="-2" max="2" step="0.25" type="number" name="target_weekly_loss" defaultValue={user.target_weekly_loss || 0} onChange={handleChange} />
+                    <input min="-2.0" max="2.0" step="0.25" type="number" name="target_weekly_loss" defaultValue={user.target_weekly_loss || 0} onChange={handleChange} />
                 </div>
 
                 <div className="input-container input-container--half">

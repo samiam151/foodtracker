@@ -18,7 +18,6 @@ import styles from "./styles/style.scss";
 // import styles from "./styles/styles.less";
 import Header from "./components/Header/Header.jsx";
 import { InitialAuthComponent } from "./components/Utilites/InitialAuthCompoment";
-import { Layout } from "./components/Layout/Layout";
 import Modal from "./components/Utilites/Modal";
 import { Homepage } from "./components/Homepage";
 

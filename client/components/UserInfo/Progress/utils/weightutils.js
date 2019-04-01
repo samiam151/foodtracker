@@ -13,13 +13,13 @@ export function dedash(string) {
 }
 
 export function CustomTooltip({ active, payload, label }) {
-  if (active) {
+  if (active && payload) {
     let weight = payload[0].value,
       targetWeight = payload[1].value;
     return (
       <div className="custom-tooltip">
         {payload.map(el => (
-          <div>
+          <div key={el.name}>
             <b>{capitalize(dedash(el.name))}: </b>
             <span>{el.value} lbs.</span>
           </div>
