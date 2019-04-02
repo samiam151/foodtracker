@@ -1,3 +1,21 @@
+@import "../../core/globals/variables.scss";
+
+.homepage {
+    h2 {
+        font-size: 3.5em;
+        font-weight: 700;
+        color: $primary_color;
+    }
+
+    p {
+        font-size: 1.2em;
+    }
+}
+
+.rssFeed__container {
+    position: relative;
+}
+
 .rssReader {
     position: relative;
 }
@@ -12,5 +30,14 @@
     & > * {
         flex: 0 33%;
         margin: 6px;
+    }
+
+    p {
+        font-size: 1em;
+    }
+}
+.homepage__hero {
+    h2 {
+        
     }
 }

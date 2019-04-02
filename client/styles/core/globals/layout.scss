@@ -4,7 +4,8 @@
 body {
     // background-color: $light_blue;
     background-color: #fefefe;
-    color: $dark_blue;
+    color: $dark_blue !important;
+    overflow-x: hidden;
 }
 
 .container {

@@ -9,10 +9,8 @@ const RssReaderFunction = ({url, rss, feedName, ...props}) => {
     const [hasError, setHasError] = useState(false);
 
     useEffect(() => {
-        console.log(rss);
         RssFeedService.getFromURL(url)
         .then(res => {
-            console.log(res.data);
             props.setRssContent({
                 name: feedName,
                 data: res.data
@@ -33,7 +31,11 @@ const RssReaderFunction = ({url, rss, feedName, ...props}) => {
         content = <RssReaderView items={rss[feedName]} cssItemClasses="pill" />
     }
 
-    return content;
+    return (
+        <div className="rssFeed__container">
+            {content}
+        </div>
+    );
 };
 
 export const RssReader = connect((store) => ({

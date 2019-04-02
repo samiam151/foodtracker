@@ -32,10 +32,6 @@ export const ProgressComponent = (props) => {
             <div className="pill">
                 <CaloriesChart user={props.user} data={chartData} height={chartHeight} />
             </div>
-            <br />
-            {/* <div className="pill">
-                <WorkoutsChart user={props.user} data={chartData} height={chartHeight} />
-            </div> */}
         </div>
     );
 }

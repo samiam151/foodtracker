@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro:700);
+@import url(https://fonts.googleapis.com/css?family=Aleo:400,700);
 * {
   margin: 0;
   padding: 0;
@@ -16,10 +17,15 @@ body {
   font-size: 16px; }
   body a {
     color: #272E48; }
+  body .serif {
+    font-family: 'Aleo', serif !important; }
+  body h1, body h2, body h3 {
+    font-family: 'Aleo', serif !important; }
 
 body {
   background-color: #fefefe;
-  color: #272E48; }
+  color: #272E48 !important;
+  overflow-x: hidden; }
 
 .container {
   width: 100%;
@@ -93,6 +99,24 @@ label {
     font-style: italic;
     margin: 6px 0 12px; }
 
+.center {
+  text-align: center; }
+
+.bg--blue {
+  background-color: #272E48; }
+
+.bg--red {
+  background-color: #D35348; }
+
+.bg--orange {
+  background-color: #F9C680; }
+
+.bg--lightBlue {
+  background-color: #E6F0F0; }
+
+.font--white {
+  color: white !important; }
+
 html body .ant-modal {
   top: 50px; }
 
@@ -127,6 +151,17 @@ html body .ant-btn {
   align-items: center;
   justify-content: center; }
 
+.homepage h2 {
+  font-size: 3.5em;
+  font-weight: 700;
+  color: #272E48; }
+
+.homepage p {
+  font-size: 1.2em; }
+
+.rssFeed__container {
+  position: relative; }
+
 .rssReader {
   position: relative; }
 
@@ -138,6 +173,8 @@ html body .ant-btn {
   .carousel__group > * {
     flex: 0 33%;
     margin: 6px; }
+  .carousel__group p {
+    font-size: 1em; }
 
 header {
   background-color: #272E48;
@@ -161,7 +198,8 @@ header {
     margin: 0 1em; }
     header .userSection > a {
       color: white;
-      padding: 1em; }
+      padding: 1em;
+      font-size: 1.3em; }
 
 .addFoodComponent__submitButtons {
   text-align: center; }
@@ -180,7 +218,7 @@ header {
       display: block; }
     .addFood__searchResults .addFood__searchResult:hover {
       cursor: pointer;
-      color: #1890ff; }
+      color: #272E48; }
 
 .modal.modal__addFood .modal__content {
   overflow: hidden; }

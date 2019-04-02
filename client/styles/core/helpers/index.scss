@@ -1,0 +1,22 @@
+@import "../globals/variables.scss";
+
+.center {
+    text-align: center;
+}
+
+.bg--blue {
+    background-color: $primary_color;
+}
+.bg--red {
+    background-color: $red;
+}
+.bg--orange {
+    background-color: $orange;
+}
+.bg--lightBlue {
+    background-color: $light_blue;
+}
+
+.font--white {
+    color: white !important;
+}

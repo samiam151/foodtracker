@@ -5,6 +5,7 @@ import { store } from "../../../store/index";
 import { connect } from "react-redux";
 import { setUser } from "../actions";
 import { Redirect } from "react-router-dom";
+import { Button } from "antd";
 
 const LoginForm = ({user, setUser, ...props}) => {
     const [redirectToReferrer, setRedirectToReferrer] = useState(false);
@@ -36,7 +37,7 @@ const LoginForm = ({user, setUser, ...props}) => {
             <label htmlFor="password">Password</label>
             <input type="password" name="password" id="password" />
 
-            <input type="submit" value="Submit" />
+            <Button type="primary" htmlType="submit">Log In</Button>
         </form>
     );
 }

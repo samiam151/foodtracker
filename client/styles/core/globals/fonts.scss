@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro:700');
+@import url('https://fonts.googleapis.com/css?family=Aleo:400,700');
 // @import url('https://fonts.googleapis.com/css?family=Rubik:400,500,700');
 @import "../globals/variables.scss";
+
+@mixin serif {
+    font-family: 'Aleo', serif !important;
+}
 
 body {
     font-family: 'Open Sans', sans-serif;
@@ -8,7 +13,16 @@ body {
     a {
         color: $dark_blue;
     }
+
+    .serif {
+        @include serif;
+    }
+
+    h1, h2, h3 {
+        @include serif;
+    }
 }
+
 
 // h1, h2, h3, h4, h5, h6 {
 //     font-family: 'Source Sans Pro', sans-serif;

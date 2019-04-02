@@ -41,7 +41,7 @@ const AddEditGoals = ({user, ...props}) => {
     }
     return (
         <div className="addEditGoals">
-            <h3>Add and Edit Goals</h3>
+            <h2>Add and Edit Goals</h2>
             <form onSubmit={updateGoals}>
                 <div className="input-container input-container--half">
                     <label htmlFor="">Target Weight</label>

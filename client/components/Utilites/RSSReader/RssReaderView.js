@@ -1,5 +1,5 @@
 import React from "react";
-import { Carousel } from "antd";
+import { Carousel, Icon } from "antd";
 
 export const RssReaderView = ({items, cssClasses = null, ...props}) => {
 
@@ -20,10 +20,15 @@ export const RssReaderView = ({items, cssClasses = null, ...props}) => {
             );
         })
     })
-    
+
     return (
         <div className={css}>
-            <Carousel autoplay>
+            <Carousel autoplay speed={3000} dots={true} 
+                arrows={true} 
+                autoplaySpeed={3000}
+                nextArrow={<Icon type="left-arrow" />}
+                prevArrow={<Icon type="right-arrow" />}
+            >
                 {
                     itemDivs.map(group => (
                         <div className="carousel__group">

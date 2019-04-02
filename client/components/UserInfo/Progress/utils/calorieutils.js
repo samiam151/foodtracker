@@ -14,8 +14,8 @@ export function dedash(string) {
 }
 
 export function CustomTooltip({ active, payload, label }) {
-  if (active && payload) {
-    console.log(payload);
+  if (active && payload.length === 2) {
+    
     let calories = payload[0].value,
       burned = payload[1].value;
     return (

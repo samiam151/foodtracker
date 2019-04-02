@@ -9,6 +9,7 @@ import { LoggingProgress } from "./LoggingProgress";
 import { MEAL_NAMES } from "../../models/meals";
 import { Redirect } from "react-router-dom";
 import { splitMeals } from "../../utils";
+import { Padding } from "../Utilites/Padding";
 
 const MealContainer = ({meals}) => (
     <div>
@@ -32,16 +33,18 @@ const LogginDayComponent = ({logs, user, fetchLogs}) => {
             state: { from: "/login" }
         }}/> :
         <Layout>
-            <div className="logProgress__container">
-                {                        
-                    <LoggingProgress meals={logs || []} />
-                }
-            </div>
-            <div className="logContainer">
-                {
-                    <MealContainer meals={splitMeals(logs)} />
-                }
-            </div>
+            <Padding xAmount={2} unit="em">
+                <div className="logProgress__container">
+                    {                        
+                        <LoggingProgress meals={logs || []} />
+                    }
+                </div>
+                <div className="logContainer">
+                    {
+                        <MealContainer meals={splitMeals(logs)} />
+                    }
+                </div>
+            </Padding>
         </Layout>
     )
 }
