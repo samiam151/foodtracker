@@ -1,23 +1,36 @@
 import React from "react";
 import { Property } from "../Utilites/Property";
 import { AddButtonsComponent } from "./AddButtons";
+import { DayProgressChart } from "./DayProgressChart";
 
-export const LoggingProgress = ({meals}) => {
+import { Row, Col } from "antd";
+import { Padding } from "../Utilites/Padding";
+
+export const LoggingProgress = ({meals, ...props}) => {
     const numCalories = meals.reduce((sum, b) => {
         return sum + Number.parseFloat(b.calories);
     }, 0);
 
     return (
         <div className="loggingProgress pill">
-            <div className="logginProgress__left">
-                <Property label="Total Calories" value={numCalories + " kcal"} />
-            </div>
+            <Row type="flex">
+                <Col xs={24} md={16}>
+                    <div className="logginProgress__left">
+                        <Property label="Total Calories" value={numCalories + " kcal"} />
+                        <Padding xAmount={0.5} unit="em">
+                            <DayProgressChart calories={numCalories} bmr={props.user.bmr} />
+                        </Padding>
+                    </div>
+                </Col>
+                <Col xs={24} md={8}>
+                    <div className="logginProgress__right">
+                        <div className="loggingProgress__addButtons">
+                            <AddButtonsComponent />
+                        </div>
+                    </div>
+                </Col> 
+            </Row>
 
-            <div className="logginProgress__right">
-                <div className="loggingProgress__addButtons">
-                    <AddButtonsComponent />
-                </div>
-            </div>
         </div>
     )
 }

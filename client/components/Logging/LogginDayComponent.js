@@ -36,7 +36,7 @@ const LogginDayComponent = ({logs, user, fetchLogs}) => {
             <Padding xAmount={2} unit="em">
                 <div className="logProgress__container">
                     {                        
-                        <LoggingProgress meals={logs || []} />
+                        <LoggingProgress meals={logs || []} user={user} />
                     }
                 </div>
                 <div className="logContainer">

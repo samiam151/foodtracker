@@ -281,8 +281,15 @@ header {
 .loggingProgress {
   display: flex;
   justify-content: space-between; }
+  .loggingProgress > div {
+    width: 100%; }
   .loggingProgress .loggingProgress__addButtons button {
     margin-left: 0.5em; }
+  .loggingProgress .logginProgress__right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%; }
 
 .signup .signup__errors > div {
   margin-bottom: 0.5em; }

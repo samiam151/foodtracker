@@ -20,20 +20,23 @@ import Header from "./components/Header/Header.jsx";
 import { InitialAuthComponent } from "./components/Utilites/InitialAuthCompoment";
 import Modal from "./components/Utilites/Modal";
 import { Homepage } from "./components/Homepage";
+import { MetricsComponent } from "./components/Metrics/index.js";
 
 render(
     <Router history={history}>
         <Provider store={store}>
             <InitialAuthComponent>
-                <Header />
+                <MetricsComponent>
+                    <Header />
 
-                <div className="contentContainer">
-                    <Route exact path="/" component={Homepage} />
-                    <Route path="/login" component={RouteTable["Login Page"]} />
-                    <Route path="/signup" component={RouteTable["Signup Page"]} />
-                    <PrivateRoute path="/user" component={RouteTable["AddEditGoalsPage"]} />
-                    <PrivateRoute path="/log" component={RouteTable["Log"]} />
-                </div>
+                    <div className="contentContainer">
+                        <Route exact path="/" component={Homepage} />
+                        <Route path="/login" component={RouteTable["Login Page"]} />
+                        <Route path="/signup" component={RouteTable["Signup Page"]} />
+                        <PrivateRoute path="/user" component={RouteTable["AddEditGoalsPage"]} />
+                        <PrivateRoute path="/log" component={RouteTable["Log"]} />
+                    </div>
+                </MetricsComponent>
                 
                 <Modal />
             </InitialAuthComponent>

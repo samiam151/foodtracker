@@ -24,7 +24,5 @@ export function calculateBMR(feet, inches, pounds, age, gender, activityLevel) {
     }
 
     bmrFinal = bmrFinal * +activityLevel;
-
-    console.log(`${bmrFinal} Kcal`);
     return bmrFinal;
 }
