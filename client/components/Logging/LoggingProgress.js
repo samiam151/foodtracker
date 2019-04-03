@@ -11,14 +11,18 @@ export const LoggingProgress = ({meals, ...props}) => {
         return sum + Number.parseFloat(b.calories);
     }, 0);
 
+    const workoutCalories = props.user
+
     return (
         <div className="loggingProgress pill">
             <Row type="flex">
                 <Col xs={24} md={16}>
                     <div className="logginProgress__left">
+                        <Property label="Daily Caloric Budget" value={props.user.bmr + " kcal"} />
                         <Property label="Total Calories" value={numCalories + " kcal"} />
-                        <Padding xAmount={0.5} unit="em">
-                            <DayProgressChart calories={numCalories} bmr={props.user.bmr} />
+
+                        <Padding xAmount={1} unit="em">
+                            <DayProgressChart calories={numCalories} bmr={props.user.bmr}/>
                         </Padding>
                     </div>
                 </Col>

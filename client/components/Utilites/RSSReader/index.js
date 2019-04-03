@@ -9,17 +9,21 @@ const RssReaderFunction = ({url, rss, feedName, ...props}) => {
     const [hasError, setHasError] = useState(false);
 
     useEffect(() => {
-        RssFeedService.getFromURL(url)
-        .then(res => {
-            props.setRssContent({
-                name: feedName,
-                data: res.data
+        if (rss[feedName]) {
+            setHasError(false);
+        } else {
+            RssFeedService.getFromURL(url)
+            .then(res => {
+                props.setRssContent({
+                    name: feedName,
+                    data: res.data
+                });
+            })
+            .catch(err => {
+                console.log(err);
+                setHasError(true);
             });
-        })
-        .catch(err => {
-            console.log(err);
-            setHasError(true);
-        });
+        }
     }, []);
 
 
@@ -28,7 +32,7 @@ const RssReaderFunction = ({url, rss, feedName, ...props}) => {
         content = <div>No feed data...</div>;
     }
     if (rss[feedName] !== undefined && rss[feedName].length) {
-        content = <RssReaderView items={rss[feedName]} cssItemClasses="pill" />
+        content = <RssReaderView items={rss[feedName]} cssItemClasses="pill" itemCount={props.count} />
     }
 
     return (

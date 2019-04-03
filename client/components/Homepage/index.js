@@ -39,7 +39,13 @@ export const Homepage = (props) => (
                     <div className="center">
                         <h2>Nutrition Corner</h2>
                         <p>Featured blog for the week is from Candace Boyd Wylie, the Chief Foodie & Creative Director behind The FoodLoveTog, LLC.</p>
-                        <RssReader url="https://foodlovetog.com/feed/rss" feedName="homepageBlog" />
+
+                        <div className="md-andUp">
+                            <RssReader url="https://foodlovetog.com/feed/rss" feedName="homepageBlog" count={3} />
+                        </div>
+                        <div className="sm-andDown">
+                            <RssReader url="https://foodlovetog.com/feed/rss" feedName="homepageBlog" count={1} />
+                        </div>
                     </div>
                 </Padding>
             </Layout>

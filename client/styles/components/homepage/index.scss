@@ -36,6 +36,21 @@
         font-size: 1em;
     }
 }
+
+.sm-andDown {
+    .carousel__group {
+        display: inline-flex !important;
+    
+        & > * {
+            flex: 1;
+            margin: 6px;
+        }
+    
+        p {
+            font-size: 1em;
+        }
+    }
+}
 .homepage__hero {
     h2 {
         

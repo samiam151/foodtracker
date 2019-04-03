@@ -5,10 +5,10 @@ export const RssReaderView = ({items, cssClasses = null, ...props}) => {
 
     const css = ["rssReader", cssClasses].join(" ");
     const cssItem = ["rssreader__item", props.cssItemClasses].join(" ");
-    const numItemsToShow = 3;
+    // const numItemsToShow = 3;
 
     let _items = Object.assign([], items);
-    let itemDivs = chunkArray(_items, numItemsToShow).map(itemGroup => {
+    let itemDivs = chunkArray(_items, props.itemCount).map(itemGroup => {
         return itemGroup.map(item => {
             return (
                 <div className={cssItem} key={item.guid}>
@@ -23,9 +23,7 @@ export const RssReaderView = ({items, cssClasses = null, ...props}) => {
 
     return (
         <div className={css}>
-            <Carousel autoplay speed={3000} dots={true} 
-                arrows={true} 
-                autoplaySpeed={3000}
+            <Carousel autoplay     
                 nextArrow={<Icon type="left-arrow" />}
                 prevArrow={<Icon type="right-arrow" />}
             >
