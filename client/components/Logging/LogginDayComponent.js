@@ -21,7 +21,7 @@ const MealContainer = ({meals}) => (
     </div>
 );
 
-const LogginDayComponent = ({logs, user, fetchLogs}) => {
+const LogginDayComponent = ({logs, user, workouts, fetchLogs}) => {
     
     useEffect(() => {
         fetchLogs(user.id);
@@ -36,7 +36,7 @@ const LogginDayComponent = ({logs, user, fetchLogs}) => {
             <Padding xAmount={2} unit="em">
                 <div className="logProgress__container">
                     {                        
-                        <LoggingProgress meals={logs || []} user={user} />
+                        <LoggingProgress meals={logs || []} user={user} workouts={workouts} />
                     }
                 </div>
                 <div className="logContainer">
@@ -52,6 +52,7 @@ const LogginDayComponent = ({logs, user, fetchLogs}) => {
 // REDUX
 const mapStateToProps = store => ({
     logs: store.logging.meals,
-    user: store.user
+    user: store.user,
+    workouts: store.workouts
 });
 export default connect(mapStateToProps, { getTodaysLogs, fetchLogs })(LogginDayComponent)

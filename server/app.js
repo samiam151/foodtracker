@@ -57,11 +57,10 @@ app.post("/api/initlogin", (req, res) => {
         res.json({});
         return;
     }
-    UserService.getUserandGoals(req.session.passport.user.name)
+    UserService.getInitInfo(req.session.passport.user.id)
     .then(data => {
         let returnData = data;
-        delete returnData.password;
-        res.json(data);
+        res.json(returnData);
     })
     .catch(err => {
         console.log(err);

@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro:700');
-@import url('https://fonts.googleapis.com/css?family=Aleo:400,700');
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700|Aleo:400,700');
+// @import url('https://fonts.googleapis.com/css?family=Aleo:400,700');
 // @import url('https://fonts.googleapis.com/css?family=Rubik:400,500,700');
 @import "../globals/variables.scss";
 
@@ -7,11 +7,12 @@
     font-family: 'Aleo', serif !important;
 }
 
-body {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 16px;
+body #appContainer {
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+
     a {
-        color: $dark_blue;
+        // color: $dark_blue;
     }
 
     .serif {

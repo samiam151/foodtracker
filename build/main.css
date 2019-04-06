@@ -1,5 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro:700);
-@import url(https://fonts.googleapis.com/css?family=Aleo:400,700);
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700|Aleo:400,700);
 * {
   margin: 0;
   padding: 0;
@@ -12,14 +11,12 @@ img {
   width: auto;
   max-width: 100%; }
 
-body {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 16px; }
-  body a {
-    color: #272E48; }
-  body .serif {
+body #appContainer {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px; }
+  body #appContainer .serif {
     font-family: 'Aleo', serif !important; }
-  body h1, body h2, body h3 {
+  body #appContainer h1, body #appContainer h2, body #appContainer h3 {
     font-family: 'Aleo', serif !important; }
 
 .xs-andUp, .sm-andUp, .md-andUp, .lg-andUp {

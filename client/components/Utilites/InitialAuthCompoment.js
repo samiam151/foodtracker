@@ -17,16 +17,26 @@ export class InitialAuthComponent extends Component {
     componentDidMount() {
         axios.post("/api/initlogin")
         .then(res => {
-            let data = res.data;
-            if (data.id && data.id !== undefined) {
+            let user = res.data.user_goals,
+                workouts = res.data.workouts;
+
+            // Set users
+            if (user.id && user.id !== undefined) {
                 store.dispatch({
                     payload: {
-                        ...data,
+                        ...user,
                         "isAuthenticated": true
                     }, 
                     type: "SET_USER"
                 });
             }
+
+            // Set workouts
+            store.dispatch({
+                type: "SET_WORKOUTS",
+                payload: { ...workouts }
+            });
+
         })
         .then(() => {
             this.showContent();

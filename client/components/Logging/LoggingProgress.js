@@ -6,23 +6,34 @@ import { DayProgressChart } from "./DayProgressChart";
 import { Row, Col } from "antd";
 import { Padding } from "../Utilites/Padding";
 
-export const LoggingProgress = ({meals, ...props}) => {
+export const LoggingProgress = ({meals, workouts, ...props}) => {
     const numCalories = meals.reduce((sum, b) => {
         return sum + Number.parseFloat(b.calories);
     }, 0);
+    
+    const todaysWorkout = workouts.find(row => new Date(row.entry_date).getDate() === new Date().getDate());
+    const totalCalories = numCalories - (todaysWorkout ? todaysWorkout.calories_burned : 0);
 
-    const workoutCalories = props.user
+    function toCalories(num) { return num + " kcal" }
 
     return (
         <div className="loggingProgress pill">
             <Row type="flex">
                 <Col xs={24} md={16}>
                     <div className="logginProgress__left">
-                        <Property label="Daily Caloric Budget" value={props.user.bmr + " kcal"} />
-                        <Property label="Total Calories" value={numCalories + " kcal"} />
+                        <Row type="flex">
+                            <Col xs={24} md={12}>
+                                <Property label="Daily Caloric Budget" value={toCalories(props.user.bmr)} />
+                                <Property label="Calories Consumed" value={toCalories(numCalories)} />
+                            </Col>
+                            <Col xs={24} md={12}>
+                                <Property label="Calories Burned" value={toCalories(todaysWorkout ? todaysWorkout.calories_burned : 0)} />
+                                <Property label="Total Calories" value={toCalories(totalCalories)} />
+                            </Col>
+                        </Row>
 
                         <Padding xAmount={1} unit="em">
-                            <DayProgressChart calories={numCalories} bmr={props.user.bmr}/>
+                            <DayProgressChart calories={totalCalories} bmr={props.user.bmr}/>
                         </Padding>
                     </div>
                 </Col>

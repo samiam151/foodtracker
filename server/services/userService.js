@@ -2,6 +2,8 @@ const UserService = {};
 const db = require("../../conifg/db").database;
 const bcrypt = require("bcrypt");
 const numSalts = 10;
+const fs = require("fs");
+const path = require("path");
 
 /**
  * @param { string } password
@@ -70,6 +72,40 @@ UserService.getUserandGoals = (username) => {
         });
     });
 };
+
+UserService.getInitInfo = function(uid) {
+    return new Promise((resolve, reject) => {
+        if (!uid) {
+            throw new Error("no username given...");
+        }
+        let query = `
+            begin;
+                select fn_get_init_user_info(${uid}, 'r1', 'r2');
+                fetch all in "r1";
+                fetch all in "r2";
+            commit;
+        `;
+
+        db.connect().then(client => {
+            return client.query(query)
+                .then(responses => {
+                    client.release();
+
+                    let actualResults = responses.filter(res => res['command'] === "FETCH");
+                    let returnResult = {
+                        "user_goals": actualResults[0].rows[0],
+                        "workouts": actualResults[1].rows
+                    };
+                    resolve(returnResult);
+                })
+                .catch(err => {
+                    console.log(err);
+                    client.release()
+                    reject(err.stack);
+                });
+        });
+    });
+}
 
 UserService.getUserNames = () => {
     return new Promise((resolve, reject) => {     
