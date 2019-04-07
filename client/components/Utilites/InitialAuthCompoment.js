@@ -21,7 +21,7 @@ export class InitialAuthComponent extends Component {
                 workouts = res.data.workouts;
 
             // Set users
-            if (user.id && user.id !== undefined) {
+            if (user && user.id !== undefined) {
                 store.dispatch({
                     payload: {
                         ...user,
@@ -32,10 +32,12 @@ export class InitialAuthComponent extends Component {
             }
 
             // Set workouts
-            store.dispatch({
-                type: "SET_WORKOUTS",
-                payload: { ...workouts }
-            });
+            if (workouts) {
+                store.dispatch({
+                    type: "SET_WORKOUTS",
+                    payload: { ...workouts }
+                });
+            }
 
         })
         .then(() => {
