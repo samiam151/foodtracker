@@ -15,7 +15,7 @@ const MealContainer = ({meals}) => (
     <div>
         {
             MEAL_NAMES.map((meal, idx) => (
-                <Meal key={idx} name={meal} loggedFoods={meals[meal]} />
+                <Meal key={idx} name={meal} loggedFoods={meals[meal] || []} />
             ))
         }
     </div>
@@ -33,18 +33,16 @@ const LogginDayComponent = ({logs, user, workouts, fetchLogs}) => {
             state: { from: "/login" }
         }}/> :
         <Layout>
-            <Padding xAmount={2} unit="em">
-                <div className="logProgress__container">
-                    {                        
-                        <LoggingProgress meals={logs || []} user={user} workouts={workouts} />
-                    }
-                </div>
-                <div className="logContainer">
-                    {
-                        <MealContainer meals={splitMeals(logs)} />
-                    }
-                </div>
-            </Padding>
+            <div className="logProgress__container">
+                {                        
+                    <LoggingProgress meals={logs || []} user={user} workouts={workouts} />
+                }
+            </div>
+            <div className="logContainer">
+                {
+                    <MealContainer meals={splitMeals(logs)} />
+                }
+            </div>
         </Layout>
     )
 }

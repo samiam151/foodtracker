@@ -1,8 +1,5 @@
 import React, { Component, Fragment } from "react";
-import ReactDOM from "react-dom";
-import { render } from "react-dom";
 import { store } from "../../store";
-import {  } from 'react-router'
 import { Loader } from "./Loader";
 import axios from "axios";
 
@@ -19,9 +16,8 @@ export class InitialAuthComponent extends Component {
         .then(res => {
             let user = res.data.user_goals,
                 workouts = res.data.workouts;
-
             // Set users
-            if (user && user.id !== undefined) {
+            if (user !== undefined && user.id !== undefined) {
                 store.dispatch({
                     payload: {
                         ...user,

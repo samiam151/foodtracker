@@ -1,4 +1,5 @@
 export const splitMeals = (meals = []) => {
+    if (meals.length === 0) return [];
     return meals.reduce((obj, foodEntry) => {
         if (!obj[foodEntry["meal_name"]]) {
             obj[foodEntry["meal_name"]] = [];

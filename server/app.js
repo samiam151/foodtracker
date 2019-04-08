@@ -3,7 +3,6 @@ const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const path = require("path");
 const session = require("express-session");
-const cookieParser = require("cookie-parser");
 const compression = require("compression");
 const PORT = process.env.PORT || 5105;
 const RedisStore = require("connect-redis")(session);

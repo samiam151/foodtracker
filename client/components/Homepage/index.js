@@ -1,6 +1,7 @@
 import React from "react";
 import { Layout } from "../Layout/Layout";
 import { Padding } from "../Utilites/Padding";
+import { Margin } from "../Utilites/Margin";
 import { BackroundImage } from "../Utilites/BackgroundImage";
 import { RssReader } from "../Utilites/RSSReader";
 import { Col, Row } from "antd";
@@ -10,7 +11,7 @@ export const Homepage = (props) => (
 
         <BackroundImage src="/client/images/food-table.jpg" cssClass="homepage-top">
             <Layout>
-                <Padding xAmount="2" unit="em">
+                <Margin amount="-2" unit="em">
                     <section className="homepage__hero">
                         <Row type="flex">
                             <Col xs={24} md={12}>
@@ -18,7 +19,7 @@ export const Homepage = (props) => (
                             </Col>.
                         </Row>
                     </section>
-                </Padding>
+                </Margin>
             </Layout>
         </BackroundImage>
 

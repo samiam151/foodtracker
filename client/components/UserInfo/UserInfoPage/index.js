@@ -12,7 +12,6 @@ const UserInfoPageFunction = ({user, match, ...props}) => {
     
     return (
         <Layout>
-            <Padding xAmount={2} unit="em">    
                 <div className="userInfoPage__container">
                     <ul className="userInfo__nav">
                         <li>
@@ -37,7 +36,6 @@ const UserInfoPageFunction = ({user, match, ...props}) => {
                         )
                     }} />
                 </div>
-            </Padding>
         </Layout>
       );
 }

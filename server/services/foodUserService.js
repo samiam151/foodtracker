@@ -13,7 +13,7 @@ FoodUserService.getLog = (user_id, date = null) => {
 
             let queryParameters = `${user_id}`;
             if (date) queryParameters += `, '${date}'`;
-
+            console.log(queryParameters);
             let query = `select * from fn_get_food_entries(${queryParameters})`;
 
             client.query(query)
@@ -21,7 +21,10 @@ FoodUserService.getLog = (user_id, date = null) => {
                     client.release();
                     resolve(data.rows); 
                 })
-                .catch(err => reject(err));
+                .catch(err => {
+                    console.log(err);
+                    reject(err)
+                });
         });
     });
 }

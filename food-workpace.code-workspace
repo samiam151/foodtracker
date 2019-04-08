@@ -6,6 +6,6 @@
 	],
 	"settings": {
 		"git.ignoreLimitWarning": true,
-		"debug.node.autoAttach": "on"
+		"workbench.tree.indent": 20
 	}
 }

@@ -411,6 +411,14 @@ body {
     .container {
       max-width: 1080px; } }
 
+.page-container {
+  margin-top: 2em;
+  margin-bottom: 2em; }
+
+.contentContainer {
+  margin-top: 2em;
+  margin-bottom: 2em; }
+
 .pill {
   padding: 1em;
   border-radius: 3px;

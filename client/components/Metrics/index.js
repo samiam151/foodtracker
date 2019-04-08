@@ -11,6 +11,7 @@ const MetricsFunction = ({user, ...props}) => {
     useEffect(() => {
         if (!user.isAuthenticated) {
             setCalculated(true);
+            return;
         }
 
         let feet = Math.floor(user.height_inches / 12);
