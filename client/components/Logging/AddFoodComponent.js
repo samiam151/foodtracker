@@ -78,19 +78,14 @@ class AddFoodComponent extends Component {
 
     render() {
         let cssClasses = "addFoodComponent__steps addFoodComponent__step--" + this.state.activeStep;
+        const buttonsToShow = [];
+
+        
 
         return (
             
             <div className={cssClasses}>
-                {
-                    this.state.activeStep === 1 ?
-
-                    <div className="addFoodComponent__buttons">
-                        <Button onClick={() => this.revertActiveStep()}>Back to Search</Button>
-                    </div>
-
-                    : ""
-                }
+                
                 <Steps current={this.state.activeStep}>
                     {
                         this.steps.map((step, index) => (
@@ -108,12 +103,18 @@ class AddFoodComponent extends Component {
                 </div>
 
                 <Divider />
-                {
-                    !this.props.logging.working_food_entry ? <noscript /> :
                     <div className="addFoodComponent__submitButtons">
-                        <Button type="primary" onClick={() => this.submitEntry()}>Add Entry</Button>
+                        {
+                            this.state.activeStep === 1 ? 
+                                <Button onClick={() => this.revertActiveStep()}>Back to Search</Button>
+                            : ""   
+                        }
+                        {
+                            this.state.activeStep === 1 ? 
+                                <Button type="primary" onClick={() => this.submitEntry()}>Add Entry</Button>
+                            : ""   
+                        }
                     </div>
-                }
             </div>            
         );
     }

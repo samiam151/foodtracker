@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { setUser } from "../actions";
 import { Redirect } from "react-router-dom";
 import { Button } from "antd";
+import { Padding } from "../../Utilites/Padding";
 
 const LoginForm = ({user, setUser, ...props}) => {
     const [redirectToReferrer, setRedirectToReferrer] = useState(false);
@@ -36,8 +37,9 @@ const LoginForm = ({user, setUser, ...props}) => {
 
             <label htmlFor="password">Password</label>
             <input type="password" name="password" id="password" />
-
-            <Button type="primary" htmlType="submit">Log In</Button>
+            <Padding xAmount={14} unit="px">
+                <Button type="primary" htmlType="submit">Log In</Button>
+            </Padding>
         </form>
     );
 }

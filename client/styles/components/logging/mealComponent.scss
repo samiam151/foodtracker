@@ -20,6 +20,19 @@
     }
 }
 
+.loggedFood--removeConfirm {
+    .ant-popover-buttons {
+        display: flex;
+        flex-flow: row-reverse;
+        justify-content: center;
+
+        button.ant-btn {
+            width: 5em;
+            height: 2em;
+        }
+    }
+}
+
 .loggedFoods {
 
     .loggedFood {

@@ -1345,6 +1345,8 @@ header {
 
 .addFoodComponent__submitButtons {
   text-align: center; }
+  .addFoodComponent__submitButtons button {
+    margin: 0 0.25em; }
 
 .addFood__searchResults {
   max-height: 14em;
@@ -1409,6 +1411,14 @@ header {
     text-align: right; }
     .logProgress__settings .logProgress__date strong {
       margin: 0 1em; }
+
+.loggedFood--removeConfirm .ant-popover-buttons {
+  display: flex;
+  flex-flow: row-reverse;
+  justify-content: center; }
+  .loggedFood--removeConfirm .ant-popover-buttons button.ant-btn {
+    width: 5em;
+    height: 2em; }
 
 .loggedFoods .loggedFood {
   display: flex;

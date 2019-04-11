@@ -26,10 +26,11 @@ export const LoggedFoodComponent = ({food, removeEntry}) => {
             </div>
             <div className="loggedFood--remove">
                 <Popconfirm title="Are you sure delete this entry?" 
+                    overlayClassName="loggedFood--removeConfirm"
                     onConfirm={removeFoodEntry} 
+                    placement="left"
                     okText="Yes" 
                     cancelText="No">
-                    
                     <Icon type="close-circle" />
                 </Popconfirm>
             </div>

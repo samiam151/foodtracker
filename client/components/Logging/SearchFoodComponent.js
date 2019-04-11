@@ -33,9 +33,11 @@ const _SearchFoodComponent = (props) => {
         <div className="addFood">
             <Input type="Input.Text" 
                 name="foodInput" 
+                autoComplete="off"
                 className="addFood__serachInput" 
                 placeholder="Search by food name..."
                 onChange={(e) => searchInputChange(e.target.value)}/>
+            
             <ul className="addFood__searchResults">
                 {
                     searchResults.map((food, index) => (
