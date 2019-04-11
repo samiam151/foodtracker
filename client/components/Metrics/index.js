@@ -30,7 +30,7 @@ const MetricsFunction = ({user, ...props}) => {
             console.log(err);
             setCalculated(true);
         }
-    }, []);
+    }, [user.isAuthenticated]);
 
     return calculated ? props.children : <Loader />;
 };

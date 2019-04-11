@@ -6,7 +6,8 @@ import {
     SET_FOOD_ENTRY,
     CLEAR_FOOD_ENTRY_DATA,
     ADD_TO_MEALS,
-    REMOVE_FROM_MEALS
+    REMOVE_FROM_MEALS,
+    SET_ACTIVE_DATE
 } from "./types";
 
 export function getTodaysLogs(id) {
@@ -78,15 +79,24 @@ export const addToMeals = (meal) => (dispatch) => {
     });
 }
 
-export function fetchLogs(user_id) {
+export function fetchLogs(user_id, date = null) {
     return function(dispatch) {
-        ClientFoodUserService.getUsersMeals(user_id)
+        ClientFoodUserService.getUsersMeals(user_id, date)
         .then(meals => {
             // Response is object of food entries, grouped by meal name
             dispatch({
                 type: "GET_INIT_LOGS",
                 payload: meals
             });
+        });
+    }
+}
+
+export function setActiveDate(date = null) {
+    return function(dispatch) {
+        dispatch({
+            type: SET_ACTIVE_DATE,
+            payload: date
         });
     }
 }

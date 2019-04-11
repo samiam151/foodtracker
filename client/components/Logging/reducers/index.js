@@ -5,14 +5,21 @@ import {
     SET_FOOD_ENTRY,
     CLEAR_FOOD_ENTRY_DATA,
     ADD_TO_MEALS,
-    REMOVE_FROM_MEALS
-} from "../actions/types"
+    REMOVE_FROM_MEALS,
+    SET_ACTIVE_DATE
+} from "../actions/types";
 
 const initLogsState = {
     meals: []
 };
 
 export function loggingReducers(store = initLogsState, action) {
+    if (action.type === SET_ACTIVE_DATE) {
+        return Object.assign({}, store, {
+            date: action.payload
+        }); 
+    }
+
     if (action.type === GET_INIT_LOGS) {
         return Object.assign({}, store, {
             meals: action.payload

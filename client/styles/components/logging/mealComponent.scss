@@ -7,6 +7,18 @@
         align-items: center;
     }
 }
+.logProgress__settings {
+    background-color: $medium_blue;
+    margin-bottom: 1em;
+
+    .logProgress__date {
+        text-align: right;
+
+        strong {
+            margin: 0 1em;
+        }
+    }
+}
 
 .loggedFoods {
 

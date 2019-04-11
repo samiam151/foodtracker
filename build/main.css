@@ -1402,6 +1402,14 @@ header {
     justify-content: space-between;
     align-items: center; }
 
+.logProgress__settings {
+  background-color: #AEBDC7;
+  margin-bottom: 1em; }
+  .logProgress__settings .logProgress__date {
+    text-align: right; }
+    .logProgress__settings .logProgress__date strong {
+      margin: 0 1em; }
+
 .loggedFoods .loggedFood {
   display: flex;
   justify-content: space-between;
