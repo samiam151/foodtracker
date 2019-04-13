@@ -4,6 +4,7 @@ import { Loader } from "../../Utilites/Loader";
 import { Steps, Button } from "antd";
 import uuid from "uuid";
 const Step = Steps.Step;
+import { Redirect } from "react-router-dom";
 
 import { connect } from "react-redux";
 
@@ -15,13 +16,14 @@ import ClientUserService from "../../../services/ClientUserService";
 const SignupFormComponent = ({setSignupProperty, clearSignupProperty, signup, ...props}) => {
     const [errorMessages, setErrorMessages] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [formSubmitted, setFormSubmitted] = useState(false);
 
     useEffect(() => {
         ClientUserService.getUsernames()
             .then(names => setSignupProperty('takenNames', names))
             .then(() => setIsLoading(false))
             .then(() => {
-                setSignupProperty("gender", "M");
+                setSignupProperty("gender", "F");
                 setSignupProperty("activityLevel", "1.2");
             });
     }, []);
@@ -77,6 +79,7 @@ const SignupFormComponent = ({setSignupProperty, clearSignupProperty, signup, ..
             })
             .finally(() => {
                 setIsLoading(false);
+                setFormSubmitted(true);
             });
     }
 
@@ -84,26 +87,27 @@ const SignupFormComponent = ({setSignupProperty, clearSignupProperty, signup, ..
         <Fragment>
             {
                 isLoading ? <Loader /> : 
-                <form onSubmit={handleSubmit}>
-                    <Row>
-                        <Col xs={24}>
-                            <div className="signup__errors">{ errorMessages.map(m => m) }</div>
-                        </Col>
+                    formSubmitted ? <Redirect to="/log" /> : 
+                        <form onSubmit={handleSubmit}>
+                            <Row>
+                                <Col xs={24}>
+                                    <div className="signup__errors">{ errorMessages.map(m => m) }</div>
+                                </Col>
 
-                        <Col xs={24} md={12} >
-                            <AccountInfoComponent setSignupProperty={setSignupProperty} />
-                        </Col>
-                        <Col xs={24} md={12}>
-                            <UpdateBodyInformation setSignupProperty={setSignupProperty} />
-                        </Col>
+                                <Col xs={24} md={12} >
+                                    <AccountInfoComponent setSignupProperty={setSignupProperty} />
+                                </Col>
+                                <Col xs={24} md={12}>
+                                    <UpdateBodyInformation setSignupProperty={setSignupProperty} />
+                                </Col>
 
-                        <Col xs={24}>
-                            <div className="signup__inputContainer">
-                                <Button htmlType="submit" type="primary">Create Account</Button>
-                            </div>
-                        </Col>
-                    </Row>
-                </form>
+                                <Col xs={24}>
+                                    <div className="signup__inputContainer">
+                                        <Button htmlType="submit" type="primary">Create Account</Button>
+                                    </div>
+                                </Col>
+                            </Row>
+                        </form>
             }    
         </Fragment>
     );

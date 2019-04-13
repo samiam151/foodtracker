@@ -123,6 +123,24 @@ label {
 .text--right {
     text-align: right;
 }
+
 .text--left {
     text-align: left;
+}
+
+.text--center {
+    text-align: center;
+}
+
+@for $i from 1 through 100 {
+
+    .marY--#{$i} {
+        margin-top: $i + px;
+        margin-bottom: $i + px;
+    }
+
+    .marX--#{$i} {
+        margin-left: $i + px;
+        margin-right: $i + px;
+    }
 }

@@ -18,7 +18,7 @@ const _SearchFoodComponent = (props) => {
     };
 
     const searchInputChange = debounce((value) => {
-        if (value.length <= 2) {
+        if (value.length <= 3) {
             return;
         }
         updateSearchInput(value);
@@ -28,7 +28,6 @@ const _SearchFoodComponent = (props) => {
             });
     }, 300);
 
-    console.log(searchResults);
     return (
         <div className="addFood">
             <Input type="Input.Text" 
@@ -38,13 +37,17 @@ const _SearchFoodComponent = (props) => {
                 placeholder="Search by food name..."
                 onChange={(e) => searchInputChange(e.target.value)}/>
             
-            <ul className="addFood__searchResults">
-                {
-                    searchResults.map((food, index) => (
-                        <FoodSearchResult key={index} {...food} onClickCB={resultClick} />
-                    ))
-                }
-            </ul>
+            {
+                searchResults.length === 0 ? 
+                <p className="text--center marY--16 bold">No Results...</p> : 
+                <ul className="addFood__searchResults">
+                    {
+                        searchResults.map((food, index) => (
+                            <FoodSearchResult key={index} {...food} onClickCB={resultClick} />
+                        ))
+                    }
+                </ul>
+            }
         </div>
     );
 

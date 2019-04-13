@@ -19,6 +19,7 @@ export const UpdateBodyInformation = ({setSignupProperty, ...props}) => {
                     min="0"
                     max="12"
                     required
+                    placeholder="Feet"
                     onChange={handleChange}
                 />              
 
@@ -29,6 +30,7 @@ export const UpdateBodyInformation = ({setSignupProperty, ...props}) => {
                     min="0"
                     max="11"
                     required
+                    placeholder="Inches"
                     onChange={handleChange}
                 />
                 
@@ -41,6 +43,7 @@ export const UpdateBodyInformation = ({setSignupProperty, ...props}) => {
                     name="pounds"
                     id="pounds"
                     required
+                    placeholder="Pounds (lbs)"
                     onChange={handleChange}
                 />
             </div>

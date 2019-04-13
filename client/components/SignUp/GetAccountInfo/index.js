@@ -26,7 +26,7 @@ export const AccountInfoComponent = (props) => {
 
             <div className="signup__inputContainer">
                 <label htmlFor="signup--verifypassword">Verify Password</label>
-                <input name="verifyPassword" id="signup--verifypassword" type="password"required onChange={(e) => handleInputChange(e)} />
+                <input placeholder="Re-enter password above..." name="verifyPassword" id="signup--verifypassword" type="password"required onChange={(e) => handleInputChange(e)} />
             </div>
 
             <div className="signup__inputContainer signup__inputContainer--birthday">
