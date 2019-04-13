@@ -1,7 +1,7 @@
 const { database } = require("../../conifg/db");
 const WeightUserService = {};
 
-WeightUserService.addWeightEntry = (userID, newWeight) => {
+WeightUserService.addWeightEntry = (userID, newWeight, entry_date) => {
     return new Promise((resolve, reject) => {
         database.connect((err, client) => {
             if(err) {
@@ -11,9 +11,9 @@ WeightUserService.addWeightEntry = (userID, newWeight) => {
             }
     
             let query = `
-                select public.pr_create_weight_entry($1, $2)
+                select public.pr_create_weight_entry($1, $2, $3)
             `;
-            client.query(query, [userID, newWeight])
+            client.query(query, [userID, newWeight, entry_date])
                 .then(data => {
                     client.release();
                     resolve(data);

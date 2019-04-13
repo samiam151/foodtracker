@@ -71,6 +71,7 @@ app.use("/api/signup", require("./routes/SignupRoutes"))
 app.use("/api/food", require("./routes/LoggingRoutes"))
 app.use("/api/login", require("./routes/LoginRoutes"));
 app.use("/api/weight", require("./routes/WeightRoutes"));
+app.use("/api/workouts", require("./routes/WorkoutRoutes"));
 app.use("/api/userinfo", require("./routes/UserInfoRoutes"));
 app.post('/api/rss', (req, res) => {
     RssFeedService.getFromUrl(req.body.url)
@@ -87,4 +88,4 @@ app.post("/api/logout", (req, res) => {
 app.get('*/**', (req,res) => res.sendFile(path.join(__dirname + "../../index.html")))
 
 // Initialize application
-app.listen(PORT, () => console.log(`App started on port ${PORT}`));
+app.listen(PORT, () => console.log(`Food Tracker is running on port ${PORT}!`));

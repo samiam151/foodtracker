@@ -16,15 +16,15 @@ class Header extends Component {
             <header>
                 <Layout>
                     <Row type="flex" justify="space-between">
-                        <Col xs={6}>
+                        <Col xs={12}>
                             <NavSection>
                                 <NavLink to="/" name="Home" />
                                 { this.props.user.isAuthenticated ? <NavLink to="/log" name="Log" /> : ""}
                             </NavSection>
                         </Col>
                         
-                        <Col xs={6}>
-                            { this.props.user.isAuthenticated ? <UserSection /> : <NavLink to="/login" name="Login" />  }
+                        <Col xs={12}>
+                            { this.props.user.isAuthenticated ? <UserSection /> : <NavLink className="text--right" to="/login" name="Login" />  }
                         </Col>
                     </Row>
                     

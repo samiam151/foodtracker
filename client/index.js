@@ -15,7 +15,6 @@ import { store } from "./store";
 // @ts-ignore
 import antStyles from '../node_modules/antd/dist/antd.less';
 import styles from "./styles/style.scss";
-// import styles from "./styles/styles.less";
 import Header from "./components/Header/Header.jsx";
 import { InitialAuthComponent } from "./components/Utilites/InitialAuthCompoment";
 import Modal from "./components/Utilites/Modal";

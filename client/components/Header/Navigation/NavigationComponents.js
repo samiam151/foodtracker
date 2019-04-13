@@ -10,11 +10,14 @@ export const NavSection = (props) => (
     </nav>
 );
 
-export const NavLink = (props) => (
-    <li className="nav__link">
-        <Link to={props.to}>{props.name}</Link>
-    </li>
-)
+export const NavLink = (props) => {
+    let classes = "nav__link " + props.className;
+    return (
+        <li className={classes}>
+            <Link to={props.to}>{props.name}</Link>
+        </li>
+    );
+}
 
 NavLink.propTypes = {
     to: PropTypes.string.isRequired,

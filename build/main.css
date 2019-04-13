@@ -417,7 +417,8 @@ body {
 
 .contentContainer {
   margin-top: 2em;
-  margin-bottom: 2em; }
+  margin-bottom: 2em;
+  position: relative; }
 
 .pill {
   padding: 1em;
@@ -480,6 +481,12 @@ label {
     font-size: 0.75em;
     font-style: italic;
     margin: 6px 0 12px; }
+
+.text--right {
+  text-align: right; }
+
+.text--left {
+  text-align: left; }
 
 .xs-andUp, .sm-andUp, .md-andUp, .lg-andUp {
   display: none; }
@@ -1326,18 +1333,19 @@ header {
     display: flex;
     align-items: center;
     flex-flow: row nowrap; }
-    header .nav__container .nav__link {
-      margin-right: 1em;
-      font-weight: 500;
-      text-transform: uppercase;
-      font-size: 18px; }
-      header .nav__container .nav__link a {
-        color: white; }
+  header .nav__link {
+    margin-right: 1em;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 18px; }
+    header .nav__link a {
+      color: white; }
   header .nav__link a {
     color: white; }
   header .userSection {
     text-align: right;
-    margin: 0 1em; }
+    margin: 0 1em;
+    color: white; }
     header .userSection > a {
       color: white;
       padding: 1em;

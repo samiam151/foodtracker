@@ -5,8 +5,9 @@ import { Menu, Dropdown, Icon } from "antd";
 import { unsetUser } from "../Login/actions";
 import {UserMenu} from "./UserMenu";
 
-const UserSection = () => (
+const UserSection = ({user, ...props}) => (
     <div className="userSection">
+        <span>Logged in as <strong>{user.name}</strong></span>
         <Dropdown overlay={UserMenu}>
             <a className="ant-dropdown-link" href="#">
                 <Icon type="user" />
