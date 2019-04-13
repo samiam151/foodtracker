@@ -24,7 +24,11 @@ class Header extends Component {
                         </Col>
                         
                         <Col xs={12}>
-                            { this.props.user.isAuthenticated ? <UserSection /> : <NavLink className="text--right" to="/login" name="Login" />  }
+                            { 
+                                this.props.user.isAuthenticated ? 
+                                    <UserSection /> : 
+                                    <NavLink className="text--right" to="/login" name="Login" />  
+                            }
                         </Col>
                     </Row>
                     

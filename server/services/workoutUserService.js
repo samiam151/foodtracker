@@ -11,12 +11,12 @@ WorkoutUserService.addWorkoutEntry = (user_id, calories_burned, entry_date) => {
             }
     
             let query = `
-                select public.pr_create_workout_entry($1, $2, $3)
+                select * from public.pr_create_workout_entry($1, $2, $3)
             `;
             client.query(query, [user_id, calories_burned, entry_date])
                 .then(data => {
                     client.release();
-                    resolve(data);
+                    resolve(data.rows);
                 })
                 .catch(err => {
                     client.release();

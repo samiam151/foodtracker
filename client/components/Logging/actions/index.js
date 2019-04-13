@@ -92,6 +92,15 @@ export function fetchLogs(user_id, date = null) {
     }
 }
 
+export function addToWorkouts(workout_entries) {
+    return function(dispatch) {
+        dispatch({
+            type: "SET_WORKOUTS",
+            payload: workout_entries
+        })
+    }
+}
+
 export function setActiveDate(date = null) {
     return function(dispatch) {
         dispatch({

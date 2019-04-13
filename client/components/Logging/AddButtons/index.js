@@ -2,6 +2,7 @@ import React, { Fragment, useState } from "react";
 import { connect } from "react-redux";
 import { Button, Modal, message } from "antd";
 import { addWeightEntry, addWorkoutEntry } from "../utils";
+import { addToWorkouts } from "../../Logging/actions";
 
 
 const AddButtonsFunction = (props) => {
@@ -36,9 +37,11 @@ const AddButtonsFunction = (props) => {
 
         addWorkoutEntry(props.user.id, newWorkout, props.current_date)
             .then(data => {
-                setShowWorkoutModal(false);
+                console.log(data);
+                props.addToWorkouts(data);
             })
             .then(() => {
+                setShowWorkoutModal(false);
                 message.success("New workout calories added!");
             })
             .catch(err => console.log(err));
@@ -73,4 +76,4 @@ const AddButtonsFunction = (props) => {
 export const AddButtonsComponent = connect((store) => ({
     user: store.user,
     current_date: store.logging.date
-}))(AddButtonsFunction);
+}), { addToWorkouts })(AddButtonsFunction);

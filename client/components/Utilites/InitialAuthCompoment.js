@@ -49,7 +49,7 @@ export class InitialAuthComponent extends Component {
             this.setState({
                 loaded: true
             })
-        }, 250);
+        }, 100);
     }
 
     render() {

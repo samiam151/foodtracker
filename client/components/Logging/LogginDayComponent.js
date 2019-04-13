@@ -28,7 +28,7 @@ const LogginDayComponent = ({active_date, logs, user, workouts, fetchLogs, ...pr
     
     useEffect(() => {
         fetchLogs(user.id, active_date);
-    }, [active_date]);
+    }, [active_date, workouts]);
 
     return (
         !user.isAuthenticated ? <Redirect to={{
@@ -50,7 +50,7 @@ const LogginDayComponent = ({active_date, logs, user, workouts, fetchLogs, ...pr
             </div>
             <div className="logProgress__container">
                 {                        
-                    <LoggingProgress meals={logs || []} user={user} workouts={workouts} />
+                    <LoggingProgress meals={logs || []} user={user} workouts={workouts} date={active_date} />
                 }
             </div>
             <div className="logContainer">
