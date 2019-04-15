@@ -2156,6 +2156,11 @@ header {
       color: white;
       padding: 1em;
       font-size: 1.3em; }
+    header .userSection .userSection__loggedInAs {
+      display: none; }
+      @media (min-width: 45em) {
+        header .userSection .userSection__loggedInAs {
+          display: inline-block; } }
 
 .addFoodComponent__submitButtons {
   text-align: center; }
@@ -2302,6 +2307,9 @@ header {
   display: flex;
   align-items: center;
   justify-content: center; }
+
+.signup--notification button {
+  margin-right: 6px; }
 
 .userInfoPage__container tspan {
   font-size: 12px; }

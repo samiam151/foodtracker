@@ -44,5 +44,13 @@ header {
             padding: 1em;
             font-size: 1.3em;
         }
+
+        .userSection__loggedInAs {
+            display: none;
+
+            @include breakpoint("md") {
+                display: inline-block;
+            }
+        }
     }
 }

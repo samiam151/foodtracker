@@ -7,7 +7,7 @@ import {UserMenu} from "./UserMenu";
 
 const UserSection = ({user, ...props}) => (
     <div className="userSection">
-        <span>Logged in as <strong>{user.name}</strong></span>
+        <span className="userSection__loggedInAs">Logged in as <strong>{user.name}</strong></span>
         <Dropdown overlay={UserMenu}>
             <a className="ant-dropdown-link" href="#">
                 <Icon type="user" />
