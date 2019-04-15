@@ -3,35 +3,34 @@ const router = require("express").Router();
 const passport = require("passport");
 const path = require("path");
 
-router.get("/", (req, res) => {
-    if (req.isAuthenticated()) {
-        res.redirect(`/login/success?username=${req.user.name}`);
-    } else {
-        res.sendFile(path.join(__dirname + "../../../views/login/login.html"));
-    }
-});
+// router.get("/", (req, res) => {
+//     if (req.isAuthenticated()) {
+//         res.redirect(`/login/success?username=${req.user.name}`);
+//     } else {
+//         res.sendFile(path.join(__dirname + "../../../views/login/login.html"));
+//     }
+// });
 
 router.use((req, res, next) => {
-    // console.log(req.method);
-    // console.log(req.body);
-    // console.log(req.xhr);
     next();
 });
-router.post("/", passport.authenticate('local', 
-    { 
-        failureRedirect: '/login/error'
-    }), (req, res) => {
-    let user = Object.assign({}, req.user);
-    delete user.password;
-    let userObj = {
-        user: {
-            ...user
-        },
-        authenticated: true
-    }
 
-    console.log("loginroute", userObj);
-    res.json(userObj);
+router.post("/", passport.authenticate('local', {
+    failWithError: true,
+    failureRedirect: "/api/login/error"
+}), 
+    (req, res) => {
+        let user = Object.assign({}, req.user);
+        delete user.password;
+        let userObj = {
+            user: {
+                ...user
+            },
+            authenticated: true
+        }
+
+        console.log("loginroute", userObj);
+        res.json(userObj);
 });
 
 router.get('/success', (req, res) => {
@@ -39,8 +38,10 @@ router.get('/success', (req, res) => {
 });
 
 router.get('/error', (req, res) => {
+    console.log("error route rteached....")
     res.json({
-        authenticated: false
+        authenticated: false,
+        message: "Username or password is incorrect. Please try again."
     });
 });
 

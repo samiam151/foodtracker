@@ -63,7 +63,9 @@ Auth.init = (app) => {
                             return done(null, user);
                         }
                         console.log("Incorrect password");
-                        return done(null, false);
+                        return done(null, false, {
+                            message: "Password is incorrect."
+                        });
                     });
                 })
                 .catch(err => {

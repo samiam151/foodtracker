@@ -5,11 +5,12 @@ import { store } from "../../../store/index";
 import { connect } from "react-redux";
 import { setUser } from "../actions";
 import { Redirect } from "react-router-dom";
-import { Button } from "antd";
+import { Button, Alert } from "antd";
 import { Padding } from "../../Utilites/Padding";
 
 const LoginForm = ({user, setUser, ...props}) => {
     const [redirectToReferrer, setRedirectToReferrer] = useState(false);
+    const [errorMessage, setErrorMessage] = useState(null);
 
     const { from } = { from: { pathname: "/" } };
     const submitLoginForm = (e) => {
@@ -23,6 +24,9 @@ const LoginForm = ({user, setUser, ...props}) => {
             if (response.authenticated) {
                 setUser(response.user);
                 setRedirectToReferrer(true);
+            } else {
+                console.log(response);
+                setErrorMessage(response.message);
             }
         })
     }
@@ -31,6 +35,14 @@ const LoginForm = ({user, setUser, ...props}) => {
 
         redirectToReferrer ? <Redirect to="log" /> : 
         <form onSubmit={(e) => submitLoginForm(e)}>
+            {
+                errorMessage ? <Alert
+                    message={errorMessage}
+                    type="error"
+                    closable
+                    /> : ""
+            }
+
             <label htmlFor="username">Username</label>
             <input type="email" name="username" id="username" />
 

@@ -13,7 +13,15 @@ export const DateSetter = ({setDate, ...props}) => {
         setDate(newDate);
     }
 
+    const disabledDates = (current) => {
+        return current > moment().add(1, "days")
+    }
+
     return (
-        <DatePicker defaultValue={moment()} size="small" onChange={handleChange} />
+        <DatePicker 
+            disabledDate={disabledDates}
+            defaultValue={moment()} 
+            size="small" 
+            onChange={handleChange} />
     );
 };
