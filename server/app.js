@@ -26,9 +26,14 @@ app.use((req, res, next) => {
     next();
 });
 if (isProduction) {
-    app.use(enforce.HTTPS({
-        trustProtoHeader: true
-    }))
+    app.use((req, res, next) => {
+      if (req.header('x-forwarded-proto') !== 'https') {
+          res.redirect(`https://${req.header('host')}${req.url}`)
+      }
+      else {
+          next()
+      }
+  }) 
 }
 app.use(bodyParser());
 app.use(bodyParser.json());
