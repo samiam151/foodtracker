@@ -18,16 +18,20 @@ if (!isProduction) {
 }
 
 if (cluster.isMaster) {
-  console.log(`Master ${process.pid} is running`);
+    console.log(`Master ${process.pid} is running`);
 
-  // Fork workers.
-  for (let i = 0; i < numCPUs; i++) {
-    cluster.fork();
-  }
+    // Fork workers.
+    // Count the machine's CPUs
+    var cpuCount = require('os').cpus().length;
 
-  cluster.on('exit', (worker, code, signal) => {
-    console.log(`worker ${worker.process.pid} died`);
-  });
+    // Create a worker for each CPU
+    for (var i = 0; i < cpuCount; i += 1) {
+        cluster.fork();
+    }
+
+    cluster.on('exit', (worker, code, signal) => {
+        console.log(`worker ${worker.process.pid} died`);
+    });
 }
 else {
     // Middleware
@@ -41,13 +45,13 @@ else {
     });
     if (isProduction) {
         app.use((req, res, next) => {
-          if (req.header('x-forwarded-proto') !== 'https') {
-              res.redirect(`https://${req.header('host')}${req.url}`)
-          }
-          else {
-              next()
-          }
-      }) 
+            if (req.header('x-forwarded-proto') !== 'https') {
+                res.redirect(`https://${req.header('host')}${req.url}`)
+            }
+            else {
+                next()
+            }
+        })
     }
     app.use(bodyParser());
     app.use(bodyParser.json());
@@ -63,7 +67,7 @@ else {
             maxAge: 2419200000
         }
     }));
-    app.use(express.static(__dirname +'./../'));
+    app.use(express.static(__dirname + './../'));
 
     // Authentication
     const Auth = require("../conifg/authentication");
@@ -76,14 +80,14 @@ else {
             return;
         }
         UserService.getInitInfo(req.session.passport.user.id)
-        .then(data => {
-            let returnData = data;
-            res.json(returnData);
-        })
-        .catch(err => {
-            console.log(err);
-            return err;
-        });
+            .then(data => {
+                let returnData = data;
+                res.json(returnData);
+            })
+            .catch(err => {
+                console.log(err);
+                return err;
+            });
 
     });
     app.use("/api/signup", require("./routes/SignupRoutes"))
@@ -104,12 +108,8 @@ else {
         });
     });
 
-    app.get('*/**', (req,res) => res.sendFile(path.join(__dirname + "../../index.html")))
-    
+    app.get('*/**', (req, res) => res.sendFile(path.join(__dirname + "../../index.html")))
+
     // Initialize application
     app.listen(PORT, () => console.log(`Food Tracker is running on port ${PORT}!`));
 }
-
-
-
-
