@@ -7,7 +7,7 @@ const compression = require("compression");
 const PORT = process.env.PORT || 5105;
 const RedisStore = require("connect-redis")(session);
 const enforce = require("express-sslify");
-const cluster - requre("cluster");
+const cluster = requre("cluster");
 
 const UserService = require("./services/userService");
 const RssFeedService = require("./services/rssFeedService");
