@@ -18,12 +18,12 @@ if (!isProduction) {
 }
 
 if (cluster.isMaster) {
-    console.log(`Master ${process.pid} is running`);
+    
 
     // Fork workers.
     // Count the machine's CPUs
     var cpuCount = require('os').cpus().length;
-
+    console.log(`Master ${process.pid} is running using ${cpuCount} cores...`);
     // Create a worker for each CPU
     for (var i = 0; i < cpuCount; i += 1) {
         cluster.fork();
@@ -111,5 +111,5 @@ else {
     app.get('*/**', (req, res) => res.sendFile(path.join(__dirname + "../../index.html")))
 
     // Initialize application
-    app.listen(PORT, () => console.log(`Food Tracker is running on port ${PORT}!`));
+    app.listen(PORT, () => console.log(`Food Tracker is running on port ${PORT}, using PED ${process.pid}!`));
 }
