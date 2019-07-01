@@ -15,6 +15,7 @@ const LoginForm = ({user, setUser, ...props}) => {
     const { from } = { from: { pathname: "/" } };
     const submitLoginForm = (e) => {
         e.preventDefault();
+        setErrorMessage(null);
         let target = e.target;
 
         let u = target.querySelector("[name='username']").value,
@@ -40,7 +41,7 @@ const LoginForm = ({user, setUser, ...props}) => {
                     message={errorMessage}
                     type="error"
                     closable
-                    /> : ""
+                /> : ""
             }
 
             <label htmlFor="username">Username</label>

@@ -9,7 +9,8 @@
     "client": "./node_modules/.bin/webpack -w",
     "all": "./node_modules/.bin/concurrently \"nodemon server/app.js\" \"npm run client\"",
     "build": "",
-    "start": "node server/app.js"
+    "start": "node server/app.js",
+    "redis": "heroku redis:cli --confirm foodtrackerapp"
   },
   "author": "",
   "license": "ISC",

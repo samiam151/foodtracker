@@ -29,7 +29,7 @@ render(
                     <Header />
 
                     <div className="contentContainer">
-                        <Route exact path="/" component={Homepage} />
+                        <Route exact path="/" component={RouteTable["Login Page"]} />
                         <Route path="/login" component={RouteTable["Login Page"]} />
                         <Route path="/signup" component={RouteTable["Signup Page"]} />
                         <PrivateRoute path="/user" component={RouteTable["AddEditGoalsPage"]} />
