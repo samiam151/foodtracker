@@ -17,6 +17,7 @@ Auth.init = (app) => {
         } else {
             console.log("Not logged in...");
         }
+        console.log(`PID: ${process.pid}`)
         console.log("---------------------------");
         next();
     });
