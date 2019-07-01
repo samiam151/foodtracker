@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export function addWeightEntry(user_id, newWeight) {
+export function addWeightEntry(user_id, newWeight, entry_date) {
     return axios({
         method: "post",
         url: "/api/weight/add",

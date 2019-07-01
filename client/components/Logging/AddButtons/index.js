@@ -27,6 +27,7 @@ const AddButtonsFunction = (props) => {
         addWeightEntry(props.user.id, newWeight, props.current_date)
             .then(data => {
                 setShowWeightModal(false);
+                message.success("New weight entry added!");
             })
             .catch(err => console.log(err));
     }

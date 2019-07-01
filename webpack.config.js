@@ -8,7 +8,7 @@ var APP_DIR = path.resolve(__dirname, './client');
 const isProduction = process.env.NODE_ENV === 'production';
 
 const config = {
-    mode: "development",
+    mode: "production",
     plugins: [
         new AntdScssThemePlugin(path.join(__dirname, 'client', 'styles/core/globals/themes.scss')),
         
