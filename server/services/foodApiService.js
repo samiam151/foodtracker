@@ -62,10 +62,6 @@ FoodAPIService.getNutrients = (food_id, measure_uri, quantity = 1) => {
 
 module.exports = FoodAPIService;
 if (require.main === module) {
-    // FoodAPIService.findIngredient("sweet potato").then(data => {
-    //     console.log(data.parsed[0]);
-    //     console.log(new Food(data.parsed[0]));
-    // });
     FoodAPIService.getNutrients(
         "food_bcruvycav1jponay8eu0oa5fkbhx",
         "http://www.edamam.com/ontologies/edamam.owl#Measure_ounce"

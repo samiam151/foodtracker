@@ -11,7 +11,6 @@
         width: 100%;
 
         @include breakpoint("md") {
-            // width: 50%;
             padding-right: 1em;
         }
 
@@ -35,14 +34,6 @@
             }
         }
     }
-
-
-    // .signup--steps {
-
-    //     // Create Account Component
-    //     &.signup--step-0 {
-    //     }
-    // }
 
     .ReactPasswordStrength {
 

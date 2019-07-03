@@ -62,7 +62,6 @@ UserService.getUserandGoals = (username) => {
                 .then(res => {
                     client.release()
                     let result = res.rows[0];
-                    // delete result.password;
                     resolve(result);
                 })
                 .catch(err => {
@@ -121,7 +120,6 @@ UserService.getUserNames = () => {
                 return client.query(query)
                     .then(res => {
                         client.release();
-                        // console.log(res);
                         resolve(res.rows[0]);
                     })
                     .catch(err => {

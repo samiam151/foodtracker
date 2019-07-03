@@ -5,7 +5,6 @@ export const RssReaderView = ({items, cssClasses = null, ...props}) => {
 
     const css = ["rssReader", cssClasses].join(" ");
     const cssItem = ["rssreader__item", props.cssItemClasses].join(" ");
-    // const numItemsToShow = 3;
 
     let _items = Object.assign([], items);
     let itemDivs = chunkArray(_items, props.itemCount).map(itemGroup => {

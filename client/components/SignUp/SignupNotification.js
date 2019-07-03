@@ -14,7 +14,6 @@ const _SignupNotification = (props) => {
             "guest@user.com", "Skater151"
         ).then(response => {
             if (response.authenticated) {
-                console.log(props);
                 props.setUser(response.user);
                 setRedirectToReferrer(true);
             }

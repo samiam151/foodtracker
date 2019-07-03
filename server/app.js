@@ -19,7 +19,6 @@ if (!isProduction) {
 
 if (cluster.isMaster) {
     
-
     // Fork workers.
     // Count the machine's CPUs
     var cpuCount = require('os').cpus().length;

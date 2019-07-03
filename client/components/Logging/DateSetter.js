@@ -9,7 +9,6 @@ export const DateSetter = ({setDate, ...props}) => {
 
     const handleChange = (value) => {
         let newDate = value.format("YYYY-MM-DD");
-        console.log(newDate);
         setDate(newDate);
     }
 

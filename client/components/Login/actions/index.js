@@ -1,5 +1,4 @@
 export const setUser =  (user) => (dispatch) => {
-    console.log(user);
     return dispatch({payload: {...user, "isAuthenticated": true}, type: "SET_USER"})
 };
 

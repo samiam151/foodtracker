@@ -2,8 +2,6 @@ const NUTRIENT_MAP = require("./nutrientMap");
 
 module.exports = class NutrientResponse {
     constructor(res) {
-        // this.data = res;
-
         this.calories = res.calories;
         this.cautions = res.cautions;
         this.nutrients = Object.keys(res.totalNutrients).reduce((obj, nutrient) => {

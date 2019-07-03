@@ -16,20 +16,5 @@ db.on('error', (err, client) => {
 
 
 DB.database = db;
-// DB.query = function(query, sucessCallback, failureCallback) {
-// DB.query = function() {
-//     var args = arguments;
-//     return db.connect().then(client => {
-//         return client.query.apply(null, arguments)
-//             .then(res => {
-//                 client.release()
-//                 args.sucessCallback(res);
-//             })
-//             .catch(err => {
-//                 client.release()
-//                 args.failureCallback(err);
-//             });
-//     });
-// };
 
 module.exports = DB;

@@ -19,7 +19,6 @@ export const ProgressComponent = (props) => {
                 return d;
             }))
             .then(res => {
-                console.log("chartdata", res);
                 setChartDataRequested(true);
                 setChartData(res);
             })

@@ -45,5 +45,3 @@ const _SignOut = ({unsetUser}) => {
     );
 };
 const SignOut = connect(null, { unsetUser })(_SignOut);
-
-// export default connect(null, { unsetUser })(UserMenu);

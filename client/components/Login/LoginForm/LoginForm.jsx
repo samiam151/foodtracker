@@ -26,7 +26,6 @@ const LoginForm = ({user, setUser, ...props}) => {
                 setUser(response.user);
                 setRedirectToReferrer(true);
             } else {
-                console.log(response);
                 setErrorMessage(response.message);
             }
         })

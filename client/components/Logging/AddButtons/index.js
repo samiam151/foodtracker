@@ -38,7 +38,6 @@ const AddButtonsFunction = (props) => {
 
         addWorkoutEntry(props.user.id, newWorkout, props.current_date)
             .then(data => {
-                console.log(data);
                 props.addToWorkouts(data);
             })
             .then(() => {

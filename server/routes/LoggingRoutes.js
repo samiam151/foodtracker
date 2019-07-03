@@ -6,12 +6,6 @@ const FoodUserService = require("../services/foodUserService");
 const Food = require("../models/food");
 const NutrientResponse =  require("../models/nutrientResponse");
 
-router.use((req, res, next) => {
-    // console.log(req.method);
-    // console.log(req.body);
-    next();
-});
-
 router.post("/removeFoodEntry", (req, res) =>{
     FoodUserService.removeEntry(req.body.entryID)
         .then(data => res.json(data))

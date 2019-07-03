@@ -2,7 +2,6 @@
 @import "../globals/variables.scss";
 
 body {
-    // background-color: $light_blue;
     background-color: #fefefe;
     color: $dark_blue !important;
     overflow-x: hidden;
@@ -28,7 +27,6 @@ body {
 }
 
 .contentContainer {
-    // padding: 2em 0;
     margin-top: 2em;
     margin-bottom: 2em;
     position: relative;
@@ -38,8 +36,6 @@ body {
     padding: 1em;
     border-radius: 3px;
     background-color: #fefefe;
-    // margin: 1em 0;
-    // background-color: $medium_blue;
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
 }
 
@@ -82,7 +78,6 @@ label {
     width: 100%;
 
     @include breakpoint("md") {
-        // width: 50%;
         padding-right: 1em;
     }
 

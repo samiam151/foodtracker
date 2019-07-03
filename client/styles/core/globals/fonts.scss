@@ -1,6 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700|Aleo:400,700');
-// @import url('https://fonts.googleapis.com/css?family=Aleo:400,700');
-// @import url('https://fonts.googleapis.com/css?family=Rubik:400,500,700');
 @import "../globals/variables.scss";
 
 @mixin serif {
@@ -11,9 +9,6 @@ body #appContainer {
     font-family: 'Lato', sans-serif;
     font-size: 14px;
 
-    a {
-        // color: $dark_blue;
-    }
 
     .serif {
         @include serif;
@@ -27,8 +22,3 @@ body #appContainer {
 .bold {
     font-weight: 700;
 }
-
-// h1, h2, h3, h4, h5, h6 {
-//     font-family: 'Source Sans Pro', sans-serif;
-// }
-

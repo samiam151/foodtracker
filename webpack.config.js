@@ -35,12 +35,6 @@ const config = {
                     {
                         loader: "css-loader"
                     },
-                    // AntdScssThemePlugin.themify({
-                    //     loader: 'sass-loader',
-                    //     options: {
-                    //       sourceMap: !isProduction,
-                    //     },
-                    //   }),
                     {
                         loader: "sass-loader"
                     }

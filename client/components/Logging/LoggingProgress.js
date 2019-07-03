@@ -21,7 +21,6 @@ export const LoggingProgress = ({meals, workouts, ...props}) => {
         }, 0)
     }
 
-    console.log(todaysWorkouts);
     const totalCalories = numCalories - all_calories_burned;
 
     function toCalories(num) { return num + " kcal" }
